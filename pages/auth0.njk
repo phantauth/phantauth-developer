@@ -1,0 +1,25 @@
+---
+permalink: "test/auth0.html"
+---
+{% extends "_test.njk" %}
+
+{% block subtitle %}Auth0 Test Page{% endblock %}
+{% block icon %}/icon/auth0.svg{% endblock %}
+
+{% block head %}
+{{ super() }}
+  <script src="https://cdn.auth0.com/js/auth0/9.5.1/auth0.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container before-login mt-3" style="display: none;">
+  <p><a href="https://auth0.com">Auth0</a> integration test page. You can try how authentication works with Auth0 Social Connection integration.
+   After successfull authentication you will see returned OIDC claims in a user profile form.
+   This page uses <a href="https://auth0.com/docs/libraries/auth0js/">Auth0.js</a> SDK for authentication.
+  </p>
+</div>
+{% endblock %}
+
+{% block script %}
+{% include "auth0.js" %}
+{% endblock %}

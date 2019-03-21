@@ -1,0 +1,27 @@
+---
+permalink: "test/azure.html"
+---
+{% extends "_test.njk" %}
+
+{% block subtitle %}Azure AD B2C Test Page{% endblock %}
+{% block icon %}/icon/azure-ad.svg{% endblock %}
+
+{% block head %}
+{{ super() }}
+  <script src="https://secure.aadcdn.microsoftonline-p.com/lib/0.2.3/js/msal.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jwt-decode@2.2.0/build/jwt-decode.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container before-login mt-3" style="display: none;">
+  <p><a href="https://azure.microsoft.com/en-us/services/active-directory-b2c/">Azure AD B2C</a> integration test page.
+   You can try how authentication works with Azure AD B2C integration.
+   After successfull authentication you will see returned OIDC claims in a user profile form.
+   This page uses<a href="https://github.com/AzureAD/microsoft-authentication-library-for-js">Microsoft Authentication Library for Javascript</a> for authentication.
+  </p>
+</div>
+{% endblock %}
+
+{% block script %}
+{% include "azure.js" %}
+{% endblock %}

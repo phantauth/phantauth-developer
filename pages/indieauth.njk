@@ -1,0 +1,45 @@
+---
+permalink: "test/indieauth.html"
+---
+{% extends "_test.njk" %}
+
+{% block subtitle %}IndieAuth Test Page{% endblock %}
+{% block icon %}/selfie/indieauth.svg{% endblock %}
+
+{% block content %}
+{{ super() }}
+<div class="container before-login mt-3" style="display: none;">
+  <p><a href="https://indieauth.net">IndieAuth</a> authentication test page. You can try how authentication works with IndieAuth integration.
+   After successfull authentication you will see returned OIDC claims in a user profile form.
+   This page uses <a href="https://indielogin.com">IndieLogin.com</a> for authentication.
+  </p>
+</div>
+
+<div id="input" class="container pt-5 before-login" style="display:none">
+
+<div class="col-sm-12 col-md-8 offset-md-2">
+    <form id="form" action="https://indielogin.com/auth" method="get" class="mt-3">
+        <div class="form-group">
+            <label for="me">Name</label>
+            <input class="form-control login-history" id="url" type="text" name="me"  aria-describedby="meHelp" placeholder="Login name" list="history" >
+            <small id="meHelp" class="form-text text-muted">Login name or URL (blank
+                for random)</small>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-outline-success" id="submit" type="submit" title="Continue with selected account">
+                    login
+                </button>&nbsp;
+            </div>
+        </div>
+        <input id="client_id" type="hidden" name="client_id" />
+        <input id="redirect_uri" type="hidden" name="redirect_uri" />
+        <input id="state" type="hidden" name="state" />
+    </form>
+</div>
+{% endblock %}
+
+{% block script %}
+{% include "indieauth.js" %}
+{% include "microformat-shiv.min.js" %}
+{% endblock %}

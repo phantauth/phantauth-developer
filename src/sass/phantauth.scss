@@ -1,0 +1,48 @@
+.navbar-brand img {
+    width: 32px;
+    height: 32px;
+  }
+
+@each $suffix, $size in (lg: 9rem, md: 6rem, cp:4rem, sm: 3rem, xs: 1.5rem) {
+  .img-#{$suffix} {
+    width: $size;
+    height: $size;
+  }
+}
+
+.table-properties {
+
+  th {
+      font-weight: normal;
+      width: 15rem;
+  }
+
+  td {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+  } 
+
+  tr:first-child {
+      td, th {
+          border-top: none!important;
+      }
+  }
+}
+
+.noborder {
+    border: none;
+  }
+
+.jumbotron {
+    background-color: transparent;
+    text-align: center;
+    padding-bottom: 0px;
+    padding-top: 1rem;
+}
+
+.jumbotron img {
+    width: 6rem;
+    height: 6rem;
+    margin-right: 1rem;
+}
