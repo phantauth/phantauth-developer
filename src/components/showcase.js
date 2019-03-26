@@ -4,6 +4,18 @@ import { Card, CardBody, CardTitle, CardSubtitle, Button, Row, Col } from 'react
 
 import axios from "axios"
 
+import { meta } from './meta';
+
+const _meta = meta();
+
+function service(path) {
+  return _meta.serviceUri + path;
+}
+
+function site(name, path) {
+  return "https://" + name + "." + _meta.domain + path;
+}
+
 class UserButton extends React.Component {
   state = { loading: false, error: false, user: {} }
 
@@ -60,24 +72,24 @@ class Generator extends React.Component {
       <div className="mt-3">
         <Row>
           <Col>
-            <UserButton url="https://phantauth.ga/user" />&nbsp;
+            <UserButton url={ service("/user") } />&nbsp;
           </Col>
           <Col>
-            <UserButton url="https://phantauth.ga/_sketch/user/%3bsketch" />&nbsp;
+            <UserButton url={ service("/_sketch/user/%3bsketch") } />&nbsp;
           </Col>
           <Col>
-            <UserButton url="https://phantauth.ga/_gods/user/" />&nbsp;
+            <UserButton url={ service("/_gods/user/") } />&nbsp;
           </Col>
         </Row>
         <Row>
           <Col>
-            <UserButton url="https://phantauth.ga/_faker/user" />&nbsp;
+            <UserButton url={ service("/_faker/user") } />&nbsp;
           </Col>
           <Col>
-            <UserButton url="https://phantauth.ga/_chance/user" />&nbsp;
+            <UserButton url={ service("/_chance/user") } />&nbsp;
           </Col>
           <Col>
-            <UserButton url="https://phantauth.ga/_casual/user" />&nbsp;
+            <UserButton url={ service("/_casual/user") } />&nbsp;
           </Col>
         </Row>
       </div>
@@ -141,12 +153,12 @@ class Domain extends React.Component {
       <div className="mt-3">
         <Row>
           <Col>
-            <DomainButton href="https://phantauth.ga/_" icon="/logo/phantauth-logo.svg" title="PhantAuth Domain">
+            <DomainButton href={service("/_")} icon="/logo/phantauth-logo.svg" title="PhantAuth Domain">
               <span class="small">Collection of ready to use PhantAuth Tenants</span>
             </DomainButton>&nbsp;
           </Col>
           <Col>
-          <DomainButton href="https://shared.phantauth.ga" icon="/logo/phantauth-shared.svg" title="PhantAuth Shared">
+          <DomainButton href={ site("shared", "/") } icon="/logo/phantauth-shared.svg" title="PhantAuth Shared">
               <span class="small">Free, shared DNS domain for custom PhantAuth tenants</span>
           </DomainButton>&nbsp;
           </Col>
