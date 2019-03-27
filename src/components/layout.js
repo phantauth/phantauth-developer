@@ -25,6 +25,7 @@ const Layout = ({ children }) => (
         <Container fluid>
           {children}
         </Container>
+        <script src="https://embed.small.chat/THA6J1QSJGH31C4J9F.js" async></script>
       </>
     )}
   />
