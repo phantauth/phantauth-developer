@@ -46,6 +46,9 @@ class Header extends React.Component {
               <NavItem>
                 <NavLink href="/uptime">Uptime</NavLink>
               </NavItem>
+              <NavItem>
+                <NavLink href="/feedback">Feedback</NavLink>
+              </NavItem>
             </Nav>
           </Collapse>
       </Navbar>
