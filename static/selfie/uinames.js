@@ -1,4 +1,17 @@
 PhantAuth.get = function (kind, name, callback) {
+    switch(kind) {
+        case "user":
+          getUser(name, callback);
+          break;
+        case "team":
+          getTeam(name, callback);
+          break;
+        default:
+          console.log("Invalid kind parameter: " + kind);
+    }
+}
+
+function getTeam(seed, callback) {
     $.ajax({
         url: 'https://uinames.com/api/?ext&amount=5',
         dataType: 'json',
@@ -8,12 +21,22 @@ PhantAuth.get = function (kind, name, callback) {
     });
 }
 
+function getUser(seed, callback) {
+    $.ajax({
+        url: 'https://uinames.com/api/?ext',
+        dataType: 'json',
+        success: function(data) {
+            callback(toUser(data));
+        }
+    });
+}
+
 function toTeam(data) {
     var team = { name: PhantAuth.tenant.name , logo: PhantAuth.tenant.logo, members: []}
     var users = data;
 
     for(var i = 0; i < users.length; i++) {
-        team.members.push(toUser(users[i]));
+        team.members.push(toSub(toUser(users[i])));
     }
     return team;
 }
@@ -33,5 +56,9 @@ function toUser(data) {
         country: data.region,
     };
     user.website = "https://uinames.com";
+    return user;
+}
+
+function toSub(user) {
     return {sub: JSON.stringify(user), name: user.name, picture: user.picture};
 }
