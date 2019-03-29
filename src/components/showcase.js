@@ -135,7 +135,7 @@ class Integration extends React.Component {
   }
 }
 
-const DomainButton = ({ icon, title, href, children }) => (
+const SampleButton = ({ icon, title, href, children }) => (
   <a role="button" className="nav-link p-0 border rounded border-primary" href={href}>
     <div className="media">
       <img src={icon} className="p-1" style={{ width: '3.8rem', height: '3.8rem' }} ></img>
@@ -147,6 +147,40 @@ const DomainButton = ({ icon, title, href, children }) => (
   </a>
 )
 
+class Sample extends React.Component {
+  render() {
+    return (
+      <div className="mt-3">
+        <Row>
+          <Col>
+            <SampleButton href="https://4xyj8lw394.codesandbox.io/" icon="/icon/persona.svg" title="User Example">
+              <span class="small">Sample user service usage.</span>
+            </SampleButton>&nbsp;
+          </Col>
+          <Col>
+          <SampleButton href="https://8z77681269.codesandbox.io/" icon="/icon/openid.svg" title="OIDC Example">
+              <span class="small">Sample OpenID Connect login.</span>
+          </SampleButton>&nbsp;
+          </Col>
+        </Row>
+      </div>
+    );
+  }
+}
+
+const DomainButton = ({ icon, title, href, children }) => (
+  <a role="button" className="nav-link p-0 border rounded border-primary" href={href}>
+    <div className="media">
+      <img src={icon} className="p-1" style={{ width: '3.8rem', height: '3.8rem' }} ></img>
+      <div className="media-body">
+        <h6 className="m-0 mt-2">{title}</h6>
+          {children}
+      </div>
+    </div>
+  </a>
+)
+ 
+  
 class Domain extends React.Component {
   render() {
     return (
@@ -154,12 +188,12 @@ class Domain extends React.Component {
         <Row>
           <Col>
             <DomainButton href={service("/_")} icon="/logo/phantauth-logo.svg" title="PhantAuth Domain">
-              <span class="small">Collection of ready to use PhantAuth Tenants</span>
+              <span class="small">Collection of ready to use tenants</span>
             </DomainButton>&nbsp;
           </Col>
           <Col>
           <DomainButton href={ site("shared", "/") } icon="/logo/phantauth-shared.svg" title="PhantAuth Shared">
-              <span class="small">Free, shared DNS domain for custom PhantAuth tenants</span>
+              <span class="small">Free, shared DNS domain for tenants</span>
           </DomainButton>&nbsp;
           </Col>
         </Row>
@@ -169,4 +203,4 @@ class Domain extends React.Component {
 }
 
 
-export {Integration, Generator, Domain}
+export {Integration, Generator, Sample, Domain}

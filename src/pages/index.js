@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import {Integration, Generator, Domain} from '../components/showcase';
+import {Integration, Generator, Sample, Domain} from '../components/showcase';
 
 import {
   Col, Row, Card, CardTitle, CardText, Jumbotron, CardDeck
@@ -64,9 +64,17 @@ const IndexPage = () => (
         Examples:
         <Generator/>
       </Feature>
+      </FeatureList>
+      <FeatureList>
+      <Feature icon="/icon/codesandbox.svg" title="CodeSandbox Samples">
+        <p>
+        Samples are runs directly from CodeSandbox so can view/edit/run the sample code on CodeSandbox.
+        </p>
+        <Sample/>
+      </Feature>
       <Feature icon="/logo/phantauth-shared.svg" title="Customizable Tenants">
         <p>
-        PhantAuth provide customization using tenants.
+        PhantAuth customizable using tenants. Each tenant works as an independent service.
         </p>
         <Domain/>
       </Feature>
