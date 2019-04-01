@@ -49,6 +49,9 @@ class Header extends React.Component {
               <NavItem>
                 <NavLink href="/feedback">Feedback</NavLink>
               </NavItem>
+              <NavItem>
+                <NavLink href="https://spectrum.chat/phantauth">Community</NavLink>
+              </NavItem>
             </Nav>
           </Collapse>
       </Navbar>
