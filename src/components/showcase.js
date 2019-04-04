@@ -202,5 +202,43 @@ class Domain extends React.Component {
   }
 }
 
+const DonateButton = ({ icon, title, href, children }) => (
+  <a role="button" className="nav-link p-0 border rounded border-primary" href={href}>
+    <div className="media">
+      <img src={icon} className="p-1" style={{ width: '3.8rem', height: '3.8rem' }} ></img>
+      <div className="media-body">
+        <h6 className="m-0 mt-2">{title}</h6>
+          {children}
+      </div>
+    </div>
+  </a>
+)
+ 
+  
+class Donate extends React.Component {
+  render() {
+    return (
+      <div className="mt-3">
+        <Row>
+          <Col>
+            <DonateButton href="https://ko-fi.com/Q5Q0T7C7" icon="/icon/kofi.png" title="Ko-fi">
+              <span class="small">Donate PhantAuth on Ko-fi</span>
+            </DonateButton>&nbsp;
+          </Col>
+          <Col>
+            <DonateButton href="https://liberapay.com/szkiba/donate" icon="/icon/liberapay.svg" title="Liberapay">
+              <span class="small">Donate PhantAuth on Liberapay</span>
+            </DonateButton>&nbsp;
+          </Col>
+          <Col>
+            <DonateButton href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VXLCJ3EZRAE7G&source=url" icon="/icon/paypal.svg" title="PayPal">
+              <span class="small">Donate PhantAuth on PayPal</span>
+            </DonateButton>&nbsp;
+          </Col>
+        </Row>
+      </div>
+    );
+  }
+}
 
-export {Integration, Generator, Sample, Domain}
+export {Integration, Generator, Sample, Domain, Donate}
