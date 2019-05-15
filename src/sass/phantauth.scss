@@ -30,6 +30,20 @@
   }
 }
 
+[contenteditable="true"] {
+    white-space: nowrap;
+    overflow: hidden;
+
+    br {
+        display:none;
+    }
+
+    * {
+        display:inline;
+        white-space:nowrap;
+    }
+} 
+
 .noborder {
     border: none;
   }

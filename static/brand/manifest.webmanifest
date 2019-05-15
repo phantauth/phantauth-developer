@@ -1,0 +1,20 @@
+{
+    "background_color": "#a135a9",
+    "description": "Random User Generator",
+    "display": "fullscreen",
+    "icons": [
+        {
+            "src": "brand/mockuser-logo.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "brand/mockuser-logo-icon.png",
+            "sizes": "128x128",
+            "type": "image/png"
+        }
+    ],
+    "name": "Mock User",
+    "short_name": "MockUser",
+    "start_url": "/"
+}
