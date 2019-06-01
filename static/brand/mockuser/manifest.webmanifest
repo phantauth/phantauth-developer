@@ -4,12 +4,12 @@
     "display": "fullscreen",
     "icons": [
         {
-            "src": "brand/mockuser-logo.png",
+            "src": "mockuser-logo.png",
             "sizes": "512x512",
             "type": "image/png"
         },
         {
-            "src": "brand/mockuser-logo-icon.png",
+            "src": "mockuser-logo-icon.png",
             "sizes": "128x128",
             "type": "image/png"
         }
