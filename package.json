@@ -32,8 +32,8 @@
   },
   "license": "Apache-2.0",
   "scripts": {
-    "build": "gatsby build; sass --update -s compressed src/sass:public; eleventy",
-    "static": "sass --update -s compressed src/sass:public",
+    "build": "gatsby build; sass --update -s compressed src/sass:public; eleventy; cp public/phantauth.css public/brand/grauth/",
+    "static": "sass --update -s compressed src/sass:public; cp public/phantauth.css public/brand/grauth/",
     "develop": "gatsby develop",
     "start": "npm run develop"
   },
