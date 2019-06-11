@@ -8,7 +8,7 @@ const Api = () => (
   <Layout>
     <SEO title="API" />
     <RedocStandalone
-      specUrl="/api.yaml"
+      specUrl="/api.json"
       options={{
         nativeScrollbars: true,
         hideLoading: true,
