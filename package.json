@@ -1,0 +1,48 @@
+{
+  "name": "phantauth-developer",
+  "private": true,
+  "description": "PhantAuth Developer",
+  "version": "1.0.0",
+  "author": "Iván Szkiba",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bootstrap": "^4.3.1",
+    "core-js": "^2.6.5",
+    "gatsby": "^2.2.8",
+    "gatsby-image": "^2.0.34",
+    "gatsby-plugin-manifest": "^2.0.24",
+    "gatsby-plugin-offline": "^2.0.25",
+    "gatsby-plugin-react-helmet": "^3.0.10",
+    "gatsby-plugin-sharp": "^2.0.30",
+    "gatsby-source-filesystem": "^2.0.28",
+    "gatsby-transformer-sharp": "^2.1.17",
+    "jquery": "^3.3.1",
+    "mobx": "^5.9.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5",
+    "react-helmet": "^5.2.0",
+    "react-icons": "^3.5.0",
+    "react-popper": "^1.3.3",
+    "react-transition-group": "^2.7.0",
+    "react-utterances": "^0.6.4",
+    "reactstrap": "^7.1.0",
+    "redoc": "^2.0.0-rc.1",
+    "styled-components": "^4.1.3"
+  },
+  "license": "Apache-2.0",
+  "scripts": {
+    "build": "gatsby build; sass --update -s compressed src/sass:public; eleventy; cp public/phantauth.css public/brand/grauth/",
+    "static": "sass --update -s compressed src/sass:public; cp public/phantauth.css public/brand/grauth/",
+    "develop": "gatsby develop",
+    "start": "npm run develop"
+  },
+  "devDependencies": {
+    "sass": "^1.17.3",
+    "@11ty/eleventy": "^0.7.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phantauth/phantauth-develop.git"
+  }
+}

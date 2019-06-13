@@ -1,0 +1,29 @@
+.navbar img {
+  width: 32px;
+  height: 32px;
+}
+
+.noborder {
+  border: none;
+}
+
+.card {
+  margin-bottom: 0.8rem;
+}
+
+.jumbotron {
+  background-color: transparent;
+  text-align: center;
+  padding-bottom: 0px;
+  padding-top: 1rem;
+}
+
+.jumbotron img {
+  width: 6rem;
+  height: 6rem;
+}
+
+.img-xs {
+  width: 3rem;
+  height: 3rem;
+}

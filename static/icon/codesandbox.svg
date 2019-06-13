@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="sc-ifAKCX udjuT" width="250" height="250" version="1.1" viewBox="0 0 6400 6400" xmlns="http://www.w3.org/2000/svg">
+<g transform="translate(429.85)">
+<g transform="matrix(6.4449 0 0 6.3881 -523.17 -73.662)" fill="#864a05">
+<polyline points="719 851 719 639.85 902 533.8 902 745.27 719 851"/>
+<polyline points="302.08 643.44 122.17 539.14 122.17 747.74 302.08 852.57 302.08 643.44"/>
+<polyline points="511.98 275.8 694.94 169.63 512.06 63 328.44 169.99 511.98 275.8"/>
+</g>
+<g transform="matrix(6.4449 0 0 6.3881 -523.17 -73.662)" fill="none" stroke="#864a05" stroke-miterlimit="10" stroke-width="80">
+<polyline points="899 287.83 509 513 509 963"/>
+<line x1="122.17" x2="511.5" y1="289" y2="513"/>
+<polygon points="901 288 511 62 121 289 121 739.08 510.92 963.04 901 738.33"/>
+</g>
+</g>
+</svg>
