@@ -3,10 +3,11 @@ $(function () {
 
     var tld = "{{ config.developerPortalUri }}";
     tld = tld.slice(tld.lastIndexOf('.') + 1);
-    console.log(tld);
+
+    var clientIDS = {ml: "38a556ba-7d87-4435-af41-00d367ffa5d1", tk: "83685618-61d5-48fd-80f3-8b73c118235c",  ga: "ab5b7724-ce89-42a4-9213-c8afb77d84f2", net: "c17f2d71-d6cb-4aa9-9c3f-8760e56a0ec8"};
     
     var config = {
-        clientID: {ml: "38a556ba-7d87-4435-af41-00d367ffa5d1", tk: "83685618-61d5-48fd-80f3-8b73c118235c",  ga: "ab5b7724-ce89-42a4-9213-c8afb77d84f2", net: "c17f2d71-d6cb-4aa9-9c3f-8760e56a0ec8"}[tld],
+        clientID: clientIDS[tld],
         authority: "https://login.microsoftonline.com/tfp/" + "phantauth" + ".onmicrosoft.com/b2c_1_login",
         scopes: ["openid", "profile", "email", "phone", "address"]
         };
