@@ -1,6 +1,7 @@
 import React from 'react'
 
 import '../../static/bootstrap-phantauth.min.css';
+import {meta} from './meta';
 
 import {
   Collapse,
@@ -11,6 +12,8 @@ import {
   NavItem,
   NavLink
 } from 'reactstrap';
+
+const _meta = meta();
 
 class Header extends React.Component {
 
@@ -31,10 +34,11 @@ class Header extends React.Component {
 
   render() {
     return (
-      <>
-      <div id="sandbox" className="sandbox bg-warning text-center" role="alert" aria-live="assertive" aria-atomic="true">
-      <div className="small">You are viewing the PhantAuth <b>Sandbox</b>!</div>
-      </div>
+      <>{ _meta.domain == "phantauth.net" ? (<span></span>) : (
+        <div id="sandbox" className="sandbox bg-warning text-center" role="alert" aria-live="assertive" aria-atomic="true">
+        <div className="small">You are viewing the PhantAuth <b>Sandbox</b>!</div>
+        </div>)
+      }
       <Navbar color="primary" expand="lg" dark sticky="top">
         <NavbarBrand href="/"><img src="/logo/phantauth-logo-white.svg" className="logo"/>&nbsp;{this.props.siteTitle}</NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
