@@ -4,3 +4,4 @@ permalink: "_headers"
 /*
   Access-Control-Allow-Origin: *
 {% if config.domain != "phantauth.net"  %}  X-Robots-Tag: noindex, nofollow{% endif %}
+{% if config.domain == "phantauth.net"  %}  Cache-Control = public,max-age=86400{% endif %}
