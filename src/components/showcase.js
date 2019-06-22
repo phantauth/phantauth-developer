@@ -35,12 +35,12 @@ class UserButton extends React.Component {
         {this.state.loading || this.state.error ? (<span></span>) : (
           <a role="button" className="nav-link p-0 border rounded border-primary" href={`${user.profile}`}>
             <div className="media">
-              <img src={`${user.picture}`} className="rounded-circle p-1" style={{ width: '3.8rem', height: '3.8rem' }} ></img>
+              <img src={`${user.picture || 'icon/empty.png'}`} className="rounded-circle p-1" style={{ width: '3.8rem', height: '3.8rem' }} ></img>
               <div className="media-body">
-                <h6 className="m-0 mt-1">{`${user.name}`}</h6>
+                <h6 className="m-0 mt-1">{`${user.name || ''}`}</h6>
                 <div className="small">
-                  <tt className="text-muted">username:&nbsp;</tt><span>{`${user.sub}`}</span><br/>
-                  <tt className="text-muted">password:&nbsp;</tt><span>{`${user.password}`}</span>
+                  <tt className="text-muted">username:&nbsp;</tt><span>{`${user.sub || ''}`}</span><br/>
+                  <tt className="text-muted">password:&nbsp;</tt><span>{`${user.password || ''}`}</span>
                 </div>
 
               </div>
@@ -72,24 +72,24 @@ class Generator extends React.Component {
       <div className="mt-3">
         <Row>
           <Col>
-            <UserButton url={ service("/user") } />&nbsp;
+            <UserButton url={ service("/user/sarah.connor") } />&nbsp;
           </Col>
           <Col>
-            <UserButton url={ service("/_sketch/user/%3bsketch") } />&nbsp;
+            <UserButton url={ service("/_sketch/user/harry.potter%3bsketch") } />&nbsp;
           </Col>
           <Col>
-            <UserButton url={ service("/_gods/user/") } />&nbsp;
+            <UserButton url={ service("/_gods/user/zeus") } />&nbsp;
           </Col>
         </Row>
         <Row>
           <Col>
-            <UserButton url={ service("/_faker/user") } />&nbsp;
+            <UserButton url={ service("/_faker/user/jim") } />&nbsp;
           </Col>
           <Col>
-            <UserButton url={ service("/_chance/user") } />&nbsp;
+            <UserButton url={ service("/_chance/user/julia") } />&nbsp;
           </Col>
           <Col>
-            <UserButton url={ service("/_casual/user") } />&nbsp;
+            <UserButton url={ service("/_casual/user/~james") } />&nbsp;
           </Col>
         </Row>
       </div>
