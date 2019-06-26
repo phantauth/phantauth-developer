@@ -3,7 +3,7 @@
     "info": {
         "title": "PhantAuth",
         "version": "",
-        "description": "Random User Generator + OpenID Connect Provider. Like Lorem Ipsum, but for user accounts and authentication.\n\nA PhantAuth API dokumentáció elérhető a következő API dokumentációs site-okon:\n\n- [apiary](https://phantauth.docs.apiary.io)\n\n- [PhantAuth Developer Portal](https://www.phantauth.net/api)\n\n### TL;DR\n\n**PhantAuth was designed to simplify testing for applications using OpenID Connect authentication by making use of random generated users.**\n\nendpoint  | address\n--------- | -------\nissuer    | https://phantauth.net\ndiscovery | https://phantauth.net/.well-known/openid-configuration\n\ncredential    | value\n------------- | -----\nclient_id     | test.client\nclient_secret | UTBcWwt5\n\n## OpenID Connect\n\nThe OpenID Connect Provider of PhantAuth supports the flows listed in the OpenID Connect specifications (Hybrid, Implicit, Authorization Code), as well as the Resource Owner Password grant type, specified in the OAuth 2.0 specifications. PhantAuth as an OpenID Connect Provider can be integrated with a variety of web applications, mobil applications, and  backend applications. The integration can be either direct, as in the case of the OpenID Connect Provider, or through an authentication integration service, as in the case of Auth0 or Azure Active Directory B2C. To learn more, please go to chapter [Integration](https://doc.phantauth.net/#/integration).\n\nExamples:\n\n- [Direct OpenID Connect integration](https://www.phantauth.net/test/oidc)\n\n- [Auth0 Social Connections integration](https://www.phantauth.net/test/auth0)\n\n- [Azure Active Directory B2C integration](https://www.phantauth.net/test/azure)\n\n## Random User\n\nThe random user generator of PhantAuth can also be used separately, independent of the OpenID Connect Provider. You can generate an optional number of test users. In the knowledge of their user name, the data of the generated users can be regenerated at any time (OpenID Connect *sub* claim). The generated users have a unique, operational, disposable email address, a profile picture selected from one of the multiple pools of pictures, and the usual profile data. Custom email addresses and profile pictures may also be added. The random user generator of PhantAuth can be fully customized. Additionally, you can link an external generator to the application. For details,please go to chapter [Generator](https://doc.phantauth.net/#/generator).\n\nTest pages:\n\n- [Default Generator Test Page](https://phantauth.net/test/user) (embedded generator)\n\n- [Greek Gods Generator Test Page](https://phantauth.net/_gods/test/user) (embedded generator works from Google Sheet)\n\n- [Faker Generator Test Page](https://phantauth.net/_faker/test/user) (external generator using Javascript Faker library)\n\n- [Chance Generator Test Page](https://phantauth.net/_chance/test/user) (external generator using Javascript Chance library)\n\n- [Casual Generator Test Page](https://phantauth.net/_casual/test/user) (external generator using Javascript Casual library)\n\n- [Randomuser Generator Test Page](https://phantauth.net/_randomuser/test/user) (client side generator using https://randomuser.me)\n\n- [uinames Generator Test Page](https://phantauth.net/_uinames/test/user) (client side generator using https://uinames.com)\n\n- [Mockaroo Generator Test Page](https://phantauth.net/_mockaroo/test/user) (client side generator using https://mockaroo.com)\n\nEvery random generated user has a profile page, which contains their profile data in a simple one-page format.\n\nProfile examples:\n\n- [Random Profile](https://phantauth.net/%7Ejoe.black)\n\n- [Random Greek God Profile](https://phantauth.net/_gods/%7Ezeus)\n\n- [Random Faker Profile](https://phantauth.net/_faker/%7Eharry.houdini)\n\n- [Random Chance Profile](https://phantauth.net/_chance/%7Epeter.pan)\n\n- [Random Casual Profile](https://phantauth.net/_casual/%7Ejohn.smith)\n\n## CodeSandbox\n\nThe use of the random user generator and the direct integration of  the OpenID Connect is demonstrated through a set of CodeSandbox samples. The sample applications are run directly from CodeSandbox, so the source code is easy to view, edit, and test.\n\nExamples:\n\n- [Random User Generator usage exampe](https://4xyj8lw394.codesandbox.io/)\n\n- [OpenID Connect direct integration exampe](https://8z77681269.codesandbox.io/)\n\n## Tenants\n\nThe PhantAuth is extremely versatile and customizable. You can use your own random user service, or generate users from an external .csv file or Google Sheet. You can use a set of Bootstrap themes to tailor the look and feel of the profile, morover, you can fundamentally change the same look and feel by the use of your own HTML templates. To find out more, please go to chapter [Tenant](https://doc.phantauth.net/#/tenant).\n\nTo customize the application, you need to use one or more so-called tenants. A tenant can be consiered as an independent PhantAuth service. A tenant has its own random user generator endpoints and OpenID Connect endpoints.\n\nThe tenants can be organised into so-called domains. Practically, a domain is a DNS zone, which contains the settings of the given tenant(s). The tenants as well as the domain can be configured by the use of DNS TXT records.\n\nIn addition to the default tenant, the PhantAuth Domain contains some sample tenants, which are primarily designed to demonstrate customitability, a range of hosting possibilities, and the links to external services. In most cases, using the [default tenant](https://phantauth.net) is enough.\n\n- [PhantAuth Default](https://phantauth.net) - default tenant, based on Java Fairy library\n\n- [Greek Gods](https://phantauth.net/_gods) - based on Google Sheet document\n\n- [PhantAuth Faker](https://phantauth.net/_faker) - based on Javascript Faker library, hosted at https://now.sh\n\n- [PhantAuth Chance](https://phantauth.net/_chance) - based on Javascript Chance library, hosted at https://now.sh\n\n- [PhantAuth Casual](https://phantauth.net/_casual) - based on Javascript Casual library, hosted at https://webtask.io\n\n- [RANDOM USER](https://phantauth.net/_randomuser) - based on https://randomuser.me service\n\n- [uinames](https://phantauth.net/_uinames) - based on https://uinames.com service\n\n- [Mockaroo](https://phantauth.net/_mockaroo) - based on  https://mockaroo.com service\n\nAnyone can create the domain and the tenants. Sharing the tenants is facilitated by the [PhantAuth Shared Domain](https://shared.phantauth.net). A shared domain is connected to the [phantauth.cf](http://phantauth.cf) DNS zone, in which anyone can create tenant configuration notes by the use of the [FreeDNS](https://freedns.afraid.org/) service.\n\n## Pricing\n\nPhantAuth is a free open-source non-profit application. If you find this service useful and can afford, please make a small donation as a contribution to the operation costs (domain registration, service hosting, etc.)\n\n[Donate on Ko-fi](https://ko-fi.com/Q5Q0T7C7) | [Donate on Liberapay](https://liberapay.com/szkiba/donate) | [Donate on PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VXLCJ3EZRAE7G&source=url)"
+        "description": "Random User Generator + OpenID Connect Provider. Like Lorem Ipsum, but for user accounts and authentication.\n\nThe PhantAuth API documentation is available on the following API documentation sites:\n\n- [apiary](https://phantauth.docs.apiary.io) (primary source)\n\n- [PhantAuth Developer Portal](https://www.phantauth.net/api)\n\n### TL;DR\n\n**PhantAuth was designed to simplify testing for applications using OpenID Connect authentication by making use of random generated users.**\n\nendpoint  | address\n--------- | -------\nissuer    | https://phantauth.net\ndiscovery | https://phantauth.net/.well-known/openid-configuration\n\ncredential    | value\n------------- | -----\nclient_id     | test.client\nclient_secret | UTBcWwt5\n\n## OpenID Connect\n\nThe OpenID Connect Provider of PhantAuth supports the flows listed in the OpenID Connect specifications (Hybrid, Implicit, Authorization Code), as well as the Resource Owner Password grant type, specified in the OAuth 2.0 specifications. PhantAuth as an OpenID Connect Provider can be integrated with a variety of web applications, mobil applications, and  backend applications. The integration can be either direct, as in the case of the OpenID Connect Provider, or through an authentication integration service, as in the case of Auth0 or Azure Active Directory B2C. To learn more, please go to chapter [Integration](https://doc.phantauth.net/#/integration).\n\nExamples:\n\n- [Direct OpenID Connect integration](https://www.phantauth.net/test/oidc)\n\n- [Auth0 Social Connections integration](https://www.phantauth.net/test/auth0)\n\n- [Azure Active Directory B2C integration](https://www.phantauth.net/test/azure)\n\n## Random User\n\nThe random user generator of PhantAuth can also be used separately, independent of the OpenID Connect Provider. You can generate an optional number of test users. In the knowledge of their user name, the data of the generated users can be regenerated at any time (OpenID Connect *sub* claim). The generated users have a unique, operational, disposable email address, a profile picture selected from one of the multiple pools of pictures, and the usual profile data. Custom email addresses and profile pictures may also be added. The random user generator of PhantAuth can be fully customized. Additionally, you can link an external generator to the application. For details,please go to chapter [Generator](https://doc.phantauth.net/#/generator).\n\nTest pages:\n\n- [Default Generator Test Page](https://phantauth.net/test/user) (embedded generator)\n\n- [Greek Gods Generator Test Page](https://phantauth.net/_gods/test/user) (embedded generator working from a Google Sheet)\n\n- [Faker Generator Test Page](https://phantauth.net/_faker/test/user) (external generator using Javascript Faker library)\n\n- [Chance Generator Test Page](https://phantauth.net/_chance/test/user) (external generator using Javascript Chance library)\n\n- [Casual Generator Test Page](https://phantauth.net/_casual/test/user) (external generator using Javascript Casual library)\n\n- [Randomuser Generator Test Page](https://phantauth.net/_randomuser/test/user) (client side generator using https://randomuser.me)\n\n- [uinames Generator Test Page](https://phantauth.net/_uinames/test/user) (client side generator using https://uinames.com)\n\n- [Mockaroo Generator Test Page](https://phantauth.net/_mockaroo/test/user) (client side generator using https://mockaroo.com)\n\nEvery random generated user has a profile page, which contains their profile data in a simple one-page format.\n\nProfile examples:\n\n- [Random Profile](https://phantauth.net/%7Ejoe.black)\n\n- [Random Greek God Profile](https://phantauth.net/_gods/%7Ezeus)\n\n- [Random Faker Profile](https://phantauth.net/_faker/%7Eharry.houdini)\n\n- [Random Chance Profile](https://phantauth.net/_chance/%7Epeter.pan)\n\n- [Random Casual Profile](https://phantauth.net/_casual/%7Ejohn.smith)\n\n## CodeSandbox\n\nThe use of the random user generator and the direct integration of  the OpenID Connect is demonstrated through a set of CodeSandbox samples. The sample applications are run directly from CodeSandbox, so the source code is easy to view, edit, and test.\n\nExamples:\n\n- [Random User Generator usage exampe](https://4xyj8lw394.codesandbox.io/)\n\n- [OpenID Connect direct integration exampe](https://8z77681269.codesandbox.io/)\n\n## Tenants\n\nThe PhantAuth is extremely versatile and customizable. You can use your own random user service, or generate users from an external .csv file or Google Sheet. You can use a set of Bootstrap themes to tailor the look and feel of the profile, morover, you can fundamentally change the same look and feel by the use of your own HTML templates. To find out more, please go to chapter [Tenant](https://doc.phantauth.net/#/tenant).\n\nTo customize the application, you need to use one or more so-called tenants. A tenant can be consiered as an independent PhantAuth service. A tenant has its own random user generator endpoints and OpenID Connect endpoints.\n\nThe tenants can be organised into so-called domains. Practically, a domain is a DNS zone, which contains the settings of the given tenant(s). The tenants as well as the domain can be configured by the use of DNS TXT records.\n\nIn addition to the default tenant, the PhantAuth Domain contains some sample tenants, which are primarily designed to demonstrate customitability, a range of hosting possibilities, and the links to external services. In most cases, using the [default tenant](https://phantauth.net) is enough.\n\n- [PhantAuth Default](https://phantauth.net) - default tenant, based on a Java Fairy library\n\n- [Greek Gods](https://phantauth.net/_gods) - based on a Google Sheet document\n\n- [PhantAuth Faker](https://phantauth.net/_faker) - based on a Javascript Faker library, hosted at https://now.sh\n\n- [PhantAuth Chance](https://phantauth.net/_chance) - based on a Javascript Chance library, hosted at https://now.sh\n\n- [PhantAuth Casual](https://phantauth.net/_casual) - based on a Javascript Casual library, hosted at https://webtask.io\n\n- [RANDOM USER](https://phantauth.net/_randomuser) - based on https://randomuser.me service\n\n- [uinames](https://phantauth.net/_uinames) - based on https://uinames.com service\n\n- [Mockaroo](https://phantauth.net/_mockaroo) - based on  https://mockaroo.com service\n\nAnyone can create a domain and the tenants. Sharing the tenants is facilitated by the [PhantAuth Shared Domain](https://shared.phantauth.net). A shared domain is connected to the [phantauth.cf](http://phantauth.cf) DNS zone, where anyone can create tenant configuration notes by the use of the [FreeDNS](https://freedns.afraid.org/) service.\n\n## Pricing\n\nPhantAuth is a free, open-source, non-profit application. If you find this service useful and can afford, please make a small donation as a contribution to the operation costs (domain registration, service hosting, etc.)\n\n[Donate on Ko-fi](https://ko-fi.com/Q5Q0T7C7) | [Donate on Liberapay](https://liberapay.com/szkiba/donate) | [Donate on PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VXLCJ3EZRAE7G&source=url)"
     },
     "host": "phantauth.net",
     "basePath": "/",
@@ -56,11 +56,11 @@
                             "properties": {
                                 "sub": {
                                     "type": "string",
-                                    "description": "Subject - Identifier for the User at the Issuer."
+                                    "description": "Subject - User identifier at the issuer."
                                 },
                                 "name": {
                                     "type": "string",
-                                    "description": "User's full name in displayable form including all name parts, possibly including titles and suffixes, ordered according to the End-User's locale and preferences."
+                                    "description": "The user's full name in displayable form, including all name parts, possibly including titles and suffixes, ordered according to the enduser's locale and preferences."
                                 },
                                 "address": {
                                     "type": "object",
@@ -71,7 +71,7 @@
                                         },
                                         "street_address": {
                                             "type": "string",
-                                            "description": "Full street address component, which MAY include house number, street name, Post Office Box, and multi-line extended street address information. This field MAY contain multiple lines, separated by newlines. Newlines can be represented either as a carriage return/line feed pair or as a single line feed character."
+                                            "description": "Full street address component, which MAY include house number, street name, post office box, and multi-line extended street address information. This field MAY contain multiple lines, separated by newlines. Newlines can be represented either as a carriage return/line feed pair or as a single line feed character."
                                         },
                                         "locality": {
                                             "type": "string",
@@ -90,95 +90,95 @@
                                             "description": "Country name component."
                                         }
                                     },
-                                    "description": "User's preferred postal address."
+                                    "description": "The user's preferred postal address."
                                 },
                                 "given_name": {
                                     "type": "string",
-                                    "description": "Given name(s) or first name(s) of the User."
+                                    "description": "The user's given name(s) or first name(s)."
                                 },
                                 "family_name": {
                                     "type": "string",
-                                    "description": "Surname(s) or last name(s) of the User."
+                                    "description": "The user's surname(s) or last name(s)."
                                 },
                                 "middle_name": {
                                     "type": "string",
-                                    "description": "Middle name(s) of the User."
+                                    "description": "The user's middle name(s)."
                                 },
                                 "nickname": {
                                     "type": "string",
-                                    "description": "Casual name of the User that may or may not be the same as the given_name."
+                                    "description": "A casual name of the User that may or may not be the same as the given_name."
                                 },
                                 "preferred_username": {
                                     "type": "string",
-                                    "description": "Shorthand name by which the User wishes to be referred to at the Relying Party."
+                                    "description": "A shorthand name by which the user wishes to be referred to at the Relying Party."
                                 },
                                 "profile": {
                                     "type": "string",
-                                    "description": "URL of the User's profile page."
+                                    "description": "The URL of the user's profile page."
                                 },
                                 "picture": {
                                     "type": "string",
-                                    "description": "URL of the User's profile picture."
+                                    "description": "The URL of the user's profile picture."
                                 },
                                 "website": {
                                     "type": "string",
-                                    "description": "URL of the User's Web page or blog."
+                                    "description": "The URL of the user's webpage or blog."
                                 },
                                 "email": {
                                     "type": "string",
-                                    "description": "User's preferred e-mail address."
+                                    "description": "The user's preferred email address."
                                 },
                                 "email_verified": {
                                     "type": "boolean",
-                                    "description": "True if the User's e-mail address has been verified; otherwise false."
+                                    "description": "True if the user's e-mail address has been verified; otherwise false."
                                 },
                                 "gender": {
                                     "type": "string",
-                                    "description": "End-User's gender. Possible values are female and male and unknown."
+                                    "description": "The enduser's gender. Possible values are: female, male, and unknown."
                                 },
                                 "birthdate": {
                                     "type": "string",
-                                    "description": "User's birthday, represented as an ISO 8601:2004 [ISO8601‑2004] YYYY-MM-DD format."
+                                    "description": "The user's birthday, represented as an ISO 8601:2004 [ISO8601‑2004] YYYY-MM-DD format."
                                 },
                                 "zoneinfo": {
                                     "type": "string",
-                                    "description": "String from zoneinfo time zone database representing the User's time zone. For example, Europe/Paris or America/Los_Angeles."
+                                    "description": "A string from the zoneinfo time zone database representing the user's time zone. For example, Europe/Paris or America/Los_Angeles."
                                 },
                                 "locale": {
                                     "type": "string",
-                                    "description": "User's locale, represented as a BCP47 [RFC5646] language tag. This is an ISO 639-1 Alpha-2 language code in lowercase and an ISO 3166-1 Alpha-2 country code in uppercase, separated by a dash."
+                                    "description": "The user's locale, represented as a BCP47 [RFC5646] language tag. It is an ISO 639-1 Alpha-2 language code in lowercase and an ISO 3166-1 Alpha-2 country code in uppercase letters, separated by a dash."
                                 },
                                 "phone_number": {
                                     "type": "string",
-                                    "description": "User's preferred telephone number."
+                                    "description": "The user's preferred telephone number."
                                 },
                                 "phone_number_verified": {
                                     "type": "boolean",
-                                    "description": "True if the End-User's phone number has been verified; otherwise false."
+                                    "description": "True if the enduser's phone number has been verified; otherwise false."
                                 },
                                 "updated_at": {
                                     "type": "number",
-                                    "description": "Time the User's information was last updated. Its value is a JSON number representing the number of seconds from 1970-01-01T0:0:0Z as measured in UTC until the date/time."
+                                    "description": "The time when the User's information was last updated. Its value is a JSON number representing the number of seconds from 1970-01-01T0:0:0Z as measured in UTC until the date/time."
                                 },
                                 "me": {
                                     "type": "string",
-                                    "description": "Simplified URL of the User's profile page."
+                                    "description": "The simplified URL of the user's profile page."
                                 },
                                 "password": {
                                     "type": "string",
-                                    "description": "User's generated password."
+                                    "description": "The user's generated password."
                                 },
                                 "uid": {
                                     "type": "string",
-                                    "description": "Simplified, shortened identifier for the User at the Issuer."
+                                    "description": "The user's simplified, shortened identifier at the Issuer."
                                 },
                                 "webmail": {
                                     "type": "string",
-                                    "description": "URL of User's mailbox in a web mail application. "
+                                    "description": "The URL of user's mailbox in a webmail application."
                                 },
                                 "@id": {
                                     "type": "string",
-                                    "description": "URL of the User's JSON representation."
+                                    "description": "The URL of the user's JSON representation."
                                 }
                             },
                             "required": [
@@ -188,7 +188,7 @@
                     }
                 },
                 "summary": "Get a User",
-                "description": "Ezen végpont használatával véletlenszerű felhasználó generálható. A generálás a path paraméterként megadott felhasználó név alapján történik, determinisztikus módon.\nUgyanazon felhasználói név esetén a végpont ugyanazt a user objektumot generálja. A generált user objektum property-ei a felhasználó név alapján véletlenszerűen generálódnak.\nA felhasználó név elhagyása esetén minden hívás különböző, véletlenszerűen generált felhasználó névhez tartozó user objektumot generál.\n\nA generálás `username` paramétereként email címet megadva customizálható a user picture az email címhez tartozó gravatar segítségével.\n\nAmennyiben a `username` paraméter tartalmaz minimum egy pont (`.`) vagy szóköz (` `) karaktert úgy a teljes név generálás helyett a paraméterből képződik.\nEz esetben e karakterek szeparator szerepet töltenek be a teljes név egyes részei között (family name, given name).\n\nAz eredmény mindig egy user objektum. Amennyiben egy lépésben több user-t szeretnénk generálni, azt *Team* generálás segítségével tehetjük meg.\nA team tagjai a team névből véletlenszerűen generált felhasználók.",
+                "description": "Use this endpoint to generate a random user. The user is generated in a deterministic way, on the bases of the user name given as a path parameter.\nIn the case of identical user names, the endpoint will generate the same user object. The properties of the generated user object are randomly generated on the basis of the user name.\nIn lack of a user name, all calls generate a different user object to the randomly generated user name.\n\nBy providing an email address as the `username` parameter, you can customize the user picture by the use of the gravatar associated with the email address.\n\nIf the `username` parameter contains at least one dot (`.`) or space (`) character, the whole name is produced from the parameter, rather than being generated.\nIn this case, these cahracters play the role of separator between the units of the full name (family name, given name).`\n\nThe result is always a user object. If you want to generate multiple users in one single step, you can do it by the use of *Team* generation.\nThe members of a team are users randomly generated from the team name.",
                 "tags": [
                     "User"
                 ],
@@ -196,7 +196,7 @@
                     {
                         "name": "username",
                         "in": "path",
-                        "description": "a generáláshoz használt username vagy email",
+                        "description": "The username or email used for generation purposes.",
                         "required": false,
                         "type": "string"
                     }
@@ -218,7 +218,7 @@
                     }
                 },
                 "summary": "Create a User Selfie",
-                "description": "Selfie token létrehozása felhasználói adatokból. A válasz egy opaqe string token, mely a request-ben küldött user property-ket tartalmazza kódolt formában.\nA selfie token a későbbiekben felhasználható mint belépési név. Ilyenkor a felhasználó adatait a selfie token hordozza, azaz a felhasználó property-jei a token-ből kerülnek kiolvasásra.\nA selfie token segítségével lehetőség van saját felhasználói objektumok használatára authentikáció során.\n\nHasználatát limitálja viszonylag nagy mérete (nagyobb mint 100 karakter), mely sok rendszerben meghaladja a megengedett maximális felhasználói név méretét.",
+                "description": "To create a selfie token from the user data, you need an opaqe string token, which contains the encoded user properties sent in the request.\nLater, the selfie token can be used as a login name. In this case, the user data is included in the selfie token, that is, the user properties are taken from the token.\nBy the use of a selfie token, you can use your own user objects during the authentication process.\n\nIts use, however, is limited by its relatively large size (more than 100 characters), which exceeds the maximum size of the user name in several systems.",
                 "tags": [
                     "User"
                 ],
@@ -231,11 +231,11 @@
                             "properties": {
                                 "sub": {
                                     "type": "string",
-                                    "description": "Subject - Identifier for the User at the Issuer."
+                                    "description": "Subject - User identifier at the issuer."
                                 },
                                 "name": {
                                     "type": "string",
-                                    "description": "User's full name in displayable form including all name parts, possibly including titles and suffixes, ordered according to the End-User's locale and preferences."
+                                    "description": "The user's full name in displayable form, including all name parts, possibly including titles and suffixes, ordered according to the enduser's locale and preferences."
                                 },
                                 "address": {
                                     "type": "object",
@@ -246,7 +246,7 @@
                                         },
                                         "street_address": {
                                             "type": "string",
-                                            "description": "Full street address component, which MAY include house number, street name, Post Office Box, and multi-line extended street address information. This field MAY contain multiple lines, separated by newlines. Newlines can be represented either as a carriage return/line feed pair or as a single line feed character."
+                                            "description": "Full street address component, which MAY include house number, street name, post office box, and multi-line extended street address information. This field MAY contain multiple lines, separated by newlines. Newlines can be represented either as a carriage return/line feed pair or as a single line feed character."
                                         },
                                         "locality": {
                                             "type": "string",
@@ -265,95 +265,95 @@
                                             "description": "Country name component."
                                         }
                                     },
-                                    "description": "User's preferred postal address."
+                                    "description": "The user's preferred postal address."
                                 },
                                 "given_name": {
                                     "type": "string",
-                                    "description": "Given name(s) or first name(s) of the User."
+                                    "description": "The user's given name(s) or first name(s)."
                                 },
                                 "family_name": {
                                     "type": "string",
-                                    "description": "Surname(s) or last name(s) of the User."
+                                    "description": "The user's surname(s) or last name(s)."
                                 },
                                 "middle_name": {
                                     "type": "string",
-                                    "description": "Middle name(s) of the User."
+                                    "description": "The user's middle name(s)."
                                 },
                                 "nickname": {
                                     "type": "string",
-                                    "description": "Casual name of the User that may or may not be the same as the given_name."
+                                    "description": "A casual name of the User that may or may not be the same as the given_name."
                                 },
                                 "preferred_username": {
                                     "type": "string",
-                                    "description": "Shorthand name by which the User wishes to be referred to at the Relying Party."
+                                    "description": "A shorthand name by which the user wishes to be referred to at the Relying Party."
                                 },
                                 "profile": {
                                     "type": "string",
-                                    "description": "URL of the User's profile page."
+                                    "description": "The URL of the user's profile page."
                                 },
                                 "picture": {
                                     "type": "string",
-                                    "description": "URL of the User's profile picture."
+                                    "description": "The URL of the user's profile picture."
                                 },
                                 "website": {
                                     "type": "string",
-                                    "description": "URL of the User's Web page or blog."
+                                    "description": "The URL of the user's webpage or blog."
                                 },
                                 "email": {
                                     "type": "string",
-                                    "description": "User's preferred e-mail address."
+                                    "description": "The user's preferred email address."
                                 },
                                 "email_verified": {
                                     "type": "boolean",
-                                    "description": "True if the User's e-mail address has been verified; otherwise false."
+                                    "description": "True if the user's e-mail address has been verified; otherwise false."
                                 },
                                 "gender": {
                                     "type": "string",
-                                    "description": "End-User's gender. Possible values are female and male and unknown."
+                                    "description": "The enduser's gender. Possible values are: female, male, and unknown."
                                 },
                                 "birthdate": {
                                     "type": "string",
-                                    "description": "User's birthday, represented as an ISO 8601:2004 [ISO8601‑2004] YYYY-MM-DD format."
+                                    "description": "The user's birthday, represented as an ISO 8601:2004 [ISO8601‑2004] YYYY-MM-DD format."
                                 },
                                 "zoneinfo": {
                                     "type": "string",
-                                    "description": "String from zoneinfo time zone database representing the User's time zone. For example, Europe/Paris or America/Los_Angeles."
+                                    "description": "A string from the zoneinfo time zone database representing the user's time zone. For example, Europe/Paris or America/Los_Angeles."
                                 },
                                 "locale": {
                                     "type": "string",
-                                    "description": "User's locale, represented as a BCP47 [RFC5646] language tag. This is an ISO 639-1 Alpha-2 language code in lowercase and an ISO 3166-1 Alpha-2 country code in uppercase, separated by a dash."
+                                    "description": "The user's locale, represented as a BCP47 [RFC5646] language tag. It is an ISO 639-1 Alpha-2 language code in lowercase and an ISO 3166-1 Alpha-2 country code in uppercase letters, separated by a dash."
                                 },
                                 "phone_number": {
                                     "type": "string",
-                                    "description": "User's preferred telephone number."
+                                    "description": "The user's preferred telephone number."
                                 },
                                 "phone_number_verified": {
                                     "type": "boolean",
-                                    "description": "True if the End-User's phone number has been verified; otherwise false."
+                                    "description": "True if the enduser's phone number has been verified; otherwise false."
                                 },
                                 "updated_at": {
                                     "type": "number",
-                                    "description": "Time the User's information was last updated. Its value is a JSON number representing the number of seconds from 1970-01-01T0:0:0Z as measured in UTC until the date/time."
+                                    "description": "The time when the User's information was last updated. Its value is a JSON number representing the number of seconds from 1970-01-01T0:0:0Z as measured in UTC until the date/time."
                                 },
                                 "me": {
                                     "type": "string",
-                                    "description": "Simplified URL of the User's profile page."
+                                    "description": "The simplified URL of the user's profile page."
                                 },
                                 "password": {
                                     "type": "string",
-                                    "description": "User's generated password."
+                                    "description": "The user's generated password."
                                 },
                                 "uid": {
                                     "type": "string",
-                                    "description": "Simplified, shortened identifier for the User at the Issuer."
+                                    "description": "The user's simplified, shortened identifier at the Issuer."
                                 },
                                 "webmail": {
                                     "type": "string",
-                                    "description": "URL of User's mailbox in a web mail application. "
+                                    "description": "The URL of user's mailbox in a webmail application."
                                 },
                                 "@id": {
                                     "type": "string",
-                                    "description": "URL of the User's JSON representation."
+                                    "description": "The URL of the user's JSON representation."
                                 }
                             },
                             "required": [
@@ -405,7 +405,7 @@
                     }
                 },
                 "summary": "Get a User Token",
-                "description": "Különböző OpenID Connect token-ek generálása a path paraméterként megadott nevű felhasználóhoz.\n\nElsősorban tesztelés során használatos, amikor pl a normál authentication flow során kapott token nem elérhető s teszt kód számára.\nPéldául egy access token generálásval elkerülhető az authentikáció s egyből hívható az access tokent-t igénylő művelet.",
+                "description": "It is used to generate OpenID Connect tokens as path parameters to a user of a given name.\n\nThis method is mainly used in the testing process, when, for example, the token received from the normal authenticaton flow is not available to the test code.\nGenerating an access token, for example, will let you avoid authentication, and immediately call an operation requiring the access token.",
                 "tags": [
                     "User"
                 ],
@@ -413,7 +413,7 @@
                     {
                         "name": "username",
                         "in": "path",
-                        "description": "username or email",
+                        "description": "A username or email.",
                         "required": true,
                         "type": "string"
                     },
@@ -424,12 +424,12 @@
                         "required": true,
                         "type": "string",
                         "enum": [
-                            "access",
-                            "refresh",
-                            "authorization",
-                            "id",
-                            "selfie",
-                            "plain"
+                            "'access'",
+                            "'refresh'",
+                            "'authorization'",
+                            "'id'",
+                            "'selfie'",
+                            "'plain'"
                         ]
                     },
                     {
@@ -548,7 +548,7 @@
                                 },
                                 "logo_email": {
                                     "type": "string",
-                                    "description": "A gravatar.com logo_uri generáláshoz használatos email cím."
+                                    "description": "An email address used to generate a gravatar.com logo_uri."
                                 }
                             },
                             "required": [
@@ -558,7 +558,7 @@
                     }
                 },
                 "summary": "Get a Client",
-                "description": "Ezen végpont használatával véletlenszerű kliens generálható. A generálás a path paraméterként megadott client id alapján történik, determinisztikus módon.\nUgyanazon client id esetén a végpont ugyanazt a client objektumot generálja. A generált client objektum property-ei a client id alapján véletlenszerűen generálódnak.\nA client id elhagyása esetén minden hívás különböző, véletlenszerűen generált client id-hez tartozó client objektumot generál.\n\nA generálás `client_id` paramétereként email címet megadva customizálható a client logo az email címhez tartozó gravatar segítségével.\n\nAmennyiben a `client_id` paraméter tartalmaz minimum egy pont (`.`) vagy szóköz (` `) karaktert úgy a client_name név generálás helyett a paraméterből képződik.\n\nAz eredmény mindig egy client objektum. Amennyiben egy lépésben több client-st szeretnénk generálni, azt *Fleet* generálás segítségével tehetjük meg.\nA fleet tagjai a fleet névből véletlenszerűen generált client-sek.",
+                "description": "Use this endpoint to generate a random client. The client is generated in a deterministic way, on the bases of the client ID given as a path parameter.\nIn the case of identical client IDs, the endpoint will generate the same client object. The properties of the generated client object are randomly generated on the basis of the client ID.\nIn lack of a client ID, all calls generate a different client object to the randomly generated client ID.\n\nBy providing an email address as the `client_id` parameter, you can customize the client logo by the use of the gravatar associated with the email address.\n\nIf the `client_id` parameter contains minimum one dot (`.`) or space (`) character, the client_name is produced from the parameter, rather than being generated.`\n\nThe result is always a client object. If you want to generate multiple clients in one single step, you can do it by the use of *Fleet* generation.\nThe members of a fleet are clients randomly generated from the fleet name.",
                 "tags": [
                     "Client"
                 ],
@@ -566,7 +566,7 @@
                     {
                         "name": "client_id",
                         "in": "path",
-                        "description": "client id or email",
+                        "description": "A client ID or email.",
                         "required": false,
                         "type": "string"
                     }
@@ -588,7 +588,7 @@
                     }
                 },
                 "summary": "Create a Client Selfie",
-                "description": "Selfie token létrehozása client adatokból. A válasz egy opaqe string token, mely a request-ben küldött client property-ket tartalmazza titkosítot formában.\nA selfie token a későbbiekben felhasználható mint client id. Ilyenkor a client adatait a selfie token hordozza, azaz a client property-jei a token-ből kerülnek kiolvasásra.\nA selfie token segítségével lehetőség saját client objektumok használatára authentikáció során.",
+                "description": "To create a selfie token from the client data, you need an opaqe string token, which contains the encoded client properties sent in the request.\nLater, the selfie token can be used as a client ID. In this case, the client data is included in the selfie token, that is, the client properties are taken from the token.\nBy the use of a selfie token, you can use your own client objects in the authentication process.",
                 "tags": [
                     "Client"
                 ],
@@ -673,7 +673,7 @@
                                 },
                                 "logo_email": {
                                     "type": "string",
-                                    "description": "A gravatar.com logo_uri generáláshoz használatos email cím."
+                                    "description": "An email address used to generate a gravatar.com logo_uri."
                                 }
                             },
                             "required": [
@@ -710,7 +710,7 @@
                     }
                 },
                 "summary": "Get a Client Token",
-                "description": "Különböző OpenID Connect token-ek generálása a path paraméterként megadott nevű client id-jű client-hez.\n\nElsősorban tesztelés során használatos, amikor pl a normál authentication flow során kapott token nem elérhető s teszt kód számára.",
+                "description": "It is used to generate a OpenID Connect token as a path parameter to a client of a given client ID.\n\nIt is primarily used for testing purposes, when, for example, the token from the standard authentication flow is not available to the test code.",
                 "tags": [
                     "Client"
                 ],
@@ -718,7 +718,7 @@
                     {
                         "name": "client_id",
                         "in": "path",
-                        "description": "client id or email",
+                        "description": "A client ID or email.",
                         "required": true,
                         "type": "string"
                     },
@@ -729,9 +729,9 @@
                         "required": true,
                         "type": "string",
                         "enum": [
-                            "registration",
-                            "selfie",
-                            "plain"
+                            "'registration'",
+                            "'selfie'",
+                            "'plain'"
                         ]
                     }
                 ],
@@ -925,19 +925,19 @@
                             "properties": {
                                 "sub": {
                                     "type": "string",
-                                    "description": "A team neve vagy email címe. Ebből a névből generálódnak a team property-jei valamint a member-ei. Email cím megadásával customizálható a team logo-ja az email címhez tartozó gravatar segítségvel."
+                                    "description": "The name or email address of a given team. The team properties and team members are generated from this name. If you provide an email address, you can customize the team logo by the use of the gravatar associated with the email address."
                                 },
                                 "name": {
                                     "type": "string",
-                                    "description": "A team megjelenítendő neve."
+                                    "description": "The displayed team name."
                                 },
                                 "logo": {
                                     "type": "string",
-                                    "description": "A team logo-jának URL-je, mely a `logo_email` property-ben szereplő email címhez tartozó gravatar segítségével customizálható."
+                                    "description": "The URL of the team logo, which can be customized by the gravatar associated with the email address in the `logo_email` property."
                                 },
                                 "logo_email": {
                                     "type": "string",
-                                    "description": "A team generált vagy a `sub` property-ben megadott email címe. Ezen email címhez tartozó gravatar segítségével customizálható a team logo-ja."
+                                    "description": "The email address of the team, either generated or provided in the `sub` property. The team logo can be customized by the use of the gravater associated with this email address."
                                 },
                                 "@id": {
                                     "type": "string",
@@ -945,11 +945,11 @@
                                 },
                                 "profile": {
                                     "type": "string",
-                                    "description": "A Team profile oldalának URL-je."
+                                    "description": "The URL of the Team profile."
                                 },
                                 "members": {
                                     "type": "array",
-                                    "description": "A team tagjait képző user objektumok.",
+                                    "description": "The user objects that generate a team member.",
                                     "items": {}
                                 }
                             },
@@ -960,7 +960,7 @@
                     }
                 },
                 "summary": "Get a Team",
-                "description": "Ezen végpont használatával felhasználók egy csoportja generálható véletlenszerűen. A generálás a path paraméterként megadott team név alapján történik, determinisztikus módon.\nUgyanazon team név esetén a végpont ugyanazt a team objektumot generálja. A generált team objektum member user-ei és team property-ei a team név alapján véletlenszerűen generálódnak.\nA team név elhagyása esetén minden hívás különböző, véletlenszerűen generált team névhez tartozó team objektumot generál.",
+                "description": "Use this endpoint to generate a random group of users. The team is generated in a deterministic way, on the basis of the team name given as the path parameter.\nIn the case of identical team names, the endpoint will generate the same team object. The properties of the generated team object are randomly generated on the basis of the team name.\nIn lack of a team name, all calls generate a different team object to the randomly generated team name.",
                 "tags": [
                     "Team"
                 ],
@@ -968,7 +968,7 @@
                     {
                         "name": "teamname",
                         "in": "path",
-                        "description": "\na team azonosítója vagy email címe, ez kerül majd a `sub` property-be s ez alapján generálódik a többi property\n",
+                        "description": "\nThe identifier or email address of the team; it is integrated in the `sub` property and is the basis of the other generated properties.\n",
                         "required": false,
                         "type": "string"
                     }
@@ -1066,19 +1066,19 @@
                             "properties": {
                                 "sub": {
                                     "type": "string",
-                                    "description": "A fleet neve vagy email címe. Ebből a névből generálódnak a fleet property-jei valamint a member-ei. Email cím megadásával customizálható a fleet logo-ja az email címhez tartozó gravatar segítségvel."
+                                    "description": "The name or email address of a given fleet. The fleet properties and fleet members are generated from this name. If provide an email address, you can customize the fleet logo by the use of the gravatar associated with the email address."
                                 },
                                 "name": {
                                     "type": "string",
-                                    "description": "A fleet megjelenítendő neve."
+                                    "description": "The displayed fleet name."
                                 },
                                 "logo": {
                                     "type": "string",
-                                    "description": "A fleet logo-jának URL-je, mely a `logo_email` property-ben szereplő email címhez tartozó gravatar segítségével customizálható."
+                                    "description": "The URL of the fleet logo, which can be customized by the gravatar associated with the email address in the `logo_email` property."
                                 },
                                 "logo_email": {
                                     "type": "string",
-                                    "description": "A fleet generált vagy a `sub` property-ben megadott email címe. Ezen email címhez tartozó gravatar segítségével customizálható a fleet logo-ja."
+                                    "description": "The email address of the fleet, either generated or provided in the `sub` property. The fleet logo can be customized by the use of the gravater associated with this email address."
                                 },
                                 "@id": {
                                     "type": "string",
@@ -1086,11 +1086,11 @@
                                 },
                                 "profile": {
                                     "type": "string",
-                                    "description": "A Fleet profile oldalának URL-je."
+                                    "description": "The URL of the Fleet profile."
                                 },
                                 "members": {
                                     "type": "array",
-                                    "description": "A fleet-ben szereplő client objektmok.",
+                                    "description": "The client objects included in a fleet.",
                                     "items": {}
                                 }
                             },
@@ -1101,7 +1101,7 @@
                     }
                 },
                 "summary": "Get a Fleet",
-                "description": "Ezen végpont használatával client-ek egy csoportja generálható véletlenszerűen. A generálás a path paraméterként megadott fleet név alapján történik, determinisztikus módon.\nUgyanazon fleet név esetén a végpont ugyanazt a fleet objektumot generálja. A generált fleet objektum member client-jei és fleet property-ei a fleet név alapján véletlenszerűen generálódnak.\nA fleet név elhagyása esetén minden hívás különböző, véletlenszerűen generált fleet névhez tartozó fleet objektumot generál.",
+                "description": "Use this endpoint to generate a random group of clients. The feleet is generated in a deterministic way, on the basis of a fleet name given as a path parameter.\nIn the case of identical fleet names, the endpoint will generate the same fleet object. The properties of the generated fleet object are randomly generated on the basis of the fleet name.\nIn lack of a fleet name, all calls generate a different fleet object to the randomly generated fleet name.",
                 "tags": [
                     "Fleet"
                 ],
@@ -1109,7 +1109,7 @@
                     {
                         "name": "fleetname",
                         "in": "path",
-                        "description": "\na fleet azonosítója vagy email címe, ez kerül majd a `sub` property-be s ez alapján generálódik a többi property\n",
+                        "description": "\nThe identifier or email address of the fleet; it is integrated in the `sub` property and is the basis of the other generated properties.\n",
                         "required": false,
                         "type": "string"
                     }
@@ -1150,36 +1150,36 @@
                             "properties": {
                                 "sub": {
                                     "type": "string",
-                                    "description": "A tenant teljes DNS domain neve. Official és shared tenant-ok esetén (phantauth.net és phantauth.cf DNS domain) a DNS domain elhagyható (pl *default* vagy *faker*)."
+                                    "description": "The fully qualified DNS domain name of the tenant. In the case of official and shared tenants (phantauth.net and phantauth.cf DNS domain), the DNS domain can be omitted (e.g. *default* or *faker*)."
                                 },
                                 "issuer": {
                                     "type": "string",
-                                    "description": "A tenant OpenID Connect issuer URL-je. Értékét felhasználva kérdezhető le pl az [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).\nMint web lap, a a tenant használatával kapcsolatos információkat tartalmazza."
+                                    "description": "The URL of the tenant OpenID Connect issuer. This value allows you to get, for example, the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).\nAs a webpage, it contains information on the use if the given tenant."
                                 },
                                 "website": {
                                     "type": "string",
-                                    "description": "A tenant-hoz tartozó web site címe. Amennyiben a tenant nem rendelkezik saját web site-tal, úgy értéke megegyezik az `issuer` property értékével."
+                                    "description": "The website address associated with the tenant. If a tenant doesn't have a website, its value is identical with that of the `issuer` property."
                                 },
                                 "template": {
                                     "type": "string",
-                                    "description": "A tenant HTML oldalainak template-jeinek helyétadja meg [RFC 6570 - URI temaplate](https://tools.ietf.org/html/rfc6570) formátumban.\nAz URI template egy `resource` paraméterben kapja meg az oldal nevét. Alapértelmezett értéke: `https://default.phantauth.net{/resource}`."
+                                    "description": "It defines the place of the templates of the HTML pages of the tenant in [RFC 6570 - URI temaplate](https://tools.ietf.org/html/rfc6570) format.\nThe URI template receives the page name in a `resource` parameter. By default, it takes the following value: `https://default.phantauth.net{/resource}`."
                                 },
                                 "factory": {
                                     "type": "string",
-                                    "description": "Custom random resource generátor (user, team) címe [RFC 6570 - URI temaplate](https://tools.ietf.org/html/rfc6570) formátumban.\nAz URI template a `kind` paraméterben kapja meg a generálandó objektum típusát (user, team), a `name` paraméterben pedig a generálandó objektum azonosítóját."
+                                    "description": "The address of the custom random resource generator (user, team) in [RFC 6570 - URI temaplate](https://tools.ietf.org/html/rfc6570) format.\nThe URI template receives the type of the object to be generated (user, team) in the `kind` parameter, and the identifier of the object to be generated in the `name` parameter."
                                 },
                                 "factories": {
                                     "type": "array",
-                                    "description": "A `factory`-ban beállított külső generátor által támogatott resource típusok listája.",
+                                    "description": "A list of resource types supported by the external generator set in `factory`.",
                                     "items": {}
                                 },
                                 "depot": {
                                     "type": "string",
-                                    "description": "A resource adatokat tartalmazó CSV file helyét adja meg [RFC 6570 - URI temaplate](https://tools.ietf.org/html/rfc6570) formátumban.\nAz URI template a `kind` paraméterben kapja meg a generálandó objektum típusát (user, team).\n\nA CSV file első sora tartalmazza a resource property neveket, a további sorok pedig az adatokat.\nEgymásba ágyazott property-k esetén a property névben '.' karakter választja el a név egyes elemeit (pl address.formatted)."
+                                    "description": "It defines the place of the CSV file containing the resource data in [RFC 6570 - URI temaplate](https://tools.ietf.org/html/rfc6570) format.\nThe URI template receives the type of the object to be generated (user, team) in the `kind` parameter.\n\nThe first line of the CSV file contains the resource property names, the following lines, on the other hand, contain the relevant data.\nIn the case of nested properties, a '.' character separates the elements of the property name (e.g. address.formatted)."
                                 },
                                 "depots": {
                                     "type": "array",
-                                    "description": "A `depot`-ban beállított külső CSV által támogatott resource típusok listája.",
+                                    "description": "A list of resource types supported by the external CSV set in `depot`.",
                                     "items": {}
                                 },
                                 "userinfo": {
@@ -1187,51 +1187,51 @@
                                 },
                                 "@id": {
                                     "type": "string",
-                                    "description": "URL of the Tenant's JSON representation."
+                                    "description": "The URL of the tenant's JSON representation."
                                 },
                                 "name": {
                                     "type": "string",
-                                    "description": "A tenant megjelenítendő neve, hiánya esetén a tenant DNS neve jelenik meg a tenant web lapjainak címsorában."
+                                    "description": "The displayed tenant name. In lack of such name, the DNS name of the tenant is displayed in the address bar of the tenant's webpages."
                                 },
                                 "logo": {
                                     "type": "string",
-                                    "description": "A tenant logo-jának URL-je. E címen található kép jelenik meg a tenant web lapjainak címsorában valamint azokon az oldalakon ahol az elérhető tenant-ok listája szerepel."
+                                    "description": "The URL of the tenant logo. The image from this address appears in the address bar of the tenant's webpages and the pages that contain the list of available tenants."
                                 },
                                 "favicon": {
                                     "type": "string",
-                                    "description": "A tenant favicon-jának URL-je. E címen található kép jelenik meg a tenant web lapjainak látogatása során mint shortcut icon a böngészőben."
+                                    "description": "The URL of the tenant favicon. The image from this address appears as a shortcut icon in the browser when a user visits the tenant's webpages."
                                 },
                                 "theme": {
                                     "type": "string",
-                                    "description": "A tenant weblapjaihoz használandó CSS style sheet URL-je.\nA default weblap template-ek Bootstrap library használatával készültek, így használatuk esetén itt egy Bootstrap CSS URL adható meg."
+                                    "description": "The URL of the CSS style sheet used for the tenant's webpages.\nThe default webpage templates were created by the use of the Bootstrap library, therefore, the Bootstrap CSS URL has to be provided when such a webpage is used."
                                 },
                                 "script": {
                                     "type": "string",
-                                    "description": "A login.html, consent.html és test.html oldalakra automatikusan beilleszthető egy custom JavaScript file URL-je."
+                                    "description": "The URL of a custom JavaScript file can be automatically inserted in the login.html, consent.html, és test.html pages."
                                 },
                                 "sheet": {
                                     "type": "string",
-                                    "description": "Egy publikus Google Sheet dokumentum azonosítója adható meg. A táblázat első sora tartalmazza a user property neveket, a további sorok pedig az adatokat.\nEgymásba ágyazott property-k esetén a property névben '.' karakter választja el a név egyes elemeit (pl address.formatted)."
+                                    "description": "It is used to give the identifyer of a public Google Sheet document. The first line of the table contains the user property names, the following lines, on the other hand, contain the relevant data.\nIn the case of nested properties, a '.' character separates the elements of the property name (e.g. address.formatted)."
                                 },
                                 "summary": {
                                     "type": "string",
-                                    "description": "A tenant rövid, egy soros leírása, szlogenje. A tenant nyitó oldalán jelenik meg valamint azokon az oldalakon ahol az elérhető tenant-ok listája szerepel. Értéke formázás nélküli szöveg."
+                                    "description": "A one-line description, the watchword of the tenant. It appears on the tenant's startup page and the pages that contain the list of available tenants. It takes the valua of an unformatted text."
                                 },
                                 "attribution": {
                                     "type": "string",
-                                    "description": "Külső adatforrás, random user generator használata esetén az attribution. Értékében Markdown formázás használható, így megadhatók kiemelések, link-ek a külső forrásra."
+                                    "description": "The attribution of the external data source or random user generator. Its value can have markdown formatting, that is, the external source can contain highlights and links."
                                 },
                                 "about": {
                                     "type": "string",
-                                    "description": "Részletesebb leírás a tenant-ról. Amennyiben értéke egy URL, úgy a leírás a megadott URL-ről töltődik le, ellenkező esetben az érték maga a leírás. A leírásban Markdown formázás használható."
+                                    "description": "A detailed description of the tenant. If it takes the value of an URL, the description is downloaded from the given URL, otherwise the value it takes is the description itself. Markdown formatting can be used in the description."
                                 },
                                 "domain": {
                                     "type": "boolean",
-                                    "description": "Több tenant-ot összefogó domain tenant estén true különben false."
+                                    "description": "True in the case of a domain tenant collecting several tenants, otherwise false."
                                 },
                                 "subtenant": {
                                     "type": "boolean",
-                                    "description": "Domain tenant-on keresztül hivatkozott tenant estén értéke true, különben false."
+                                    "description": "True in the case of a tenant referred to in a domain tenant, otherwise false."
                                 }
                             },
                             "required": [
@@ -1242,7 +1242,7 @@
                     }
                 },
                 "summary": "Get a Tenant",
-                "description": "Ezen végpont segítségével egy adott PhantAuth tenant adatai kérdezhetők le. A PhantAuth szolgáltatások igénybevételéhez nincs szükség ezen végpont használatára.\nElsősorban tehát debug/diagnosztikai céllal használatos tenant customizáció során.\n\nA tenantname a lekérdezni kívánt tenant teljes DNS domain neve.\nOfficial és shared tenant-ok esetén (phantauth.net és phantauth.cf DNS domain) a DNS domain elhagyható (pl *default* vagy *faker*).",
+                "description": "This endpoint allows you to get the data of a given PhantAuth tenant. To use the PhantAuth services, you don't need this endpoint.\nIt is, therefore, mainly used for debug/diagnostic purposes in tenant customization.\n\nTenantname is the name of the full DNS domain of the tenant you get.\nIn the case of an official and shared tenant (phantauth.net and phantauth.cf DNS domains), the DNS domain can be omitted (e.g. *default* or *faker*).",
                 "tags": [
                     "Tenant"
                 ],
@@ -1250,7 +1250,7 @@
                     {
                         "name": "tenantname",
                         "in": "path",
-                        "description": "a tenant azonosítója, ez kerül majd a `sub` property-be",
+                        "description": "The tenant ID integrated in the `sub` property.",
                         "required": true,
                         "type": "string"
                     }
@@ -1444,27 +1444,27 @@
                             "properties": {
                                 "sub": {
                                     "type": "string",
-                                    "description": "A domain teljes DNS domain neve (pl phantauth.net)."
+                                    "description": "The fully qualified DNS name of the domain (e.g. phantauth.net)."
                                 },
                                 "name": {
                                     "type": "string",
-                                    "description": "A domain megjelenítendő neve."
+                                    "description": "The displayed domain name."
                                 },
                                 "logo": {
                                     "type": "string",
-                                    "description": "A domain logo-jának URL-je. E címen található kép jelenik meg a domain web lapján."
+                                    "description": "The URL of the domain logo. The image from this address is displayed on the webpage of the domain."
                                 },
                                 "@id": {
                                     "type": "string",
-                                    "description": "URL of the Domain's JSON representation."
+                                    "description": "The URL of the domain's JSON representation."
                                 },
                                 "profile": {
                                     "type": "string",
-                                    "description": "URL of the Domain's web page."
+                                    "description": "The URL of the domain's webpage."
                                 },
                                 "members": {
                                     "type": "array",
-                                    "description": "A domain-ben szereplő tenant-ok.",
+                                    "description": "The tenants included in a domain.",
                                     "items": {}
                                 }
                             }
@@ -1472,7 +1472,7 @@
                     }
                 },
                 "summary": "Get a Domain",
-                "description": "Ezen végpont segítségével egy adott PhantAuth domain adatai kérdezhetők le. A PhantAuth szolgáltatások igénybevételéhez nincs szükség ezen végpont használatára.\nElsősorban tehát debug/diagnosztikai céllal használatos tenant customizáció során.\n\nA domainname a lekérdezni kívánt domain teljes DNS domain neve (pl *phantauth.net* vagy *phantauth.cf*).",
+                "description": "This endpoint allows you to get the data of a given PhantAuth domain. To use the PhantAuth services, you don't need this endpoint.\nIt is, therefore, mainly used for debug/diagnostic purposes in tenant customization.\n\nDomainname is the fully qualified DNS name of the domain you get (e.g. *phantauth.net* or *phantauth.cf*).",
                 "tags": [
                     "Domain"
                 ],
@@ -1480,7 +1480,7 @@
                     {
                         "name": "domainname",
                         "in": "path",
-                        "description": "a domain azonosítója, ez kerül majd a `sub` property-be",
+                        "description": "The domain ID integrated in the `sub` property.",
                         "required": true,
                         "type": "string"
                     }
@@ -1500,103 +1500,103 @@
             "properties": {
                 "sub": {
                     "type": "string",
-                    "description": "Subject - Identifier for the User at the Issuer."
+                    "description": "Subject - User identifier at the issuer."
                 },
                 "name": {
                     "type": "string",
-                    "description": "User's full name in displayable form including all name parts, possibly including titles and suffixes, ordered according to the End-User's locale and preferences."
+                    "description": "The user's full name in displayable form, including all name parts, possibly including titles and suffixes, ordered according to the enduser's locale and preferences."
                 },
                 "address": {
                     "$ref": "#/definitions/Address",
-                    "description": "User's preferred postal address."
+                    "description": "The user's preferred postal address."
                 },
                 "given_name": {
                     "type": "string",
-                    "description": "Given name(s) or first name(s) of the User."
+                    "description": "The user's given name(s) or first name(s)."
                 },
                 "family_name": {
                     "type": "string",
-                    "description": "Surname(s) or last name(s) of the User."
+                    "description": "The user's surname(s) or last name(s)."
                 },
                 "middle_name": {
                     "type": "string",
-                    "description": "Middle name(s) of the User."
+                    "description": "The user's middle name(s)."
                 },
                 "nickname": {
                     "type": "string",
-                    "description": "Casual name of the User that may or may not be the same as the given_name."
+                    "description": "A casual name of the User that may or may not be the same as the given_name."
                 },
                 "preferred_username": {
                     "type": "string",
-                    "description": "Shorthand name by which the User wishes to be referred to at the Relying Party."
+                    "description": "A shorthand name by which the user wishes to be referred to at the Relying Party."
                 },
                 "profile": {
                     "type": "string",
-                    "description": "URL of the User's profile page."
+                    "description": "The URL of the user's profile page."
                 },
                 "picture": {
                     "type": "string",
-                    "description": "URL of the User's profile picture."
+                    "description": "The URL of the user's profile picture."
                 },
                 "website": {
                     "type": "string",
-                    "description": "URL of the User's Web page or blog."
+                    "description": "The URL of the user's webpage or blog."
                 },
                 "email": {
                     "type": "string",
-                    "description": "User's preferred e-mail address."
+                    "description": "The user's preferred email address."
                 },
                 "email_verified": {
                     "type": "boolean",
-                    "description": "True if the User's e-mail address has been verified; otherwise false."
+                    "description": "True if the user's e-mail address has been verified; otherwise false."
                 },
                 "gender": {
                     "type": "string",
-                    "description": "End-User's gender. Possible values are female and male and unknown."
+                    "description": "The enduser's gender. Possible values are: female, male, and unknown."
                 },
                 "birthdate": {
                     "type": "string",
-                    "description": "User's birthday, represented as an ISO 8601:2004 [ISO8601‑2004] YYYY-MM-DD format."
+                    "description": "The user's birthday, represented as an ISO 8601:2004 [ISO8601‑2004] YYYY-MM-DD format."
                 },
                 "zoneinfo": {
                     "type": "string",
-                    "description": "String from zoneinfo time zone database representing the User's time zone. For example, Europe/Paris or America/Los_Angeles."
+                    "description": "A string from the zoneinfo time zone database representing the user's time zone. For example, Europe/Paris or America/Los_Angeles."
                 },
                 "locale": {
                     "type": "string",
-                    "description": "User's locale, represented as a BCP47 [RFC5646] language tag. This is an ISO 639-1 Alpha-2 language code in lowercase and an ISO 3166-1 Alpha-2 country code in uppercase, separated by a dash."
+                    "description": "The user's locale, represented as a BCP47 [RFC5646] language tag. It is an ISO 639-1 Alpha-2 language code in lowercase and an ISO 3166-1 Alpha-2 country code in uppercase letters, separated by a dash."
                 },
                 "phone_number": {
                     "type": "string",
-                    "description": "User's preferred telephone number."
+                    "description": "The user's preferred telephone number."
                 },
                 "phone_number_verified": {
                     "type": "boolean",
-                    "description": "True if the End-User's phone number has been verified; otherwise false."
+                    "description": "True if the enduser's phone number has been verified; otherwise false."
                 },
                 "updated_at": {
                     "type": "number",
-                    "description": "Time the User's information was last updated. Its value is a JSON number representing the number of seconds from 1970-01-01T0:0:0Z as measured in UTC until the date/time."
+                    "description": "The time when the User's information was last updated. Its value is a JSON number representing the number of seconds from 1970-01-01T0:0:0Z as measured in UTC until the date/time."
                 },
                 "me": {
                     "type": "string",
-                    "description": "Simplified URL of the User's profile page."
+                    "description": "The simplified URL of the user's profile page."
                 },
                 "password": {
                     "type": "string",
-                    "description": "User's generated password."
+                    "description": "The user's generated password."
                 },
                 "uid": {
                     "type": "string",
-                    "description": "Simplified, shortened identifier for the User at the Issuer."
+                    "description": "The user's simplified, shortened identifier at the Issuer."
                 },
                 "webmail": {
                     "type": "string",
-                    "description": "URL of User's mailbox in a web mail application. "
+                    "description": "The URL of user's mailbox in a webmail application."
                 },
                 "@id": {
                     "type": "string",
-                    "description": "URL of the User's JSON representation."
+                    "description": "The URL of the user's JSON representation."
                 }
             }
         },
@@ -1685,7 +1685,7 @@
                 },
                 "logo_email": {
                     "type": "string",
-                    "description": "A gravatar.com logo_uri generáláshoz használatos email cím."
+                    "description": "An email address used to generate a gravatar.com logo_uri."
                 }
             }
         },
@@ -1697,19 +1697,19 @@
             "properties": {
                 "sub": {
                     "type": "string",
-                    "description": "A team neve vagy email címe. Ebből a névből generálódnak a team property-jei valamint a member-ei. Email cím megadásával customizálható a team logo-ja az email címhez tartozó gravatar segítségvel."
+                    "description": "The name or email address of a given team. The team properties and team members are generated from this name. If you provide an email address, you can customize the team logo by the use of the gravatar associated with the email address."
                 },
                 "name": {
                     "type": "string",
-                    "description": "A team megjelenítendő neve."
+                    "description": "The displayed team name."
                 },
                 "logo": {
                     "type": "string",
-                    "description": "A team logo-jának URL-je, mely a `logo_email` property-ben szereplő email címhez tartozó gravatar segítségével customizálható."
+                    "description": "The URL of the team logo, which can be customized by the gravatar associated with the email address in the `logo_email` property."
                 },
                 "logo_email": {
                     "type": "string",
-                    "description": "A team generált vagy a `sub` property-ben megadott email címe. Ezen email címhez tartozó gravatar segítségével customizálható a team logo-ja."
+                    "description": "The email address of the team, either generated or provided in the `sub` property. The team logo can be customized by the use of the gravater associated with this email address."
                 },
                 "@id": {
                     "type": "string",
@@ -1717,12 +1717,12 @@
                 },
                 "profile": {
                     "type": "string",
-                    "description": "A Team profile oldalának URL-je."
+                    "description": "The URL of the Team profile."
                 },
                 "members": {
                     "type": "array",
                     "items": {},
-                    "description": "A team tagjait képző user objektumok."
+                    "description": "The user objects that generate a team member."
                 }
             }
         },
@@ -1734,19 +1734,19 @@
             "properties": {
                 "sub": {
                     "type": "string",
-                    "description": "A fleet neve vagy email címe. Ebből a névből generálódnak a fleet property-jei valamint a member-ei. Email cím megadásával customizálható a fleet logo-ja az email címhez tartozó gravatar segítségvel."
+                    "description": "The name or email address of a given fleet. The fleet properties and fleet members are generated from this name. If provide an email address, you can customize the fleet logo by the use of the gravatar associated with the email address."
                 },
                 "name": {
                     "type": "string",
-                    "description": "A fleet megjelenítendő neve."
+                    "description": "The displayed fleet name."
                 },
                 "logo": {
                     "type": "string",
-                    "description": "A fleet logo-jának URL-je, mely a `logo_email` property-ben szereplő email címhez tartozó gravatar segítségével customizálható."
+                    "description": "The URL of the fleet logo, which can be customized by the gravatar associated with the email address in the `logo_email` property."
                 },
                 "logo_email": {
                     "type": "string",
-                    "description": "A fleet generált vagy a `sub` property-ben megadott email címe. Ezen email címhez tartozó gravatar segítségével customizálható a fleet logo-ja."
+                    "description": "The email address of the fleet, either generated or provided in the `sub` property. The fleet logo can be customized by the use of the gravater associated with this email address."
                 },
                 "@id": {
                     "type": "string",
@@ -1754,12 +1754,12 @@
                 },
                 "profile": {
                     "type": "string",
-                    "description": "A Fleet profile oldalának URL-je."
+                    "description": "The URL of the Fleet profile."
                 },
                 "members": {
                     "type": "array",
                     "items": {},
-                    "description": "A fleet-ben szereplő client objektmok."
+                    "description": "The client objects included in a fleet."
                 }
             }
         },
@@ -1772,88 +1772,88 @@
             "properties": {
                 "sub": {
                     "type": "string",
-                    "description": "A tenant teljes DNS domain neve. Official és shared tenant-ok esetén (phantauth.net és phantauth.cf DNS domain) a DNS domain elhagyható (pl *default* vagy *faker*)."
+                    "description": "The fully qualified DNS domain name of the tenant. In the case of official and shared tenants (phantauth.net and phantauth.cf DNS domain), the DNS domain can be omitted (e.g. *default* or *faker*)."
                 },
                 "issuer": {
                     "type": "string",
-                    "description": "A tenant OpenID Connect issuer URL-je. Értékét felhasználva kérdezhető le pl az [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).\nMint web lap, a a tenant használatával kapcsolatos információkat tartalmazza."
+                    "description": "The URL of the tenant OpenID Connect issuer. This value allows you to get, for example, the [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).\nAs a webpage, it contains information on the use if the given tenant."
                 },
                 "website": {
                     "type": "string",
-                    "description": "A tenant-hoz tartozó web site címe. Amennyiben a tenant nem rendelkezik saját web site-tal, úgy értéke megegyezik az `issuer` property értékével."
+                    "description": "The website address associated with the tenant. If a tenant doesn't have a website, its value is identical with that of the `issuer` property."
                 },
                 "template": {
                     "type": "string",
-                    "description": "A tenant HTML oldalainak template-jeinek helyétadja meg [RFC 6570 - URI temaplate](https://tools.ietf.org/html/rfc6570) formátumban.\nAz URI template egy `resource` paraméterben kapja meg az oldal nevét. Alapértelmezett értéke: `https://default.phantauth.net{/resource}`."
+                    "description": "It defines the place of the templates of the HTML pages of the tenant in [RFC 6570 - URI temaplate](https://tools.ietf.org/html/rfc6570) format.\nThe URI template receives the page name in a `resource` parameter. By default, it takes the following value: `https://default.phantauth.net{/resource}`."
                 },
                 "factory": {
                     "type": "string",
-                    "description": "Custom random resource generátor (user, team) címe [RFC 6570 - URI temaplate](https://tools.ietf.org/html/rfc6570) formátumban.\nAz URI template a `kind` paraméterben kapja meg a generálandó objektum típusát (user, team), a `name` paraméterben pedig a generálandó objektum azonosítóját."
+                    "description": "The address of the custom random resource generator (user, team) in [RFC 6570 - URI temaplate](https://tools.ietf.org/html/rfc6570) format.\nThe URI template receives the type of the object to be generated (user, team) in the `kind` parameter, and the identifier of the object to be generated in the `name` parameter."
                 },
                 "factories": {
                     "type": "array",
                     "items": {},
-                    "description": "A `factory`-ban beállított külső generátor által támogatott resource típusok listája."
+                    "description": "A list of resource types supported by the external generator set in `factory`."
                 },
                 "depot": {
                     "type": "string",
-                    "description": "A resource adatokat tartalmazó CSV file helyét adja meg [RFC 6570 - URI temaplate](https://tools.ietf.org/html/rfc6570) formátumban.\nAz URI template a `kind` paraméterben kapja meg a generálandó objektum típusát (user, team).\n\nA CSV file első sora tartalmazza a resource property neveket, a további sorok pedig az adatokat.\nEgymásba ágyazott property-k esetén a property névben '.' karakter választja el a név egyes elemeit (pl address.formatted)."
+                    "description": "It defines the place of the CSV file containing the resource data in [RFC 6570 - URI temaplate](https://tools.ietf.org/html/rfc6570) format.\nThe URI template receives the type of the object to be generated (user, team) in the `kind` parameter.\n\nThe first line of the CSV file contains the resource property names, the following lines, on the other hand, contain the relevant data.\nIn the case of nested properties, a '.' character separates the elements of the property name (e.g. address.formatted)."
                 },
                 "depots": {
                     "type": "array",
                     "items": {},
-                    "description": "A `depot`-ban beállított külső CSV által támogatott resource típusok listája."
+                    "description": "A list of resource types supported by the external CSV set in `depot`."
                 },
                 "userinfo": {
                     "type": "string"
                 },
                 "@id": {
                     "type": "string",
-                    "description": "URL of the Tenant's JSON representation."
+                    "description": "The URL of the tenant's JSON representation."
                 },
                 "name": {
                     "type": "string",
-                    "description": "A tenant megjelenítendő neve, hiánya esetén a tenant DNS neve jelenik meg a tenant web lapjainak címsorában."
+                    "description": "The displayed tenant name. In lack of such name, the DNS name of the tenant is displayed in the address bar of the tenant's webpages."
                 },
                 "logo": {
                     "type": "string",
-                    "description": "A tenant logo-jának URL-je. E címen található kép jelenik meg a tenant web lapjainak címsorában valamint azokon az oldalakon ahol az elérhető tenant-ok listája szerepel."
+                    "description": "The URL of the tenant logo. The image from this address appears in the address bar of the tenant's webpages and the pages that contain the list of available tenants."
                 },
                 "favicon": {
                     "type": "string",
-                    "description": "A tenant favicon-jának URL-je. E címen található kép jelenik meg a tenant web lapjainak látogatása során mint shortcut icon a böngészőben."
+                    "description": "The URL of the tenant favicon. The image from this address appears as a shortcut icon in the browser when a user visits the tenant's webpages."
                 },
                 "theme": {
                     "type": "string",
-                    "description": "A tenant weblapjaihoz használandó CSS style sheet URL-je.\nA default weblap template-ek Bootstrap library használatával készültek, így használatuk esetén itt egy Bootstrap CSS URL adható meg."
+                    "description": "The URL of the CSS style sheet used for the tenant's webpages.\nThe default webpage templates were created by the use of the Bootstrap library, therefore, the Bootstrap CSS URL has to be provided when such a webpage is used."
                 },
                 "script": {
                     "type": "string",
-                    "description": "A login.html, consent.html és test.html oldalakra automatikusan beilleszthető egy custom JavaScript file URL-je."
+                    "description": "The URL of a custom JavaScript file can be automatically inserted in the login.html, consent.html, és test.html pages."
                 },
                 "sheet": {
                     "type": "string",
-                    "description": "Egy publikus Google Sheet dokumentum azonosítója adható meg. A táblázat első sora tartalmazza a user property neveket, a további sorok pedig az adatokat.\nEgymásba ágyazott property-k esetén a property névben '.' karakter választja el a név egyes elemeit (pl address.formatted)."
+                    "description": "It is used to give the identifyer of a public Google Sheet document. The first line of the table contains the user property names, the following lines, on the other hand, contain the relevant data.\nIn the case of nested properties, a '.' character separates the elements of the property name (e.g. address.formatted)."
                 },
                 "summary": {
                     "type": "string",
-                    "description": "A tenant rövid, egy soros leírása, szlogenje. A tenant nyitó oldalán jelenik meg valamint azokon az oldalakon ahol az elérhető tenant-ok listája szerepel. Értéke formázás nélküli szöveg."
+                    "description": "A one-line description, the watchword of the tenant. It appears on the tenant's startup page and the pages that contain the list of available tenants. It takes the valua of an unformatted text."
                 },
                 "attribution": {
                     "type": "string",
-                    "description": "Külső adatforrás, random user generator használata esetén az attribution. Értékében Markdown formázás használható, így megadhatók kiemelések, link-ek a külső forrásra."
+                    "description": "The attribution of the external data source or random user generator. Its value can have markdown formatting, that is, the external source can contain highlights and links."
                 },
                 "about": {
                     "type": "string",
-                    "description": "Részletesebb leírás a tenant-ról. Amennyiben értéke egy URL, úgy a leírás a megadott URL-ről töltődik le, ellenkező esetben az érték maga a leírás. A leírásban Markdown formázás használható."
+                    "description": "A detailed description of the tenant. If it takes the value of an URL, the description is downloaded from the given URL, otherwise the value it takes is the description itself. Markdown formatting can be used in the description."
                 },
                 "domain": {
                     "type": "boolean",
-                    "description": "Több tenant-ot összefogó domain tenant estén true különben false."
+                    "description": "True in the case of a domain tenant collecting several tenants, otherwise false."
                 },
                 "subtenant": {
                     "type": "boolean",
-                    "description": "Domain tenant-on keresztül hivatkozott tenant estén értéke true, különben false."
+                    "description": "True in the case of a tenant referred to in a domain tenant, otherwise false."
                 }
             }
         },
@@ -1862,28 +1862,28 @@
             "properties": {
                 "sub": {
                     "type": "string",
-                    "description": "A domain teljes DNS domain neve (pl phantauth.net)."
+                    "description": "The fully qualified DNS name of the domain (e.g. phantauth.net)."
                 },
                 "name": {
                     "type": "string",
-                    "description": "A domain megjelenítendő neve."
+                    "description": "The displayed domain name."
                 },
                 "logo": {
                     "type": "string",
-                    "description": "A domain logo-jának URL-je. E címen található kép jelenik meg a domain web lapján."
+                    "description": "The URL of the domain logo. The image from this address is displayed on the webpage of the domain."
                 },
                 "@id": {
                     "type": "string",
-                    "description": "URL of the Domain's JSON representation."
+                    "description": "The URL of the domain's JSON representation."
                 },
                 "profile": {
                     "type": "string",
-                    "description": "URL of the Domain's web page."
+                    "description": "The URL of the domain's webpage."
                 },
                 "members": {
                     "type": "array",
                     "items": {},
-                    "description": "A domain-ben szereplő tenant-ok."
+                    "description": "The tenants included in a domain."
                 }
             }
         },
@@ -1896,7 +1896,7 @@
                 },
                 "street_address": {
                     "type": "string",
-                    "description": "Full street address component, which MAY include house number, street name, Post Office Box, and multi-line extended street address information. This field MAY contain multiple lines, separated by newlines. Newlines can be represented either as a carriage return/line feed pair or as a single line feed character."
+                    "description": "Full street address component, which MAY include house number, street name, post office box, and multi-line extended street address information. This field MAY contain multiple lines, separated by newlines. Newlines can be represented either as a carriage return/line feed pair or as a single line feed character."
                 },
                 "locality": {
                     "type": "string",
@@ -1921,27 +1921,27 @@
     "tags": [
         {
             "name": "User",
-            "description": "A *user* resource az [OpenID Connect Core](https://openid.net/specs/openid-connect-core-1_0.html) specifikációban definiált [Standard Claims](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims)-eket\ntartalmazza, kiegészítve néhány PhantAuth specifikus property-vel.\n\nAz itt szereplő, felhasználóval kapcsolatos műveletek használatára nincs szükség, amennyiben a PhantAuth rendszert mint OpenID Connect provider-t szeretnénk használni.\nA felhasználókat nem szükséges előre legenerálni, amennyiben a PhantAuth rendszernek szüksége van egy adott nevű felhasználó valamely adatára, úgy azt runtime legenerálja.\nA generátorok determinisztikus jellege garantálja, hogy ily módon ugyanazon felhasználói névhez mindig ugyanaz a user objektum generálódik.\nKivétel ez alól a selfie token generálás, amikor is a megadott felhasználói adatokból készül egy, a későbbiekben belépési névként használható úgynevezett selfie token."
+            "description": "The *user* resource contains the [Standard Claims](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims) defined in the [OpenID Connect Core](https://openid.net/specs/openid-connect-core-1_0.html) specifications. It also includes some PhantAuth-specific property.\n\nTo use PhantAuth as an OpenID Connect provider, you don't need to carry out the user-related operations described here.\nYou don't need to generate users in advance. If PhantAuth requires a piece of data that belongs to a specific user, it will be generated in runtime.\nThe deterministic nature of the generators guarantee that the same user object will be generated to the same user name.\nThe only exception is selfie token generation, when the provided user data are used to create a so-called selfie token, which can later be used as a login name."
         },
         {
             "name": "Client",
-            "description": "A Client objektum standard OAuth2 / OpenID Connect client property-ket tartalmaz. Az OpenID Connect flow-k hasnzálatához szükség van egy client_id-re. Bizonyos flow-k ezen kívül client_secret használatát is igénylik. A Client objektum tartalmazza a client_id és client_secret értékeket, valamint néhány, a felhasználó számára megjelenítendő property-t (pl.logo, client neve, verziója)."
+            "description": "The client object contains standard OAuth2/OpenID Connect client properties. To use an OpenID Connect flow, you need a client_id. Certain flows also require a client_secret. The client object contains the client_id and client_secret values, as well as some properties to be displayed to the user (e.g. logo, client name, version)."
         },
         {
             "name": "Team",
-            "description": "A Team a felhasználók egy névvel ellátott csoportja. A Team objektum az azonosíthatóság, megjeleníthetőség érdekében rendelkezik néhány saját property-el (pl logo), de legfontosabb property-je a `members`, mely a team-hez tartozó user objektumokat tartalmazza."
+            "description": "Team is a group of users under a given name. For the purposes of identification and visualisation, the team object has its own properties (e.g. logo), the most important of which is the `members`, which contains the user objects of the team."
         },
         {
             "name": "Fleet",
-            "description": "A Fleet a client-ek egy névvel ellátott csoportja. A Fleet objektum az azonosíthatóság, megjeleníthetőség érdekében rendelkezik néhány saját property-vel (pl logo), de legfontosabb property-je a `members`, mely a fleet-hez tartozó client objektumokat tartalmazza."
+            "description": "Fleet is a group of clients under a given a name. For the purposes of identification and visualisation, the Fleet object has its own properties (e.g. logo), the most important of which is the `members`, which contains the user objects of the fleet."
         },
         {
             "name": "Tenant",
-            "description": "A testreszabás ún. tenant-ok segítségével történik.\nEgy egy tenant tekinthető úgy mint egy önálló PhantAuth szolgáltatás. A tenant-ok saját véletlenszerű felhasználó generátor végpontokkal valamint OpenID Connect végpontokkal rendelkeznek.\n\nA tenant-ok ún. domain-ekbe szervezhetők. A domain gyakorlatilag egy DNS zóna, mely tartalmazza az egyes tenant-ok beállításait. A tenant-ok is s a domain maga is DNS TXT rekordok segítségével konfigurálhatók.\n\nA tenant issuer URL-je `https://phantauth.net/_{tenant}` fromátumú, ahol a `tenant` a tenant teljes DNS neve. A PhantAuth official tenant-ok esetén a `phantauth.net` elhagyható a név\nvégéről. A community által létrehozott, megosztott tenant-ok esetén a `phantauth.cf` elhagyható a név végéről.\nA default tenant (default.phantauth.net) esetén az issuer URL azonos a PhantAuth base URL-el, azaz [https://phantauth.net](https://phantauth.net)\n\nA resource URL-ek a tenant issuer URL-hez képest relatívak, azaz pl a random user generátor végpont címe a `faker` nevű tenant esetén: [https://phantauth.net/_faker/user](https://phantauth.net/_faker/user)"
+            "description": "To customize the application, you need to use one or more so-called tenants. A tenant can be consiered as an independent PhantAuth service. A tenant has its own random user generator endpoints and OpenID Connect endpoints.\n\nThe tenants can be organised into so-called domains. Practically, a domain is a DNS zone, which contains the settings of the given tenant(s). The tenants as well as the domain can be configured by the use of DNS TXT records.\n\nThe URL of the tenant issuer is in `https://phantauth.net/_{tenant}` format, where `tenant` is the fully qualified DNS name associated with the tenant. When using a PhantAuth official tenant, you can omit `phantauth.net` from the end of the name. When using a community-created, shared tenant, `phantauth.cf` can be omitted from the end of the name.\nWhen using a default tenant (default.phantauth.net), the issuer URL is identical with the PhantAuth base URL, that is, [https://phantauth.net](https://phantauth.net).\n\nThe resource URL is relative to the URL of the tenant issuer URL, that is, the endpoint address of the random user generator for the tenant named `faker` is: [https://phantauth.net/_faker/user](https://phantauth.net/_faker/user)."
         },
         {
             "name": "Domain",
-            "description": "A Domain objektum több tenant-ot fog össze, felfogható mint a tenant-ok egy csoportja. A PhantAuth official tenant-okat a `phantauth.net` azonosítójú domain fogja össze.\nLehetőség van saját tenant-ok megosztására s regisztrálására a `phantauth.cf` nevű domain-en belül.\n\nA domain használható tenant-ként is, azaz létezik issuer végpontja, valamint resource végpontjai is. A domain issuer URL-je `https://phantauth.net/_{domain}` fromátumú, ahol a `domain` \na domain teljes DNS neve, azaz pl [https://phantauth.net/_phantauth.net](https://phantauth.net/_phantauth.net) vagy\n[https://phantauth.net/_phantauth.cf](https://phantauth.net/_phantauth.cf). A default domain (phantauth.net) esetén a domain név elhagyható, azaz a \ndefault domain issuer URL-je [https://phantauth.net/_](https://phantauth.net/_)"
+            "description": "A domain object contains several tenants; it can be considered a group of tenants. The PhantAuth official tenants are collected in a domain identified by `phantauth.net`.\nIn the `phantauth.cf` domain, you can share and register your own tenants as well.\n\nA domain can also be used as a tenant, that is, it has an issuer endpoint and some resource endpoints. The issuer URL of the domain is in `https://phantauth.net/_{domain}` format, where `domain` is the fully qualified DNS name associated with the domain, that is, for example [https://phantauth.net/_phantauth.net](https://phantauth.net/_phantauth.net) or\n[https://phantauth.net/_phantauth.cf](https://phantauth.net/_phantauth.cf). When using a default domain (phantauth.net), the domain name, that is, the URL of the default domain issuer, [https://phantauth.net/_](https://phantauth.net/_) can be omitted."
         }
     ]
 }
