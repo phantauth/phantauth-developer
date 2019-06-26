@@ -442,8 +442,8 @@ paths:
         the email address.
 
 
-        If the `username` parameter contains at least one dot (`.`) or space (`)
-        character, the whole name is produced from the parameter, rather than
+        If the `username` parameter contains at least one dot (`.`) or space (`
+        `) character, the whole name is produced from the parameter, rather than
         being generated.
 
         In this case, these cahracters play the role of separator between the
@@ -848,9 +848,9 @@ paths:
         email address.
 
 
-        If the `client_id` parameter contains minimum one dot (`.`) or space (`)
-        character, the client_name is produced from the parameter, rather than
-        being generated.`
+        If the `client_id` parameter contains minimum one dot (`.`) or space (`
+        `) character, the client_name is produced from the parameter, rather
+        than being generated.`
 
 
         The result is always a client object. If you want to generate multiple
