@@ -1,651 +1,2410 @@
-swagger: "2.0"
+swagger: '2.0'
 info:
-  description: |
-    A free, open-source API for generating random OpenID Connect accounts and provide authentication for them.
-    Like Lorem Ipsum, but for OpenID Connect.
-  version: "1.0"
-  title: "PhantAuth"
-  contact:
-    email: "phantauth@gmail.com"
-  license:
-    name: "Apache 2.0"
-    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-host: "phantauth.herokuapp.com"
-basePath: "/"
-tags:
-- name: "user"
-  description: |
-    Generate user(s)
-- name: "client"
-  description: "Generate client(s)"
+  title: PhantAuth
+  version: ''
+  description: >-
+    Random User Generator + OpenID Connect Provider. Like Lorem Ipsum, but for
+    user accounts and authentication.
+
+
+    The PhantAuth API documentation is available on the following API
+    documentation sites:
+
+
+    - [apiary](https://phantauth.docs.apiary.io) (primary source)
+
+
+    - [PhantAuth Developer Portal](https://www.phantauth.net/api)
+
+
+    ### TL;DR
+
+
+    **PhantAuth was designed to simplify testing for applications using OpenID
+    Connect authentication by making use of random generated users.**
+
+
+    endpoint  | address
+
+    --------- | -------
+
+    issuer    | https://phantauth.net
+
+    discovery | https://phantauth.net/.well-known/openid-configuration
+
+
+    credential    | value
+
+    ------------- | -----
+
+    client_id     | test.client
+
+    client_secret | UTBcWwt5
+
+
+    ## OpenID Connect
+
+
+    The OpenID Connect Provider of PhantAuth supports the flows listed in the
+    OpenID Connect specifications (Hybrid, Implicit, Authorization Code), as
+    well as the Resource Owner Password grant type, specified in the OAuth 2.0
+    specifications. PhantAuth as an OpenID Connect Provider can be integrated
+    with a variety of web applications, mobil applications, and  backend
+    applications. The integration can be either direct, as in the case of the
+    OpenID Connect Provider, or through an authentication integration service,
+    as in the case of Auth0 or Azure Active Directory B2C. To learn more, please
+    go to chapter [Integration](https://doc.phantauth.net/#/integration).
+
+
+    Examples:
+
+
+    - [Direct OpenID Connect integration](https://www.phantauth.net/test/oidc)
+
+
+    - [Auth0 Social Connections
+    integration](https://www.phantauth.net/test/auth0)
+
+
+    - [Azure Active Directory B2C
+    integration](https://www.phantauth.net/test/azure)
+
+
+    ## Random User
+
+
+    The random user generator of PhantAuth can also be used separately,
+    independent of the OpenID Connect Provider. You can generate an optional
+    number of test users. In the knowledge of their user name, the data of the
+    generated users can be regenerated at any time (OpenID Connect *sub* claim).
+    The generated users have a unique, operational, disposable email address, a
+    profile picture selected from one of the multiple pools of pictures, and the
+    usual profile data. Custom email addresses and profile pictures may also be
+    added. The random user generator of PhantAuth can be fully customized.
+    Additionally, you can link an external generator to the application. For
+    details,please go to chapter
+    [Generator](https://doc.phantauth.net/#/generator).
+
+
+    Test pages:
+
+
+    - [Default Generator Test Page](https://phantauth.net/test/user) (embedded
+    generator)
+
+
+    - [Greek Gods Generator Test Page](https://phantauth.net/_gods/test/user)
+    (embedded generator working from a Google Sheet)
+
+
+    - [Faker Generator Test Page](https://phantauth.net/_faker/test/user)
+    (external generator using Javascript Faker library)
+
+
+    - [Chance Generator Test Page](https://phantauth.net/_chance/test/user)
+    (external generator using Javascript Chance library)
+
+
+    - [Casual Generator Test Page](https://phantauth.net/_casual/test/user)
+    (external generator using Javascript Casual library)
+
+
+    - [Randomuser Generator Test
+    Page](https://phantauth.net/_randomuser/test/user) (client side generator
+    using https://randomuser.me)
+
+
+    - [uinames Generator Test Page](https://phantauth.net/_uinames/test/user)
+    (client side generator using https://uinames.com)
+
+
+    - [Mockaroo Generator Test Page](https://phantauth.net/_mockaroo/test/user)
+    (client side generator using https://mockaroo.com)
+
+
+    Every random generated user has a profile page, which contains their profile
+    data in a simple one-page format.
+
+
+    Profile examples:
+
+
+    - [Random Profile](https://phantauth.net/%7Ejoe.black)
+
+
+    - [Random Greek God Profile](https://phantauth.net/_gods/%7Ezeus)
+
+
+    - [Random Faker Profile](https://phantauth.net/_faker/%7Eharry.houdini)
+
+
+    - [Random Chance Profile](https://phantauth.net/_chance/%7Epeter.pan)
+
+
+    - [Random Casual Profile](https://phantauth.net/_casual/%7Ejohn.smith)
+
+
+    ## CodeSandbox
+
+
+    The use of the random user generator and the direct integration of  the
+    OpenID Connect is demonstrated through a set of CodeSandbox samples. The
+    sample applications are run directly from CodeSandbox, so the source code is
+    easy to view, edit, and test.
+
+
+    Examples:
+
+
+    - [Random User Generator usage exampe](https://4xyj8lw394.codesandbox.io/)
+
+
+    - [OpenID Connect direct integration
+    exampe](https://8z77681269.codesandbox.io/)
+
+
+    ## Tenants
+
+
+    The PhantAuth is extremely versatile and customizable. You can use your own
+    random user service, or generate users from an external .csv file or Google
+    Sheet. You can use a set of Bootstrap themes to tailor the look and feel of
+    the profile, morover, you can fundamentally change the same look and feel by
+    the use of your own HTML templates. To find out more, please go to chapter
+    [Tenant](https://doc.phantauth.net/#/tenant).
+
+
+    To customize the application, you need to use one or more so-called tenants.
+    A tenant can be consiered as an independent PhantAuth service. A tenant has
+    its own random user generator endpoints and OpenID Connect endpoints.
+
+
+    The tenants can be organised into so-called domains. Practically, a domain
+    is a DNS zone, which contains the settings of the given tenant(s). The
+    tenants as well as the domain can be configured by the use of DNS TXT
+    records.
+
+
+    In addition to the default tenant, the PhantAuth Domain contains some sample
+    tenants, which are primarily designed to demonstrate customitability, a
+    range of hosting possibilities, and the links to external services. In most
+    cases, using the [default tenant](https://phantauth.net) is enough.
+
+
+    - [PhantAuth Default](https://phantauth.net) - default tenant, based on a
+    Java Fairy library
+
+
+    - [Greek Gods](https://phantauth.net/_gods) - based on a Google Sheet
+    document
+
+
+    - [PhantAuth Faker](https://phantauth.net/_faker) - based on a Javascript
+    Faker library, hosted at https://now.sh
+
+
+    - [PhantAuth Chance](https://phantauth.net/_chance) - based on a Javascript
+    Chance library, hosted at https://now.sh
+
+
+    - [PhantAuth Casual](https://phantauth.net/_casual) - based on a Javascript
+    Casual library, hosted at https://webtask.io
+
+
+    - [RANDOM USER](https://phantauth.net/_randomuser) - based on
+    https://randomuser.me service
+
+
+    - [uinames](https://phantauth.net/_uinames) - based on https://uinames.com
+    service
+
+
+    - [Mockaroo](https://phantauth.net/_mockaroo) - based on 
+    https://mockaroo.com service
+
+
+    Anyone can create a domain and the tenants. Sharing the tenants is
+    facilitated by the [PhantAuth Shared Domain](https://shared.phantauth.net).
+    A shared domain is connected to the [phantauth.cf](http://phantauth.cf) DNS
+    zone, where anyone can create tenant configuration notes by the use of the
+    [FreeDNS](https://freedns.afraid.org/) service.
+
+
+    ## Pricing
+
+
+    PhantAuth is a free, open-source, non-profit application. If you find this
+    service useful and can afford, please make a small donation as a
+    contribution to the operation costs (domain registration, service hosting,
+    etc.)
+
+
+    [Donate on Ko-fi](https://ko-fi.com/Q5Q0T7C7) | [Donate on
+    Liberapay](https://liberapay.com/szkiba/donate) | [Donate on
+    PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VXLCJ3EZRAE7G&source=url)
+host: phantauth.net
+basePath: /
 schemes:
-- "https"
-externalDocs:
-  description: "Find out more about PhantAuth"
-  url: "https://phantauth.me"
-
-x-servers:
-  - url: //phantauth.me
-    description: Default Server
-  - url: //localhost:8888
-    description: Local developer server
-
+  - https
 paths:
-  /user/{username}:
+  '/user/{username}':
     get:
-      tags:
-      - "user"
-      summary: "Get a user"
-      description: |
-        This endpoint can be used to retrieve user details given the ```username```.
-      operationId: "getUser"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "username"
-        in: "path"
-        description: |
-          The ```username``` of the user to retrieve
-        type: "string"
-        x-example: john.peter.smith
       responses:
-        200:
-          description: The user was retrieved.
-          schema:
-            $ref: "#/definitions/User"
-        400:
-          description: Invalid request URI. The message will vary depending on the cause.
-
-  /user/{username}/token/{kind}:
-    get:
-      tags:
-      - "user"
-      summary: "Get User token"
-      description: |
-        Generate access_token, refresh_token, authorization_code, id_token, selfie_token.
-      operationId: "getUserToken"
-      produces:
-      - "text/plain"
-      parameters:
-      - name: "username"
-        in: "path"
-        description: "User's login name"
-        required: true
-        type: "string"
-      - name: "kind"
-        in: "path"
-        description: "Token kind"
-        required: true
-        type: "string"
-        enum:
-        - access
-        - refresh
-        - authorization
-        - id
-        - selfie
-      - name: "scope"
-        in: "query"
-        description: "OpenID Connect scope value"
-        required: false
-        type: "string"
-      responses:
-        200:
-          description: "successful operation"
-          schema:
-            type: string
+        '200':
+          description: OK
+          headers: {}
           examples:
-            text/plain: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huLnBldGVyLnNtaXRoIiwidG9rZW5fa2luZCI6IkFDQ0VTUyIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwgYWRkcmVzcyBwaG9uZSIsImV4cCI6MTUzOTkzNzU4NywiaWF0IjoxNTM5OTM3NTI3fQ.Ohvzg-tgiI3FM0_5yumC3hd2yeirVMc5DWgneTBkbYs"
+            application/json:
+              locale: en_US
+              profile: 'https://phantauth.net/user/john.smith/profile'
+              nickname: John
+              preferred_username: jsmith
+              picture: >-
+                https://www.gravatar.com/avatar/54c27dd1891df67163ef53616549933f?s=256&d=https://avatars.phantauth.net/ai/male/Vyb8Yrdv.jpg
+              sub: john.smith
+              website: 'https://phantauth.net'
+              email: john.smith.XPKEFHI@mailinator.com
+              email_verified: false
+              gender: male
+              birthdate: '1950-02-10'
+              zoneinfo: America/Chicago
+              phone_number: 747-178-7374
+              phone_number_verified: true
+              updated_at: 1518220800
+              me: 'https://phantauth.net/~john.smith'
+              password: Opha8TV2
+              webmail: >-
+                https://www.mailinator.com/v3/?zone=public&query=john.smith.XPKEFHI
+              uid: tf+gMsdUWj0
+              family_name: Smith
+              given_name: John
+              address:
+                street_address: 160 Washington Walk
+                formatted: |-
+                  160 Washington Walk
+                  San Francisco 98239
+                locality: San Francisco
+                postal_code: '98239'
+                country: USA
+              name: John Smith
+              '@id': 'https://phantauth.net/user/john.smith'
+          schema:
+            type: object
+            properties:
+              sub:
+                type: string
+                description: Subject - User identifier at the issuer.
+              name:
+                type: string
+                description: >-
+                  The user's full name in displayable form, including all name
+                  parts, possibly including titles and suffixes, ordered
+                  according to the enduser's locale and preferences.
+              address:
+                type: object
+                properties:
+                  formatted:
+                    type: string
+                    description: >-
+                      Full mailing address, formatted for display or use on a
+                      mailing label. This field MAY contain multiple lines,
+                      separated by newlines. Newlines can be represented either
+                      as a carriage return/line feed pair or as a single line
+                      feed character.
+                  street_address:
+                    type: string
+                    description: >-
+                      Full street address component, which MAY include house
+                      number, street name, post office box, and multi-line
+                      extended street address information. This field MAY
+                      contain multiple lines, separated by newlines. Newlines
+                      can be represented either as a carriage return/line feed
+                      pair or as a single line feed character.
+                  locality:
+                    type: string
+                    description: City or locality component.
+                  region:
+                    type: string
+                    description: 'State, province, prefecture, or region component.'
+                  postal_code:
+                    type: string
+                    description: Zip code or postal code component.
+                  country:
+                    type: string
+                    description: Country name component.
+                description: The user's preferred postal address.
+              given_name:
+                type: string
+                description: The user's given name(s) or first name(s).
+              family_name:
+                type: string
+                description: The user's surname(s) or last name(s).
+              middle_name:
+                type: string
+                description: The user's middle name(s).
+              nickname:
+                type: string
+                description: >-
+                  A casual name of the User that may or may not be the same as
+                  the given_name.
+              preferred_username:
+                type: string
+                description: >-
+                  A shorthand name by which the user wishes to be referred to at
+                  the Relying Party.
+              profile:
+                type: string
+                description: The URL of the user's profile page.
+              picture:
+                type: string
+                description: The URL of the user's profile picture.
+              website:
+                type: string
+                description: The URL of the user's webpage or blog.
+              email:
+                type: string
+                description: The user's preferred email address.
+              email_verified:
+                type: boolean
+                description: >-
+                  True if the user's e-mail address has been verified; otherwise
+                  false.
+              gender:
+                type: string
+                description: >-
+                  The enduser's gender. Possible values are: female, male, and
+                  unknown.
+              birthdate:
+                type: string
+                description: >-
+                  The user's birthday, represented as an ISO 8601:2004
+                  [ISO8601‑2004] YYYY-MM-DD format.
+              zoneinfo:
+                type: string
+                description: >-
+                  A string from the zoneinfo time zone database representing the
+                  user's time zone. For example, Europe/Paris or
+                  America/Los_Angeles.
+              locale:
+                type: string
+                description: >-
+                  The user's locale, represented as a BCP47 [RFC5646] language
+                  tag. It is an ISO 639-1 Alpha-2 language code in lowercase and
+                  an ISO 3166-1 Alpha-2 country code in uppercase letters,
+                  separated by a dash.
+              phone_number:
+                type: string
+                description: The user's preferred telephone number.
+              phone_number_verified:
+                type: boolean
+                description: >-
+                  True if the enduser's phone number has been verified;
+                  otherwise false.
+              updated_at:
+                type: number
+                description: >-
+                  The time when the User's information was last updated. Its
+                  value is a JSON number representing the number of seconds from
+                  1970-01-01T0:0:0Z as measured in UTC until the date/time.
+              me:
+                type: string
+                description: The simplified URL of the user's profile page.
+              password:
+                type: string
+                description: The user's generated password.
+              uid:
+                type: string
+                description: 'The user''s simplified, shortened identifier at the Issuer.'
+              webmail:
+                type: string
+                description: The URL of user's mailbox in a webmail application.
+              '@id':
+                type: string
+                description: The URL of the user's JSON representation.
+            required:
+              - sub
+      summary: Get a User
+      description: >-
+        Use this endpoint to generate a random user. The user is generated in a
+        deterministic way, on the bases of the user name given as a path
+        parameter.
+
+        In the case of identical user names, the endpoint will generate the same
+        user object. The properties of the generated user object are randomly
+        generated on the basis of the user name.
+
+        In lack of a user name, all calls generate a different user object to
+        the randomly generated user name.
+
+
+        By providing an email address as the `username` parameter, you can
+        customize the user picture by the use of the gravatar associated with
+        the email address.
+
+
+        If the `username` parameter contains at least one dot (`.`) or space (`)
+        character, the whole name is produced from the parameter, rather than
+        being generated.
+
+        In this case, these cahracters play the role of separator between the
+        units of the full name (family name, given name).`
+
+
+        The result is always a user object. If you want to generate multiple
+        users in one single step, you can do it by the use of *Team* generation.
+
+        The members of a team are users randomly generated from the team name.
+      tags:
+        - User
+      parameters:
+        - name: username
+          in: path
+          description: The username or email used for generation purposes.
+          required: false
+          type: string
+      produces:
+        - application/json
   /user:
     post:
-      tags:
-      - "user"
-      summary: "Register User"
-      description: |
-        Create self contained token (selfie token) from user registration data.
-      operationId: "registerUser"
-      produces:
-      - "text/plain"
-      consumes:
-      - "application/json"
-      parameters:
-      - name: "user"
-        in: "body"
-        description: "User data"
-        required: true
-        schema:
-          $ref: "#/definitions/User"
       responses:
-        200:
-          description: "successful operation"
-          schema:
-            type: string
+        '200':
+          description: OK
+          headers: {}
+          examples:
+            text/plain: >
+              eyJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiZGlyIn0..3FlrxAUU5W8t31Rw.2JMhWkDz4aTGnvo4f2T5htzwwtzaUYbNzDZ4zAiqCepjhM5IX6pZMDQohr2M3u5liARhiObS1j1wlpNRdYz6YIDaLNZoRwHml-5LY8s8_1lgC4EQqAag3z9qrCoxc4LCkinruwQAeYuFiGq0YB6pp2FzQKDYh41RA_t3sgqsKAPG3Ql7X_Z0NMa0wMaBYxTLHn-lPbZOSWu3-nQzNQ8652HuBDY3JubCt_0hOBGCuhjrIX1fmq8RJb61pNFvWuJ8CHhx6fAoWi0hCETkYJ27gnrOy_jiPIThcyLrB7pouQ9Xs9xXtPdumfRScX7zx-kE9j_RyJ-HEG7WLBZkKJSHfqMCKB3dVxVdJ6DE3cYkADBb7J_8YLOKgMv1Jiw9yEZjoTQ39LtPBVCsubLPuI3k1SrYvZchNfJWbkFr9YlB46UzTnkt3VYvPfstLYXpYl--o9UIbZMM2wtyi24Szoq-GvPtNRXLvAZt2QeMB8ZGqPC7DcCgs4pba4X1uS0b_-oyjmI1azCve-5ov5UQZ9VRjBiVf3IlMFs2276A5hsxm-x-JcspBD4T83iSzObEnYM5gVX2FLD_QPt61TYknufuSkFyhgSyM8Zw4s1L4zLCljEqtGWFzOg3KrpKH7b4NQN1nuY2NEkhVrrAKZJeUM55KMRXdBTXTUOyWk2hObZs325_2F9mjYE1QTnGHHhuzFLT0uRxxf1HmcguzTfeorwk626Ed_VtSDygH0wbHuV7YOlt6VYkuEknzqS62NINPNkuvCKmkBjl1tIeCaaXXMb_fVcTL-9rueG9YxY4RpX0tvPN25zwuj3wXiEh11YlUnmD3zFh3QoKbJ0GQc8Xc5z0vj59NXMPQUC36xQ0O7KVIY7uKYbKVf71wtKY2rq4sYuWbm0vdOiab0lzvYv3-R5v79KPuq03AyPZeWOfmSPpnTRo4WA6geXID-KAEFkboL_SxHU7r--MpqL2tFeF7nS2IFNYjRchr19LWqZ9bvXtEyfsiqgQAzPmGOQ.QPl0yBPkyUxlb7WuxcOmeA
+      summary: Create a User Selfie
+      description: >-
+        To create a selfie token from the user data, you need an opaqe string
+        token, which contains the encoded user properties sent in the request.
 
-  /client/{client_id}:
+        Later, the selfie token can be used as a login name. In this case, the
+        user data is included in the selfie token, that is, the user properties
+        are taken from the token.
+
+        By the use of a selfie token, you can use your own user objects during
+        the authentication process.
+
+
+        Its use, however, is limited by its relatively large size (more than 100
+        characters), which exceeds the maximum size of the user name in several
+        systems.
+      tags:
+        - User
+      parameters:
+        - name: body
+          in: body
+          schema:
+            type: object
+            properties:
+              sub:
+                type: string
+                description: Subject - User identifier at the issuer.
+              name:
+                type: string
+                description: >-
+                  The user's full name in displayable form, including all name
+                  parts, possibly including titles and suffixes, ordered
+                  according to the enduser's locale and preferences.
+              address:
+                type: object
+                properties:
+                  formatted:
+                    type: string
+                    description: >-
+                      Full mailing address, formatted for display or use on a
+                      mailing label. This field MAY contain multiple lines,
+                      separated by newlines. Newlines can be represented either
+                      as a carriage return/line feed pair or as a single line
+                      feed character.
+                  street_address:
+                    type: string
+                    description: >-
+                      Full street address component, which MAY include house
+                      number, street name, post office box, and multi-line
+                      extended street address information. This field MAY
+                      contain multiple lines, separated by newlines. Newlines
+                      can be represented either as a carriage return/line feed
+                      pair or as a single line feed character.
+                  locality:
+                    type: string
+                    description: City or locality component.
+                  region:
+                    type: string
+                    description: 'State, province, prefecture, or region component.'
+                  postal_code:
+                    type: string
+                    description: Zip code or postal code component.
+                  country:
+                    type: string
+                    description: Country name component.
+                description: The user's preferred postal address.
+              given_name:
+                type: string
+                description: The user's given name(s) or first name(s).
+              family_name:
+                type: string
+                description: The user's surname(s) or last name(s).
+              middle_name:
+                type: string
+                description: The user's middle name(s).
+              nickname:
+                type: string
+                description: >-
+                  A casual name of the User that may or may not be the same as
+                  the given_name.
+              preferred_username:
+                type: string
+                description: >-
+                  A shorthand name by which the user wishes to be referred to at
+                  the Relying Party.
+              profile:
+                type: string
+                description: The URL of the user's profile page.
+              picture:
+                type: string
+                description: The URL of the user's profile picture.
+              website:
+                type: string
+                description: The URL of the user's webpage or blog.
+              email:
+                type: string
+                description: The user's preferred email address.
+              email_verified:
+                type: boolean
+                description: >-
+                  True if the user's e-mail address has been verified; otherwise
+                  false.
+              gender:
+                type: string
+                description: >-
+                  The enduser's gender. Possible values are: female, male, and
+                  unknown.
+              birthdate:
+                type: string
+                description: >-
+                  The user's birthday, represented as an ISO 8601:2004
+                  [ISO8601‑2004] YYYY-MM-DD format.
+              zoneinfo:
+                type: string
+                description: >-
+                  A string from the zoneinfo time zone database representing the
+                  user's time zone. For example, Europe/Paris or
+                  America/Los_Angeles.
+              locale:
+                type: string
+                description: >-
+                  The user's locale, represented as a BCP47 [RFC5646] language
+                  tag. It is an ISO 639-1 Alpha-2 language code in lowercase and
+                  an ISO 3166-1 Alpha-2 country code in uppercase letters,
+                  separated by a dash.
+              phone_number:
+                type: string
+                description: The user's preferred telephone number.
+              phone_number_verified:
+                type: boolean
+                description: >-
+                  True if the enduser's phone number has been verified;
+                  otherwise false.
+              updated_at:
+                type: number
+                description: >-
+                  The time when the User's information was last updated. Its
+                  value is a JSON number representing the number of seconds from
+                  1970-01-01T0:0:0Z as measured in UTC until the date/time.
+              me:
+                type: string
+                description: The simplified URL of the user's profile page.
+              password:
+                type: string
+                description: The user's generated password.
+              uid:
+                type: string
+                description: 'The user''s simplified, shortened identifier at the Issuer.'
+              webmail:
+                type: string
+                description: The URL of user's mailbox in a webmail application.
+              '@id':
+                type: string
+                description: The URL of the user's JSON representation.
+            required:
+              - sub
+            example:
+              sub: john.smith
+              locale: en_US
+              nickname: John
+              preferred_username: jsmith
+              picture: >-
+                https://www.gravatar.com/avatar/54c27dd1891df67163ef53616549933f?s=256&d=https://avatars.phantauth.net/ai/male/Vyb8Yrdv.jpg
+              email: john.smith.XPKEFHI@mailinator.com
+              email_verified: false
+              gender: male
+              birthdate: '1950-02-10'
+              zoneinfo: America/Chicago
+              phone_number: 747-178-7374
+              phone_number_verified: true
+              updated_at: 1518220800
+              password: Opha8TV2
+              family_name: Smith
+              given_name: John
+              address:
+                street_address: 160 Washington Walk
+                formatted: |-
+                  160 Washington Walk
+                  San Francisco 98239
+                locality: San Francisco
+                postal_code: '98239'
+                country: USA
+              name: John Smith
+      produces:
+        - text/plain
+  '/user/{username}/token/{kind}':
     get:
-      tags:
-      - "client"
-      summary: "Generate OAuth 2 client"
-      description: |
-        Generate random client based on client id (client_id path parameter). Generated client properties are random
-        but deterministic: every time passing same client id the resulting client properties will be same.
-      operationId: "getClient"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "client_id"
-        in: "path"
-        description: "The client id"
-        required: true
-        type: "string"
       responses:
-        200:
-          description: "successful operation"
-          schema:
-            $ref: "#/definitions/Client"
+        '200':
+          description: OK
+          headers: {}
+          examples:
+            text/plain: >
+              eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NoLnNtaXRoIiwidG9rZW5fa2luZCI6IkFDQ0VTUyIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwgYWRkcmVzcyBwaG9uZSBpbmRpZWF1dGggdWlkIiwiZXhwIjoxNTU2ODg5NzcxLCJpYXQiOjE1NTY4ODkxNzF9.YBQ_6GlQ1iXjk6OKU7meJhlg3iRDEgeTqnBFdeLDJyI
+      summary: Get a User Token
+      description: >-
+        It is used to generate OpenID Connect tokens as path parameters to a
+        user of a given name.
 
-  /client/{client_id}/token/{kind}:
+
+        This method is mainly used in the testing process, when, for example,
+        the token received from the normal authenticaton flow is not available
+        to the test code.
+
+        Generating an access token, for example, will let you avoid
+        authentication, and immediately call an operation requiring the access
+        token.
+      tags:
+        - User
+      parameters:
+        - name: username
+          in: path
+          description: A username or email.
+          required: true
+          type: string
+        - name: kind
+          in: path
+          description: Token type
+          required: true
+          type: string
+          enum:
+            - '''access'''
+            - '''refresh'''
+            - '''authorization'''
+            - '''id'''
+            - '''selfie'''
+            - '''plain'''
+        - name: scope
+          in: query
+          description: OpenID Connect scope
+          required: false
+          type: string
+      produces:
+        - text/plain
+  '/client/{client_id}':
     get:
-      tags:
-      - "client"
-      summary: "Generate various tokens for given client"
-      description: |
-        Generate registration_access_token.
-      operationId: "getClientToken"
-      produces:
-      - "text/plain"
-      parameters:
-      - name: "client_id"
-        in: "path"
-        description: "The client id"
-        required: true
-        type: "string"
-      - name: "kind"
-        in: "path"
-        description: "Token kind"
-        required: true
-        type: "string"
-        enum:
-        - registration_access_token
-        - selfie_token
       responses:
-        200:
-          description: "successful operation"
+        '200':
+          description: OK
+          headers: {}
+          examples:
+            application/json:
+              client_id: magic.toolbox
+              client_secret: O68dVlLk
+              client_name: Magic Toolbox
+              client_uri: 'https://phantauth.net/client/magic.toolbox/profile'
+              logo_uri: >-
+                https://www.gravatar.com/avatar/23a9c0277d8e4062b01f1097037f0d5b?s=256&d=https%3A%2F%2Favatars.phantauth.net%2Ficon%2F9b68RVeE.png
+              logo_email: magic.toolbox.OUUWE4A@mailinator.com
+              tos_uri: 'https://phantauth.net/client/magic.toolbox/tos'
+              policy_uri: 'https://phantauth.net/client/magic.toolbox/policy'
+              software_id: igG6Jgx7mfzPdjhBvHvqRQ
+              software_version: 3.8.0
+              '@id': 'https://phantauth.net/client/magic.toolbox'
           schema:
-            type: string
+            type: object
+            properties:
+              client_id:
+                type: string
+                description: OAuth 2.0 client identifier string.
+              client_secret:
+                type: string
+                description: 'OAuth 2.0 client secret string. '
+              redirect_uris:
+                type: array
+                description: >-
+                  Array of redirection URI strings for use in redirect-based
+                  flows such as the authorization code and implicit flows.
+                items: {}
+              token_endpoint_auth_method:
+                type: string
+                description: >-
+                  String indicator of the requested authentication method for
+                  the token endpoint.
+              grant_types:
+                type: array
+                description: >-
+                  Array of OAuth 2.0 grant type strings that the client can use
+                  at the token endpoint.
+                items: {}
+              response_types:
+                type: array
+                description: >-
+                  Array of the OAuth 2.0 response type strings that the client
+                  can use at the authorization endpoint.
+                items: {}
+              client_name:
+                type: string
+                description: >-
+                  Human-readable string name of the client to be presented to
+                  the end-user during authorization.
+              client_uri:
+                type: string
+                description: >-
+                  URL string of a web page providing information about the
+                  client.
+              logo_uri:
+                type: string
+                description: URL string that references a logo for the client.
+              scope:
+                type: string
+                description: >-
+                  String containing a space-separated list of scope values (as
+                  described in Section 3.3 of OAuth 2.0 [RFC6749]) that the
+                  client can use when requesting access tokens.
+              contacts:
+                type: array
+                description: >-
+                  Array of strings representing ways to contact people
+                  responsible for this client, typically email addresses.
+                items: {}
+              tos_uri:
+                type: string
+                description: >-
+                  URL string that points to a human-readable terms of service
+                  document for the client that describes a contractual
+                  relationship between the end-user and the client that the
+                  end-user accepts when authorizing the client.
+              policy_uri:
+                type: string
+                description: >-
+                  URL string that points to a human-readable privacy policy
+                  document that describes how the deployment organization
+                  collects, uses, retains, and discloses personal data.
+              jwks_uri:
+                type: string
+                description: >-
+                  URL string referencing the client's JSON Web Key (JWK) Set
+                  [RFC7517] document, which contains the client's public keys.
+              jwks:
+                type: array
+                description: >-
+                  Client's JSON Web Key Set [RFC7517] document value, which
+                  contains the client's public keys.  The value of this field
+                  MUST be a JSON object containing a valid JWK Set.
+                items: {}
+              software_id:
+                type: string
+                description: >-
+                  A unique identifier string (e.g., a Universally Unique
+                  Identifier (UUID)) assigned by the client developer or
+                  software publisher used by registration endpoints to identify
+                  the client software to be dynamically registered.
+              software_version:
+                type: string
+                description: >-
+                  A version identifier string for the client software identified
+                  by software_id.
+              '@id':
+                type: string
+                description: URL of the Client's JSON representation.
+              logo_email:
+                type: string
+                description: An email address used to generate a gravatar.com logo_uri.
+            required:
+              - client_id
+      summary: Get a Client
+      description: >-
+        Use this endpoint to generate a random client. The client is generated
+        in a deterministic way, on the bases of the client ID given as a path
+        parameter.
 
+        In the case of identical client IDs, the endpoint will generate the same
+        client object. The properties of the generated client object are
+        randomly generated on the basis of the client ID.
+
+        In lack of a client ID, all calls generate a different client object to
+        the randomly generated client ID.
+
+
+        By providing an email address as the `client_id` parameter, you can
+        customize the client logo by the use of the gravatar associated with the
+        email address.
+
+
+        If the `client_id` parameter contains minimum one dot (`.`) or space (`)
+        character, the client_name is produced from the parameter, rather than
+        being generated.`
+
+
+        The result is always a client object. If you want to generate multiple
+        clients in one single step, you can do it by the use of *Fleet*
+        generation.
+
+        The members of a fleet are clients randomly generated from the fleet
+        name.
+      tags:
+        - Client
+      parameters:
+        - name: client_id
+          in: path
+          description: A client ID or email.
+          required: false
+          type: string
+      produces:
+        - application/json
+  /client:
     post:
-      tags:
-      - "client"
-      summary: "Generate client from user supplied data"
-      description: |
-        Generate client.
-      operationId: "registerClient"
-      produces:
-      - "text/plain"
-      consumes:
-      - "application/json"
-      parameters:
-      - name: "client"
-        in: "body"
-        description: "Client data"
-        required: true
-        schema:
-          $ref: "#/definitions/Client"
-
       responses:
-        200:
-          description: "successful operation"
-          schema:
-            type: string
-            description: The token
+        '200':
+          description: OK
+          headers: {}
+          examples:
+            text/plain: >
+              eyJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiZGlyIn0..HQLixaDFwfYXZ2Hu.p4zIoe54Cg3W1hQR2yIXbWMg5fC9X66si7jhz7IuB2-_2m8VuYMP6V3-e3sFsPfZsHlxpdtuSZ5eYphb5qnN-tHEEhnu2OBQDLH6FVmofpSdXVsastRiN7BcESH6-3FaJmsS-gs-C-RFn9YmlE9OdCt2CFwca5584SmSwd5lqC87ljgjKn1afPKTPqG8esxNsj3h_1qkjdzArCo94B-0Gq_dLN3vNImCW0Y9rV4ThviZQh1rFCwD1-hotmsVRwZcGIxGmQd6KtqS9MtSimdFB29QtPm64htB8OPiUZSUeD5MhYty2UyYsru-coyd4Uye59jj8LQWQOi6K5mO46sM6rOOKpVYBDMRyfKZHtw0SEjLKJYFadtnZ4kAAe7faZB8prY50FG-BtVnsWVQRbpbIeuih-iGk-X-5kQ3MEbXcBLkBIEwjVEKT7s9zjLV1NzWNeQHadzMxAa_jMRZi5bpcUxHT5GctLVVRP5_iCQX0lrh7dDkV5oNmxVj0JT7f0Fada709a9uAiVzcQa3maBWx8u7moxMhHT-CeTGXFiGRkKC3q-tXzRItaAFFhYDv38Efj23sTBwjjyK3ldWyhwVXOenzmQP9aesj8lgz0jtpzcjkW_ckRz_POM_fTF-y6M_bHb1eloCXaGem8mfTWBqWydUUWEsH6hmSI5pkmTS2k_9TQ.fu0lDi24J2c1a33NTNwU7g
+      summary: Create a Client Selfie
+      description: >-
+        To create a selfie token from the client data, you need an opaqe string
+        token, which contains the encoded client properties sent in the request.
 
+        Later, the selfie token can be used as a client ID. In this case, the
+        client data is included in the selfie token, that is, the client
+        properties are taken from the token.
+
+        By the use of a selfie token, you can use your own client objects in the
+        authentication process.
+      tags:
+        - Client
+      parameters:
+        - name: body
+          in: body
+          schema:
+            type: object
+            properties:
+              client_id:
+                type: string
+                description: OAuth 2.0 client identifier string.
+              client_secret:
+                type: string
+                description: 'OAuth 2.0 client secret string. '
+              redirect_uris:
+                type: array
+                description: >-
+                  Array of redirection URI strings for use in redirect-based
+                  flows such as the authorization code and implicit flows.
+              token_endpoint_auth_method:
+                type: string
+                description: >-
+                  String indicator of the requested authentication method for
+                  the token endpoint.
+              grant_types:
+                type: array
+                description: >-
+                  Array of OAuth 2.0 grant type strings that the client can use
+                  at the token endpoint.
+              response_types:
+                type: array
+                description: >-
+                  Array of the OAuth 2.0 response type strings that the client
+                  can use at the authorization endpoint.
+              client_name:
+                type: string
+                description: >-
+                  Human-readable string name of the client to be presented to
+                  the end-user during authorization.
+              client_uri:
+                type: string
+                description: >-
+                  URL string of a web page providing information about the
+                  client.
+              logo_uri:
+                type: string
+                description: URL string that references a logo for the client.
+              scope:
+                type: string
+                description: >-
+                  String containing a space-separated list of scope values (as
+                  described in Section 3.3 of OAuth 2.0 [RFC6749]) that the
+                  client can use when requesting access tokens.
+              contacts:
+                type: array
+                description: >-
+                  Array of strings representing ways to contact people
+                  responsible for this client, typically email addresses.
+              tos_uri:
+                type: string
+                description: >-
+                  URL string that points to a human-readable terms of service
+                  document for the client that describes a contractual
+                  relationship between the end-user and the client that the
+                  end-user accepts when authorizing the client.
+              policy_uri:
+                type: string
+                description: >-
+                  URL string that points to a human-readable privacy policy
+                  document that describes how the deployment organization
+                  collects, uses, retains, and discloses personal data.
+              jwks_uri:
+                type: string
+                description: >-
+                  URL string referencing the client's JSON Web Key (JWK) Set
+                  [RFC7517] document, which contains the client's public keys.
+              jwks:
+                type: array
+                description: >-
+                  Client's JSON Web Key Set [RFC7517] document value, which
+                  contains the client's public keys.  The value of this field
+                  MUST be a JSON object containing a valid JWK Set.
+              software_id:
+                type: string
+                description: >-
+                  A unique identifier string (e.g., a Universally Unique
+                  Identifier (UUID)) assigned by the client developer or
+                  software publisher used by registration endpoints to identify
+                  the client software to be dynamically registered.
+              software_version:
+                type: string
+                description: >-
+                  A version identifier string for the client software identified
+                  by software_id.
+              '@id':
+                type: string
+                description: URL of the Client's JSON representation.
+              logo_email:
+                type: string
+                description: An email address used to generate a gravatar.com logo_uri.
+            required:
+              - client_id
+            example:
+              client_id: magic.toolbox
+              client_secret: O68dVlLk
+              client_name: Magic Toolbox
+              logo_uri: >-
+                https://www.gravatar.com/avatar/23a9c0277d8e4062b01f1097037f0d5b?s=256&d=https%3A%2F%2Favatars.phantauth.net%2Ficon%2F9b68RVeE.png
+              logo_email: magic.toolbox.OUUWE4A@mailinator.com
+              tos_uri: 'https://phantauth.net/client/magic.toolbox/tos'
+              policy_uri: 'https://phantauth.net/client/magic.toolbox/policy'
+              software_id: igG6Jgx7mfzPdjhBvHvqRQ
+              software_version: 3.8.0
+      produces:
+        - text/plain
+  '/client/{client_id}/token/{kind}':
+    get:
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          examples:
+            text/plain: >
+              eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYWdpYy50b29sYm94IiwidG9rZW5fa2luZCI6IlJFR0lTVFJBVElPTiIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwgYWRkcmVzcyBwaG9uZSBpbmRpZWF1dGggdWlkIiwiZXhwIjoxNTg4NDI4NDM4LCJpYXQiOjE1NTY4OTI0Mzh9.TGilMHuWIDYiBAjzXyMuBvMiRlnKFLDX7FJJW_flldg
+      summary: Get a Client Token
+      description: >-
+        It is used to generate a OpenID Connect token as a path parameter to a
+        client of a given client ID.
+
+
+        It is primarily used for testing purposes, when, for example, the token
+        from the standard authentication flow is not available to the test code.
+      tags:
+        - Client
+      parameters:
+        - name: client_id
+          in: path
+          description: A client ID or email.
+          required: true
+          type: string
+        - name: kind
+          in: path
+          description: Token type
+          required: true
+          type: string
+          enum:
+            - '''registration'''
+            - '''selfie'''
+            - '''plain'''
+      produces:
+        - text/plain
+  '/team/{teamname}':
+    get:
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          examples:
+            application/json:
+              sub: dream.team
+              name: Dream Team
+              profile: 'https://phantauth.net/team/dream.team/profile'
+              logo: >-
+                https://www.gravatar.com/avatar/0d6fbd4eb21c269933ca5bba043ab4aa?s=256&d=identicon
+              logo_email: dream.team.HIECLNQ@mailinator.com
+              '@id': 'https://phantauth.net/team/dream.team'
+              members:
+                - locale: en_US
+                  profile: 'https://phantauth.net/user/ariana.riley.hudson/profile'
+                  nickname: Ariana
+                  preferred_username: ahudson
+                  picture: >-
+                    https://www.gravatar.com/avatar/8b0562dd7dd8ff1d8d872fcf58972d6d?s=256&d=https://avatars.phantauth.net/ai/female/BeXDnkey.jpg
+                  sub: ariana.riley.hudson
+                  website: 'https://phantauth.net'
+                  email: ariana.riley.hudson.VJ2ABXA@mailinator.com
+                  email_verified: false
+                  gender: female
+                  birthdate: '1938-11-19'
+                  zoneinfo: America/Chicago
+                  phone_number: 552-769-0026
+                  phone_number_verified: true
+                  updated_at: 1542585600
+                  me: 'https://phantauth.net/~ariana.riley.hudson'
+                  password: cuTCy0IZ
+                  webmail: >-
+                    https://www.mailinator.com/v3/?zone=public&query=ariana.riley.hudson.VJ2ABXA
+                  uid: 1sKcrGacQtY
+                  family_name: Hudson
+                  given_name: Ariana
+                  middle_name: Riley
+                  address:
+                    street_address: 62 Highland Place APT 63
+                    formatted: |-
+                      62 Highland Place APT 63
+                      Miami 30927
+                    locality: Miami
+                    postal_code: '30927'
+                    country: USA
+                  name: Ariana Hudson
+                  '@id': 'https://phantauth.net/user/ariana.riley.hudson'
+                - locale: en_GB
+                  profile: 'https://phantauth.net/user/madeline.randall/profile'
+                  nickname: Madeline
+                  preferred_username: mrandall
+                  picture: >-
+                    https://www.gravatar.com/avatar/eb3bac3d1654c56efbb93645770e5a60?s=256&d=https://avatars.phantauth.net/ai/female/pmbkErez.jpg
+                  sub: madeline.randall
+                  website: 'https://phantauth.net'
+                  email: madeline.randall.P545AFI@mailinator.com
+                  email_verified: true
+                  gender: female
+                  birthdate: '1966-08-28'
+                  zoneinfo: Europe/London
+                  phone_number: 747-136-9890
+                  phone_number_verified: true
+                  updated_at: 1535414400
+                  me: 'https://phantauth.net/~madeline.randall'
+                  password: xi89SZWX
+                  webmail: >-
+                    https://www.mailinator.com/v3/?zone=public&query=madeline.randall.P545AFI
+                  uid: 5xjXrNaK8eU
+                  family_name: Randall
+                  given_name: Madeline
+                  address:
+                    street_address: 140 Atkins Avenue APT 126
+                    formatted: |-
+                      140 Atkins Avenue APT 126
+                      San Francisco 48571
+                    locality: San Francisco
+                    postal_code: '48571'
+                    country: UnitedKingdom
+                  name: Madeline Randall
+                  '@id': 'https://phantauth.net/user/madeline.randall'
+                - locale: fr_CA
+                  profile: 'https://phantauth.net/user/alexa.brooklyn.rollins/profile'
+                  nickname: Alexa
+                  preferred_username: arollins
+                  picture: >-
+                    https://www.gravatar.com/avatar/404e4bf6b700625b670d84336fa38d52?s=256&d=https://avatars.phantauth.net/ai/female/pmbkyvez.jpg
+                  sub: alexa.brooklyn.rollins
+                  website: 'https://phantauth.net'
+                  email: alexa.brooklyn.rollins.WHW7KNY@mailinator.com
+                  email_verified: false
+                  gender: female
+                  birthdate: '1920-02-29'
+                  zoneinfo: Canada/Central
+                  phone_number: 335-295-2273
+                  phone_number_verified: true
+                  updated_at: 1519776000
+                  me: 'https://phantauth.net/~alexa.brooklyn.rollins'
+                  password: 8h3tEVhM
+                  webmail: >-
+                    https://www.mailinator.com/v3/?zone=public&query=alexa.brooklyn.rollins.WHW7KNY
+                  uid: ji7mQ76imjY
+                  family_name: Rollins
+                  given_name: Alexa
+                  middle_name: Brooklyn
+                  address:
+                    street_address: 104 Herzi Street APT 39
+                    formatted: |-
+                      104 Herzi Street APT 39
+                      Washington 22412
+                    locality: Washington
+                    postal_code: '22412'
+                    country: Canada
+                  name: Alexa Rollins
+                  '@id': 'https://phantauth.net/user/alexa.brooklyn.rollins'
+                - locale: en_AU
+                  profile: 'https://phantauth.net/user/cameron.barnes/profile'
+                  nickname: Cameron
+                  preferred_username: cbarnes
+                  picture: >-
+                    https://www.gravatar.com/avatar/6cc04628ef7fb47eaa9a262b56b61e7d?s=256&d=https://avatars.phantauth.net/ai/male/wdL96rej.jpg
+                  sub: cameron.barnes
+                  website: 'https://phantauth.net'
+                  email: cameron.barnes.UW4JUXI@mailinator.com
+                  email_verified: false
+                  gender: male
+                  birthdate: '1960-07-17'
+                  zoneinfo: Australia/Sydney
+                  phone_number: 449-465-925
+                  phone_number_verified: true
+                  updated_at: 1531785600
+                  me: 'https://phantauth.net/~cameron.barnes'
+                  password: OL4y4cpb
+                  webmail: >-
+                    https://www.mailinator.com/v3/?zone=public&query=cameron.barnes.UW4JUXI
+                  uid: N4DJJyHMhUg
+                  family_name: Barnes
+                  given_name: Cameron
+                  address:
+                    street_address: 139 Aster Court
+                    formatted: |-
+                      139 Aster Court
+                      New York 20333
+                    locality: New York
+                    postal_code: '20333'
+                    country: Australia
+                  name: Cameron Barnes
+                  '@id': 'https://phantauth.net/user/cameron.barnes'
+                - locale: fr_CA
+                  profile: 'https://phantauth.net/user/kayden.abbott/profile'
+                  nickname: Kayden
+                  preferred_username: kabbott
+                  picture: >-
+                    https://www.gravatar.com/avatar/0e72d45f96c44213f80f10b593ccba13?s=256&d=https://avatars.phantauth.net/ai/unknown/X7axLPay.jpg
+                  sub: kayden.abbott
+                  website: 'https://phantauth.net'
+                  email: kayden.abbott.6VBRMHI@mailinator.com
+                  email_verified: true
+                  gender: unknown
+                  birthdate: '2016-02-28'
+                  zoneinfo: Canada/Central
+                  phone_number: 988-622-6683
+                  phone_number_verified: false
+                  updated_at: 1519776000
+                  me: 'https://phantauth.net/~kayden.abbott'
+                  password: RUEJG2Vj
+                  webmail: >-
+                    https://www.mailinator.com/v3/?zone=public&query=kayden.abbott.6VBRMHI
+                  uid: VHNoCwU/+LE
+                  family_name: Abbott
+                  given_name: Kayden
+                  address:
+                    street_address: 110 Aster Court APT 299
+                    formatted: |-
+                      110 Aster Court APT 299
+                      Miami 16321
+                    locality: Miami
+                    postal_code: '16321'
+                    country: Canada
+                  name: Kayden Abbott
+                  '@id': 'https://phantauth.net/user/kayden.abbott'
+          schema:
+            type: object
+            properties:
+              sub:
+                type: string
+                description: >-
+                  The name or email address of a given team. The team properties
+                  and team members are generated from this name. If you provide
+                  an email address, you can customize the team logo by the use
+                  of the gravatar associated with the email address.
+              name:
+                type: string
+                description: The displayed team name.
+              logo:
+                type: string
+                description: >-
+                  The URL of the team logo, which can be customized by the
+                  gravatar associated with the email address in the `logo_email`
+                  property.
+              logo_email:
+                type: string
+                description: >-
+                  The email address of the team, either generated or provided in
+                  the `sub` property. The team logo can be customized by the use
+                  of the gravater associated with this email address.
+              '@id':
+                type: string
+                description: URL of the Teams's JSON representation.
+              profile:
+                type: string
+                description: The URL of the Team profile.
+              members:
+                type: array
+                description: The user objects that generate a team member.
+                items: {}
+            required:
+              - sub
+      summary: Get a Team
+      description: >-
+        Use this endpoint to generate a random group of users. The team is
+        generated in a deterministic way, on the basis of the team name given as
+        the path parameter.
+
+        In the case of identical team names, the endpoint will generate the same
+        team object. The properties of the generated team object are randomly
+        generated on the basis of the team name.
+
+        In lack of a team name, all calls generate a different team object to
+        the randomly generated team name.
+      tags:
+        - Team
+      parameters:
+        - name: teamname
+          in: path
+          description: >
+
+            The identifier or email address of the team; it is integrated in the
+            `sub` property and is the basis of the other generated properties.
+          required: false
+          type: string
+      produces:
+        - application/json
+  '/fleet/{fleetname}':
+    get:
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          examples:
+            application/json:
+              profile: 'https://phantauth.net/fleet/blue.fleet/profile'
+              sub: blue.fleet
+              logo: >-
+                https://www.gravatar.com/avatar/60757eca81bdd6768421ed3b669b651d?s=256&d=identicon
+              logo_email: blue.fleet.6JBLL7Y@mailinator.com
+              name: Blue Fleet
+              '@id': 'https://phantauth.net/fleet/blue.fleet'
+              members:
+                - logo_email: zamit.6UTF3FA@mailinator.com
+                  client_id: zamit~ueyonuvxhz0
+                  client_secret: o0Ie0Ph4
+                  client_name: Zamit
+                  client_uri: 'https://phantauth.net/client/zamit%7Eueyonuvxhz0/profile'
+                  logo_uri: >-
+                    https://www.gravatar.com/avatar/849f9934a6aec97935cb40eadbf06d60?s=256&d=https%3A%2F%2Favatars.phantauth.net%2Ficon%2Fpnelv7bK.png
+                  tos_uri: 'https://phantauth.net/client/zamit%7Eueyonuvxhz0/tos'
+                  policy_uri: 'https://phantauth.net/client/zamit%7Eueyonuvxhz0/policy'
+                  software_id: tzpm4afosVpE65jyw55ZLA
+                  software_version: 8.0.8
+                  '@id': 'https://phantauth.net/client/zamit%7Eueyonuvxhz0'
+                - logo_email: otcom.DVC7D4Y@mailinator.com
+                  client_id: otcom~kzwnwi3dcjc
+                  client_secret: W0UFeZTo
+                  client_name: Otcom
+                  client_uri: 'https://phantauth.net/client/otcom%7Ekzwnwi3dcjc/profile'
+                  logo_uri: >-
+                    https://www.gravatar.com/avatar/102ea74126cec525eded6e2511ee4960?s=256&d=https%3A%2F%2Favatars.phantauth.net%2Ficon%2FQBeXrkby.png
+                  tos_uri: 'https://phantauth.net/client/otcom%7Ekzwnwi3dcjc/tos'
+                  software_id: RqrMOl5ZNZeEoYNkCdg1AA
+                  policy_uri: 'https://phantauth.net/client/otcom%7Ekzwnwi3dcjc/policy'
+                  software_version: 8.0.9
+                  '@id': 'https://phantauth.net/client/otcom%7Ekzwnwi3dcjc'
+                - logo_email: greenlam.2XD4DYQ@mailinator.com
+                  client_id: greenlam~o3sbolv1qjc
+                  client_secret: jeXBkxJ4
+                  client_name: Greenlam
+                  client_uri: 'https://phantauth.net/client/greenlam%7Eo3sbolv1qjc/profile'
+                  logo_uri: >-
+                    https://www.gravatar.com/avatar/0d304aa152b8edd056d1e7862364dec2?s=256&d=https%3A%2F%2Favatars.phantauth.net%2Ficon%2FLDdwLJe1.png
+                  tos_uri: 'https://phantauth.net/client/greenlam%7Eo3sbolv1qjc/tos'
+                  policy_uri: 'https://phantauth.net/client/greenlam%7Eo3sbolv1qjc/policy'
+                  software_id: 0dQ9wd0fb1v2RPd1de-m6A
+                  software_version: 6.4.2
+                  '@id': 'https://phantauth.net/client/greenlam%7Eo3sbolv1qjc'
+                - logo_email: holdlamis.4AP3BGI@mailinator.com
+                  client_id: holdlamis~1jvzg8zw3ie
+                  client_secret: N0dEVTVQ
+                  client_name: Holdlamis
+                  client_uri: 'https://phantauth.net/client/holdlamis%7E1jvzg8zw3ie/profile'
+                  logo_uri: >-
+                    https://www.gravatar.com/avatar/14d66b1256d484d2ab268cbe58694bb9?s=256&d=https%3A%2F%2Favatars.phantauth.net%2Ficon%2FRb4x6nbB.png
+                  tos_uri: 'https://phantauth.net/client/holdlamis%7E1jvzg8zw3ie/tos'
+                  policy_uri: 'https://phantauth.net/client/holdlamis%7E1jvzg8zw3ie/policy'
+                  software_id: ReiInzn-af_1XjFhBwl2Kw
+                  software_version: 9.0.5
+                  '@id': 'https://phantauth.net/client/holdlamis%7E1jvzg8zw3ie'
+                - logo_email: asoka.K2ZLAYQ@mailinator.com
+                  client_id: asoka~vu9rsfdq16m
+                  client_secret: 92Qz6rSU
+                  client_name: Asoka
+                  client_uri: 'https://phantauth.net/client/asoka%7Evu9rsfdq16m/profile'
+                  logo_uri: >-
+                    https://www.gravatar.com/avatar/7acc74527505772449417aed086c3b24?s=256&d=https%3A%2F%2Favatars.phantauth.net%2Ficon%2F6dBB3xd7.png
+                  tos_uri: 'https://phantauth.net/client/asoka%7Evu9rsfdq16m/tos'
+                  policy_uri: 'https://phantauth.net/client/asoka%7Evu9rsfdq16m/policy'
+                  software_id: s0GXgtm6HqPy0nayXt8g4w
+                  software_version: 3.9.6
+                  '@id': 'https://phantauth.net/client/asoka%7Evu9rsfdq16m'
+          schema:
+            type: object
+            properties:
+              sub:
+                type: string
+                description: >-
+                  The name or email address of a given fleet. The fleet
+                  properties and fleet members are generated from this name. If
+                  provide an email address, you can customize the fleet logo by
+                  the use of the gravatar associated with the email address.
+              name:
+                type: string
+                description: The displayed fleet name.
+              logo:
+                type: string
+                description: >-
+                  The URL of the fleet logo, which can be customized by the
+                  gravatar associated with the email address in the `logo_email`
+                  property.
+              logo_email:
+                type: string
+                description: >-
+                  The email address of the fleet, either generated or provided
+                  in the `sub` property. The fleet logo can be customized by the
+                  use of the gravater associated with this email address.
+              '@id':
+                type: string
+                description: URL of the Fleet's JSON representation.
+              profile:
+                type: string
+                description: The URL of the Fleet profile.
+              members:
+                type: array
+                description: The client objects included in a fleet.
+                items: {}
+            required:
+              - sub
+      summary: Get a Fleet
+      description: >-
+        Use this endpoint to generate a random group of clients. The feleet is
+        generated in a deterministic way, on the basis of a fleet name given as
+        a path parameter.
+
+        In the case of identical fleet names, the endpoint will generate the
+        same fleet object. The properties of the generated fleet object are
+        randomly generated on the basis of the fleet name.
+
+        In lack of a fleet name, all calls generate a different fleet object to
+        the randomly generated fleet name.
+      tags:
+        - Fleet
+      parameters:
+        - name: fleetname
+          in: path
+          description: >
+
+            The identifier or email address of the fleet; it is integrated in
+            the `sub` property and is the basis of the other generated
+            properties.
+          required: false
+          type: string
+      produces:
+        - application/json
+  '/tenant/{tenantname}':
+    get:
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          examples:
+            application/json:
+              sub: faker
+              issuer: 'https://phantauth.net/_faker'
+              subtenant: false
+              domain: false
+              flags: small
+              logo: 'https://phantauth-faker.now.sh/faker-logo.svg'
+              theme: >-
+                https://stackpath.bootstrapcdn.com/bootswatch/4.2.1/united/bootstrap.min.css
+              template: 'https://default.phantauth.net{/resource}'
+              factories:
+                - team
+                - user
+              website: 'https://phantauth.net/_faker'
+              name: PhantAuth Faker
+              factory: 'https://faker.phantauth.net/api{/kind,name}'
+              '@id': 'https://phantauth.net/_faker/tenant/faker'
+          schema:
+            type: object
+            properties:
+              sub:
+                type: string
+                description: >-
+                  The fully qualified DNS domain name of the tenant. In the case
+                  of official and shared tenants (phantauth.net and phantauth.cf
+                  DNS domain), the DNS domain can be omitted (e.g. *default* or
+                  *faker*).
+              issuer:
+                type: string
+                description: >-
+                  The URL of the tenant OpenID Connect issuer. This value allows
+                  you to get, for example, the [OpenID Provider
+                  Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).
+
+                  As a webpage, it contains information on the use if the given
+                  tenant.
+              website:
+                type: string
+                description: >-
+                  The website address associated with the tenant. If a tenant
+                  doesn't have a website, its value is identical with that of
+                  the `issuer` property.
+              template:
+                type: string
+                description: >-
+                  It defines the place of the templates of the HTML pages of the
+                  tenant in [RFC 6570 - URI
+                  temaplate](https://tools.ietf.org/html/rfc6570) format.
+
+                  The URI template receives the page name in a `resource`
+                  parameter. By default, it takes the following value:
+                  `https://default.phantauth.net{/resource}`.
+              factory:
+                type: string
+                description: >-
+                  The address of the custom random resource generator (user,
+                  team) in [RFC 6570 - URI
+                  temaplate](https://tools.ietf.org/html/rfc6570) format.
+
+                  The URI template receives the type of the object to be
+                  generated (user, team) in the `kind` parameter, and the
+                  identifier of the object to be generated in the `name`
+                  parameter.
+              factories:
+                type: array
+                description: >-
+                  A list of resource types supported by the external generator
+                  set in `factory`.
+                items: {}
+              depot:
+                type: string
+                description: >-
+                  It defines the place of the CSV file containing the resource
+                  data in [RFC 6570 - URI
+                  temaplate](https://tools.ietf.org/html/rfc6570) format.
+
+                  The URI template receives the type of the object to be
+                  generated (user, team) in the `kind` parameter.
+
+
+                  The first line of the CSV file contains the resource property
+                  names, the following lines, on the other hand, contain the
+                  relevant data.
+
+                  In the case of nested properties, a '.' character separates
+                  the elements of the property name (e.g. address.formatted).
+              depots:
+                type: array
+                description: >-
+                  A list of resource types supported by the external CSV set in
+                  `depot`.
+                items: {}
+              userinfo:
+                type: string
+              '@id':
+                type: string
+                description: The URL of the tenant's JSON representation.
+              name:
+                type: string
+                description: >-
+                  The displayed tenant name. In lack of such name, the DNS name
+                  of the tenant is displayed in the address bar of the tenant's
+                  webpages.
+              logo:
+                type: string
+                description: >-
+                  The URL of the tenant logo. The image from this address
+                  appears in the address bar of the tenant's webpages and the
+                  pages that contain the list of available tenants.
+              favicon:
+                type: string
+                description: >-
+                  The URL of the tenant favicon. The image from this address
+                  appears as a shortcut icon in the browser when a user visits
+                  the tenant's webpages.
+              theme:
+                type: string
+                description: >-
+                  The URL of the CSS style sheet used for the tenant's webpages.
+
+                  The default webpage templates were created by the use of the
+                  Bootstrap library, therefore, the Bootstrap CSS URL has to be
+                  provided when such a webpage is used.
+              script:
+                type: string
+                description: >-
+                  The URL of a custom JavaScript file can be automatically
+                  inserted in the login.html, consent.html, és test.html pages.
+              sheet:
+                type: string
+                description: >-
+                  It is used to give the identifyer of a public Google Sheet
+                  document. The first line of the table contains the user
+                  property names, the following lines, on the other hand,
+                  contain the relevant data.
+
+                  In the case of nested properties, a '.' character separates
+                  the elements of the property name (e.g. address.formatted).
+              summary:
+                type: string
+                description: >-
+                  A one-line description, the watchword of the tenant. It
+                  appears on the tenant's startup page and the pages that
+                  contain the list of available tenants. It takes the valua of
+                  an unformatted text.
+              attribution:
+                type: string
+                description: >-
+                  The attribution of the external data source or random user
+                  generator. Its value can have markdown formatting, that is,
+                  the external source can contain highlights and links.
+              about:
+                type: string
+                description: >-
+                  A detailed description of the tenant. If it takes the value of
+                  an URL, the description is downloaded from the given URL,
+                  otherwise the value it takes is the description itself.
+                  Markdown formatting can be used in the description.
+              domain:
+                type: boolean
+                description: >-
+                  True in the case of a domain tenant collecting several
+                  tenants, otherwise false.
+              subtenant:
+                type: boolean
+                description: >-
+                  True in the case of a tenant referred to in a domain tenant,
+                  otherwise false.
+            required:
+              - sub
+              - issuer
+      summary: Get a Tenant
+      description: >-
+        This endpoint allows you to get the data of a given PhantAuth tenant. To
+        use the PhantAuth services, you don't need this endpoint.
+
+        It is, therefore, mainly used for debug/diagnostic purposes in tenant
+        customization.
+
+
+        Tenantname is the name of the full DNS domain of the tenant you get.
+
+        In the case of an official and shared tenant (phantauth.net and
+        phantauth.cf DNS domains), the DNS domain can be omitted (e.g. *default*
+        or *faker*).
+      tags:
+        - Tenant
+      parameters:
+        - name: tenantname
+          in: path
+          description: The tenant ID integrated in the `sub` property.
+          required: true
+          type: string
+      produces:
+        - application/json
+  '/domain/{domainname}':
+    get:
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          examples:
+            application/json:
+              profile: 'https://phantauth.net/domain/phantauth.net/profile'
+              sub: phantauth.net
+              logo: 'https://www.phantauth.net/logo/phantauth-logo.svg'
+              name: PhantAuth Domain
+              '@id': 'https://phantauth.net/domain/phantauth.net'
+              members:
+                - issuer: 'https://phantauth.net'
+                  sub: default
+                  subtenant: false
+                  domain: false
+                  logo: 'https://default.phantauth.net/logo/phantauth-logo-light.svg'
+                  favicon: 'https://default.phantauth.net/logo/phantauth-favicon.png'
+                  template: 'https://default.phantauth.net{/resource}'
+                  website: 'https://phantauth.net'
+                  name: PhantAuth Default
+                  '@id': 'https://phantauth.net/tenant/default'
+                - issuer: 'https://phantauth.net/_gods'
+                  sub: gods
+                  subtenant: false
+                  domain: false
+                  depot: >-
+                    https://docs.google.com/spreadsheets/d/1Xa4mRcLWroJr2vUDhrJXGBcobYmpS8fNZxFpXw-M9DY/gviz/tq?tqx=out:csv
+                  depots:
+                    - user
+                    - team
+                  flags: medium
+                  logo: 'https://cdn.staticaly.com/favicons/www.theoi.com'
+                  favicon: 'https://default.phantauth.net/logo/phantauth-favicon.png'
+                  theme: >-
+                    https://stackpath.bootstrapcdn.com/bootswatch/4.2.1/sandstone/bootstrap.min.css
+                  attribution: >-
+                    God pictures come from  [Theoi
+                    Project](https://www.theoi.com/), a site exploring Greek
+                    mythology and the gods in classical literature and art.
+                  template: 'https://default.phantauth.net{/resource}'
+                  website: 'https://phantauth.net/_gods'
+                  name: Greek Gods
+                  '@id': 'https://phantauth.net/_gods/tenant/gods'
+                - issuer: 'https://phantauth.net/_casual'
+                  sub: casual
+                  subtenant: false
+                  domain: false
+                  logo: 'https://www.phantauth.net/logo/phantauth-logo-gray.svg'
+                  favicon: 'https://default.phantauth.net/logo/phantauth-favicon.png'
+                  theme: >-
+                    https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css
+                  template: 'https://default.phantauth.net{/resource}'
+                  factories:
+                    - user
+                  website: 'https://phantauth.net/_casual'
+                  name: PhantAuth Casual
+                  factory: >-
+                    https://wt-51217f7b3eee6aead0123eeafe3b83e8-0.sandbox.auth0-extend.com/user{?name}
+                  '@id': 'https://phantauth.net/_casual/tenant/casual'
+                - issuer: 'https://phantauth.net/_faker'
+                  sub: faker
+                  subtenant: false
+                  domain: false
+                  flags: small
+                  logo: 'https://phantauth-faker.now.sh/faker-logo.svg'
+                  favicon: 'https://default.phantauth.net/logo/phantauth-favicon.png'
+                  theme: >-
+                    https://stackpath.bootstrapcdn.com/bootswatch/4.2.1/united/bootstrap.min.css
+                  template: 'https://default.phantauth.net{/resource}'
+                  factories:
+                    - team
+                    - user
+                  website: 'https://phantauth.net/_faker'
+                  name: PhantAuth Faker
+                  factory: 'https://faker.phantauth.net/api{/kind,name}'
+                  '@id': 'https://phantauth.net/_faker/tenant/faker'
+                - issuer: 'https://phantauth.net/_uinames'
+                  sub: uinames
+                  subtenant: false
+                  domain: false
+                  flags: small
+                  logo: 'https://uinames.com/assets/img/ios-precomposed.png'
+                  favicon: 'https://default.phantauth.net/logo/phantauth-favicon.png'
+                  theme: >-
+                    https://stackpath.bootstrapcdn.com/bootswatch/4.2.1/minty/bootstrap.min.css
+                  attribution: >-
+                    User data generated using [uinames.com
+                    API](https://uinames.com).
+                  template: 'https://default.phantauth.net{/resource}'
+                  website: 'https://phantauth.net/_uinames'
+                  name: uinames
+                  '@id': 'https://phantauth.net/_uinames/tenant/uinames'
+                  script: 'https://www.phantauth.net/selfie/uinames.js'
+                - issuer: 'https://phantauth.net/_chance'
+                  sub: chance
+                  subtenant: false
+                  domain: false
+                  flags: small
+                  logo: 'https://phantauth-chance.now.sh/chance-logo.png'
+                  favicon: 'https://default.phantauth.net/logo/phantauth-favicon.png'
+                  theme: >-
+                    https://stackpath.bootstrapcdn.com/bootswatch/4.2.1/united/bootstrap.min.css
+                  template: 'https://default.phantauth.net{/resource}'
+                  factories:
+                    - user
+                    - team
+                  website: 'https://phantauth.net/_chance'
+                  name: PhantAuth Chance
+                  factory: 'https://chance.phantauth.net/api{/kind,name}'
+                  '@id': 'https://phantauth.net/_chance/tenant/chance'
+                - issuer: 'https://phantauth.net/_sketch'
+                  sub: sketch
+                  subtenant: false
+                  domain: false
+                  flags: sketch;small
+                  logo: 'https://www.phantauth.net/logo/phantauth-sketch.svg'
+                  favicon: 'https://default.phantauth.net/logo/phantauth-favicon.png'
+                  theme: >-
+                    https://stackpath.bootstrapcdn.com/bootswatch/4.2.1/sketchy/bootstrap.min.css
+                  template: 'https://default.phantauth.net{/resource}'
+                  website: 'https://phantauth.net/_sketch'
+                  name: PhantAuth Sketch
+                  '@id': 'https://phantauth.net/_sketch/tenant/sketch'
+                - issuer: 'https://phantauth.net/_randomuser'
+                  sub: randomuser
+                  subtenant: false
+                  domain: false
+                  flags: small
+                  logo: 'https://cdn.staticaly.com/favicons/randomuser.me'
+                  favicon: 'https://default.phantauth.net/logo/phantauth-favicon.png'
+                  theme: >-
+                    https://stackpath.bootstrapcdn.com/bootswatch/4.2.1/sandstone/bootstrap.min.css
+                  attribution: >-
+                    User data generated using [RANDOM USER
+                    GENERATOR](https://randomuser.me/).
+                  template: 'https://default.phantauth.net{/resource}'
+                  website: 'https://phantauth.net/_randomuser'
+                  name: RANDOM USER
+                  '@id': 'https://phantauth.net/_randomuser/tenant/randomuser'
+                  script: 'https://www.phantauth.net/selfie/randomuser.js'
+                - issuer: 'https://phantauth.net/_mockaroo'
+                  sub: mockaroo
+                  subtenant: false
+                  domain: false
+                  flags: small
+                  logo: 'https://www.phantauth.net/selfie/kongaroo.svg'
+                  favicon: 'https://default.phantauth.net/logo/phantauth-favicon.png'
+                  theme: >-
+                    https://stackpath.bootstrapcdn.com/bootswatch/4.2.1/minty/bootstrap.min.css
+                  attribution: >-
+                    User data generated using [Mockaroo's Mock
+                    APIs](https://mockaroo.com/mock_apis).
+                  template: 'https://default.phantauth.net{/resource}'
+                  website: 'https://phantauth.net/_mockaroo'
+                  name: Mockaroo
+                  '@id': 'https://phantauth.net/_mockaroo/tenant/mockaroo'
+                  script: 'https://www.phantauth.net/selfie/mockaroo.js'
+                - issuer: 'https://mockuser.ga'
+                  sub: mockuser.ga
+                  subtenant: false
+                  domain: false
+                  logo: >-
+                    https://www.phantauth.net/brand/mockuser/mockuser-logo-light.svg
+                  favicon: >-
+                    https://www.phantauth.net/brand/mockuser/mockuser-favicon.png
+                  theme: >-
+                    https://www.phantauth.net/brand/mockuser/bootstrap-mockuser.min.css
+                  template: 'https://default.phantauth.net{/resource}'
+                  website: 'https://www.mockuser.ga'
+                  name: Mock User
+                  '@id': 'https://mockuser.ga/tenant/mockuser.ga'
+          schema:
+            type: object
+            properties:
+              sub:
+                type: string
+                description: >-
+                  The fully qualified DNS name of the domain (e.g.
+                  phantauth.net).
+              name:
+                type: string
+                description: The displayed domain name.
+              logo:
+                type: string
+                description: >-
+                  The URL of the domain logo. The image from this address is
+                  displayed on the webpage of the domain.
+              '@id':
+                type: string
+                description: The URL of the domain's JSON representation.
+              profile:
+                type: string
+                description: The URL of the domain's webpage.
+              members:
+                type: array
+                description: The tenants included in a domain.
+                items: {}
+      summary: Get a Domain
+      description: >-
+        This endpoint allows you to get the data of a given PhantAuth domain. To
+        use the PhantAuth services, you don't need this endpoint.
+
+        It is, therefore, mainly used for debug/diagnostic purposes in tenant
+        customization.
+
+
+        Domainname is the fully qualified DNS name of the domain you get (e.g.
+        *phantauth.net* or *phantauth.cf*).
+      tags:
+        - Domain
+      parameters:
+        - name: domainname
+          in: path
+          description: The domain ID integrated in the `sub` property.
+          required: true
+          type: string
+      produces:
+        - application/json
 definitions:
   User:
-    type: "object"
-    description: |
-      An OpenID Connect compatible user account data, in addition to standard claims, contains user's password.
-    externalDocs:
-      description: "5.1. Standard Claims"
-      url: "http://openid.net/specs/openid-connect-core-1_0.html#StandardClaims"
+    type: object
+    required:
+      - sub
     properties:
       sub:
-        description: |
-          Subject - Identifier for the End-User at the Issuer.
-        type: "string"
-        example: john.peter.smith
+        type: string
+        description: Subject - User identifier at the issuer.
       name:
-        description: |
-          End-User's full name in displayable form including all name parts, possibly including titles and suffixes,
-          ordered according to the End-User's locale and preferences.
-        type: "string"
-        example: John Smith
-      given_name:
-        description: |
-          Given name(s) or first name(s) of the End-User. Note that in some cultures, people can have multiple given names;
-          all can be present, with the names being separated by space characters.
-        type: "string"
-        example: John
-      family_name:
-        description: |
-          Surname(s) or last name(s) of the End-User. Note that in some cultures, people can have multiple family names
-          or no family name; all can be present, with the names being separated by space characters.
-        type: "string"
-        example: Smith
-      middle_name:
-        description: |
-          Middle name(s) of the End-User. Note that in some cultures, people can have multiple middle names;
-          all can be present, with the names being separated by space characters. Also note that in some cultures, middle names are not used.
-        type: "string"
-        example: Peter
-      nickname:
-        description: |
-          Casual name of the End-User that may or may not be the same as the given_name.
-          For instance, a nickname value of Mike might be returned alongside a given_name value of Michael.
-        type: "string"
-        example: John
-      preferred_username:
-        description: |
-          Shorthand name by which the End-User wishes to be referred to at the RP, such as janedoe or j.doe.
-          This value MAY be any valid JSON string including special characters such as @, /, or whitespace.
-        type: "string"
-        example: jsmith
-      profile:
-        description: |
-          URL of the End-User's profile page. The contents of this Web page SHOULD be about the End-User.
         type: string
-        example: http://phantauth.me/en/user?john.peter.smith
-      picture:
-        description: |
-          URL of the End-User's profile picture. This URL MUST refer to an image file (for example, a PNG, JPEG, or GIF image file),
-          rather than to a Web page containing an image.
-          Note that this URL SHOULD specifically reference a profile photo of the End-User suitable for displaying when describing the End-User,
-          rather than an arbitrary photo taken by the End-User.
-        type: "string"
-        example: https://www.gravatar.com/avatar/a7fa1d8e4822a75d86eee39c77674270?s=256&d=https://avatars.phantauth.me/sketch/male/pmbk5Xez.jpg
-      website:
-        description: |
-          URL of the End-User's Web page or blog. This Web page SHOULD contain information published by the End-User or
-          an organization that the End-User is affiliated with.
-        type: string
-        example: https://phantauth.me
-      email:
-        description: |
-          End-User's preferred e-mail address. Its value MUST conform to the RFC 5322 [RFC5322] addr-spec syntax.
-        type: "string"
-        example: john.peter.smith.RSEJGDQ@mailinator.com
-      email_verified:
-        description: |
-          True if the End-User's e-mail address has been verified; otherwise false.
-          When this Claim Value is true, this means that the OP took affirmative steps to ensure that this e-mail address
-          was controlled by the End-User at the time the verification was performed.
-          The means by which an e-mail address is verified is context-specific, and dependent upon the trust framework
-          or contractual agreements within which the parties are operating.
-        type: boolean
-        example: true
-      gender:
-        description: |
-          End-User's gender. Values defined by this specification are female and male.
-          Other values MAY be used when neither of the defined values are applicable.
-        type: "string"
-        example: male
-      birthdate:
-        description: |
-          End-User's birthday, represented as an ISO 8601:2004 [ISO8601‑2004] YYYY-MM-DD format.
-          The year MAY be 0000, indicating that it is omitted. To represent only the year, YYYY format is allowed.
-          Note that depending on the underlying platform's date related function, providing just year can result in varying month and day,
-          so the implementers need to take this factor into account to correctly process the dates.
-        type: "string"
-        example: 1944-06-12
-      zoneinfo:
-        description: |
-          String from zoneinfo [zoneinfo] time zone database representing the End-User's time zone. For example, Europe/Paris or America/Los_Angeles.
-        type: "string"
-        example: Europe/London
-      locale:
-        description: |
-          End-User's locale, represented as a BCP47 [RFC5646] language tag.
-          This is typically an ISO 639-1 Alpha-2 [ISO639‑1] language code in lowercase and an ISO 3166-1 Alpha-2 [ISO3166‑1]
-          country code in uppercase, separated by a dash. For example, en-US or fr-CA. As a compatibility note, some implementations
-          have used an underscore as the separator rather than a dash, for example, en_US
-        type: "string"
-        example: en_GB
-      phone_number:
-        description: |
-          End-User's preferred telephone number. E.164 [E.164] is RECOMMENDED as the format of this Claim,
-          for example, +1 (425) 555-1212 or +56 (2) 687 2400. If the phone number contains an extension, it is RECOMMENDED
-           that the extension be represented using the RFC 3966 [RFC3966] extension syntax, for example, +1 (604) 555-1234;ext=5678.
-        type: "string"
-        example: 194-327-2309
-      phone_number_verified:
-        description: |
-          True if the End-User's phone number has been verified; otherwise false. When this Claim Value is true, this means
-          that the OP took affirmative steps to ensure that this phone number was controlled by the End-User at the time the verification was performed.
-          The means by which a phone number is verified is context-specific, and dependent upon the trust framework or contractual agreements
-          within which the parties are operating. When true, the phone_number Claim MUST be in E.164 format and any extensions MUST be represented in RFC 3966 format.
-        type: boolean
-        example: true
-      updated_at:
-        description: |
-          Time the End-User's information was last updated.
-          Its value is a JSON number representing the number of seconds from 1970-01-01T0:0:0Z as measured in UTC until the date/time.
-        type: integer
-        format: int64
-        example: 774921600
+        description: >-
+          The user's full name in displayable form, including all name parts,
+          possibly including titles and suffixes, ordered according to the
+          enduser's locale and preferences.
       address:
-        $ref: "#/definitions/Address"
-
-      webmail:
-        description: |
-          URL of the End-User's web mailbox.
+        $ref: '#/definitions/Address'
+        description: The user's preferred postal address.
+      given_name:
         type: string
-        example: https://www.mailinator.com/v3/?zone=public&query=john.peter.smith.RSEJGDQ
-
+        description: The user's given name(s) or first name(s).
+      family_name:
+        type: string
+        description: The user's surname(s) or last name(s).
+      middle_name:
+        type: string
+        description: The user's middle name(s).
+      nickname:
+        type: string
+        description: >-
+          A casual name of the User that may or may not be the same as the
+          given_name.
+      preferred_username:
+        type: string
+        description: >-
+          A shorthand name by which the user wishes to be referred to at the
+          Relying Party.
+      profile:
+        type: string
+        description: The URL of the user's profile page.
+      picture:
+        type: string
+        description: The URL of the user's profile picture.
+      website:
+        type: string
+        description: The URL of the user's webpage or blog.
+      email:
+        type: string
+        description: The user's preferred email address.
+      email_verified:
+        type: boolean
+        description: True if the user's e-mail address has been verified; otherwise false.
+      gender:
+        type: string
+        description: 'The enduser''s gender. Possible values are: female, male, and unknown.'
+      birthdate:
+        type: string
+        description: >-
+          The user's birthday, represented as an ISO 8601:2004 [ISO8601‑2004]
+          YYYY-MM-DD format.
+      zoneinfo:
+        type: string
+        description: >-
+          A string from the zoneinfo time zone database representing the user's
+          time zone. For example, Europe/Paris or America/Los_Angeles.
+      locale:
+        type: string
+        description: >-
+          The user's locale, represented as a BCP47 [RFC5646] language tag. It
+          is an ISO 639-1 Alpha-2 language code in lowercase and an ISO 3166-1
+          Alpha-2 country code in uppercase letters, separated by a dash.
+      phone_number:
+        type: string
+        description: The user's preferred telephone number.
+      phone_number_verified:
+        type: boolean
+        description: True if the enduser's phone number has been verified; otherwise false.
+      updated_at:
+        type: number
+        description: >-
+          The time when the User's information was last updated. Its value is a
+          JSON number representing the number of seconds from 1970-01-01T0:0:0Z
+          as measured in UTC until the date/time.
+      me:
+        type: string
+        description: The simplified URL of the user's profile page.
       password:
-        description: User's generated password
-        type: "string"
-        example: MWnY3vzu
-
-  Address:
-    type: object
-    description: |
-      The Address represents a physical mailing address. Implementations MAY return only a subset of the fields of an address,
-      depending upon the information available and the End-User's privacy preferences. For example, the country and region might
-      be returned without returning more fine-grained address information.
-    externalDocs:
-      description: "5.1.1. Address Claim"
-      url: "http://openid.net/specs/openid-connect-core-1_0.html#AddressClaim"
-    properties:
-      formatted:
         type: string
-        description: "Full mailing address, formatted for display or use on a mailing label. This field MAY contain multiple lines, separated by newlines. Newlines can be represented either as a carriage return/line feed pair or as a single line feed character."
-        example: "42 Summer Place APT 36\nWashington 51051"
-      street_address:
+        description: The user's generated password.
+      uid:
         type: string
-        description: "Full street address component, which MAY include house number, street name, Post Office Box, and multi-line extended street address information. This field MAY contain multiple lines, separated by newlines. Newlines can be represented either as a carriage return/line feed pair or as a single line feed character."
-        example: 42 Summer Place APT 36
-      locality:
+        description: 'The user''s simplified, shortened identifier at the Issuer.'
+      webmail:
         type: string
-        description: "City or locality component."
-        example: Washington
-      region:
+        description: The URL of user's mailbox in a webmail application.
+      '@id':
         type: string
-        description: "State, province, prefecture, or region component."
-        example: ""
-      postal_code:
-        type: string
-        description: "Zip code or postal code component."
-        example: "51051"
-      country:
-        type: string
-        description: "Country name component."
-        example: UnitedKingdom
-
+        description: The URL of the user's JSON representation.
   Client:
     type: object
-    description: |
-      OAuth2 client metadata. Registered clients have a set of metadata values associated with
-      their client identifier at an authorization server, such as the list
-      of valid redirection URIs or a display name.
-    externalDocs:
-      description: "2. Client Metadata"
-      url: "https://tools.ietf.org/html/rfc7591#section-2"
+    required:
+      - client_id
     properties:
       client_id:
         type: string
-        description: |
-          OAuth 2.0 client identifier string.  It SHOULD NOT be
-          currently valid for any other registered client, though an
-          authorization server MAY issue the same client identifier to
-          multiple instances of a registered client at its discretion.
-        example: magic.toolbox~a332-hf45
-
+        description: OAuth 2.0 client identifier string.
       client_secret:
         type: string
-        description: |
-          OAuth 2.0 client secret string.  If issued, this MUST
-          be unique for each "client_id" and SHOULD be unique for multiple
-          instances of a client using the same "client_id".  This value is
-          used by confidential clients to authenticate to the token
-          endpoint, as described in OAuth 2.0 [RFC6749], Section 2.3.1.
-        example: llZCR3EK
-
+        description: 'OAuth 2.0 client secret string. '
       redirect_uris:
         type: array
-        items:
-          type: string
-        description: |
-          Array of redirection URI strings for use in redirect-based flows
-          such as the authorization code and implicit flows.  As required by
-          Section 2 of OAuth 2.0 [RFC6749], clients using flows with
-          redirection MUST register their redirection URI values.
-          Authorization servers that support dynamic registration for
-          redirect-based flows MUST implement support for this metadata
-          value.
-
+        items: {}
+        description: >-
+          Array of redirection URI strings for use in redirect-based flows such
+          as the authorization code and implicit flows.
       token_endpoint_auth_method:
         type: string
-        description: |
-          String indicator of the requested authentication method for the
-          token endpoint.  Values defined by this specification are:
-
-          *  "none": The client is a public client as defined in OAuth 2.0,
-             Section 2.1, and does not have a client secret.
-
-          *  "client_secret_post": The client uses the HTTP POST parameters
-             as defined in OAuth 2.0, Section 2.3.1.
-
-          *  "client_secret_basic": The client uses HTTP Basic as defined in
-             OAuth 2.0, Section 2.3.1.
-
-          Additional values can be defined via the IANA "OAuth Token
-          Endpoint Authentication Methods" registry established in
-          Section 4.2.  Absolute URIs can also be used as values for this
-          parameter without being registered.  If unspecified or omitted,
-          the default is "client_secret_basic", denoting the HTTP Basic
-          authentication scheme as specified in Section 2.3.1 of OAuth 2.0.
-        example: client_secret_basic
-
+        description: >-
+          String indicator of the requested authentication method for the token
+          endpoint.
       grant_types:
         type: array
-        items:
-          type: string
-        description: |
-          Array of OAuth 2.0 grant type strings that the client can use at
-          the token endpoint.  These grant types are defined as follows:
-
-          *  "authorization_code": The authorization code grant type defined
-             in OAuth 2.0, Section 4.1.
-
-          *  "implicit": The implicit grant type defined in OAuth 2.0,
-             Section 4.2.
-
-          *  "password": The resource owner password credentials grant type
-             defined in OAuth 2.0, Section 4.3.
-
-          *  "client_credentials": The client credentials grant type defined
-             in OAuth 2.0, Section 4.4.
-
-          *  "refresh_token": The refresh token grant type defined in OAuth
-             2.0, Section 6.
-
-          *  "urn:ietf:params:oauth:grant-type:jwt-bearer": The JWT Bearer
-             Token Grant Type defined in OAuth JWT Bearer Token Profiles
-             [RFC7523].
-
-          *  "urn:ietf:params:oauth:grant-type:saml2-bearer": The SAML 2.0
-             Bearer Assertion Grant defined in OAuth SAML 2 Bearer Token
-             Profiles [RFC7522].
-
-          If the token endpoint is used in the grant type, the value of this
-          parameter MUST be the same as the value of the "grant_type"
-          parameter passed to the token endpoint defined in the grant type
-          definition.  Authorization servers MAY allow for other values as
-          defined in the grant type extension process described in OAuth
-          2.0, Section 4.5.  If omitted, the default behavior is that the
-          client will use only the "authorization_code" Grant Type.
-        example: ["authorization_code","implicit", "password", "client_credentials", "refresh_token"]
-
+        items: {}
+        description: >-
+          Array of OAuth 2.0 grant type strings that the client can use at the
+          token endpoint.
       response_types:
         type: array
-        items:
-          type: string
-        description: |
-          Array of the OAuth 2.0 response type strings that the client can
-          use at the authorization endpoint.  These response types are
-          defined as follows:
-
-          *  "code": The authorization code response type defined in OAuth
-             2.0, Section 4.1.
-
-          *  "token": The implicit response type defined in OAuth 2.0,
-             Section 4.2.
-
-          If the authorization endpoint is used by the grant type, the value
-          of this parameter MUST be the same as the value of the
-          "response_type" parameter passed to the authorization endpoint
-          defined in the grant type definition.  Authorization servers MAY
-          allow for other values as defined in the grant type extension
-          process is described in OAuth 2.0, Section 4.5.  If omitted, the
-          default is that the client will use only the "code" response type.
-        example: ["code","token"]
-
+        items: {}
+        description: >-
+          Array of the OAuth 2.0 response type strings that the client can use
+          at the authorization endpoint.
       client_name:
         type: string
-        description: |
+        description: >-
           Human-readable string name of the client to be presented to the
-          end-user during authorization.  If omitted, the authorization
-          server MAY display the raw "client_id" value to the end-user
-          instead.  It is RECOMMENDED that clients always send this field.
-          The value of this field MAY be internationalized, as described in
-          Section 2.2.
-        example: Magic Toolbox
-
+          end-user during authorization.
       client_uri:
         type: string
-        description: |
-          URL string of a web page providing information about the client.
-          If present, the server SHOULD display this URL to the end-user in
-          a clickable fashion.  It is RECOMMENDED that clients always send
-          this field.  The value of this field MUST point to a valid web
-          page.  The value of this field MAY be internationalized, as
-          described in Section 2.2.
-        example: https://phantauth.me/en/client?magic.toolbox~a332-hf45
-
+        description: URL string of a web page providing information about the client.
       logo_uri:
         type: string
-        description: |
-          URL string that references a logo for the client.  If present, the
-          server SHOULD display this image to the end-user during approval.
-          The value of this field MUST point to a valid image file.  The
-          value of this field MAY be internationalized, as described in
-          Section 2.2.
-        example: https://www.gravatar.com/avatar/23a9c0277d8e4062b01f1097037f0d5b?s=256&d=https://avatars.phantauth.me/icon/5xe7JBd7.png
-
+        description: URL string that references a logo for the client.
       scope:
         type: string
-        description: |
-          String containing a space-separated list of scope values (as
-          described in Section 3.3 of OAuth 2.0 [RFC6749]) that the client
-          can use when requesting access tokens.  The semantics of values in
-          this list are service specific.  If omitted, an authorization
-          server MAY register a client with a default set of scopes.
-        example: profile email
-
+        description: >-
+          String containing a space-separated list of scope values (as described
+          in Section 3.3 of OAuth 2.0 [RFC6749]) that the client can use when
+          requesting access tokens.
       contacts:
         type: array
-        items:
-          type: string
-        description: |
-          Array of strings representing ways to contact people responsible
-          for this client, typically email addresses.  The authorization
-          server MAY make these contact addresses available to end-users for
-          support requests for the client.  See Section 6 for information on
-          Privacy Considerations.
-
+        items: {}
+        description: >-
+          Array of strings representing ways to contact people responsible for
+          this client, typically email addresses.
       tos_uri:
         type: string
-        description: |
-          URL string that points to a human-readable terms of service
-          document for the client that describes a contractual relationship
-          between the end-user and the client that the end-user accepts when
-          authorizing the client.  The authorization server SHOULD display
-          this URL to the end-user if it is provided.  The value of this
-          field MUST point to a valid web page.  The value of this field MAY
-          be internationalized, as described in Section 2.2.
-        example: http://localhost:3000/en/tos?magic.toolbox~a332-hf45
-
+        description: >-
+          URL string that points to a human-readable terms of service document
+          for the client that describes a contractual relationship between the
+          end-user and the client that the end-user accepts when authorizing the
+          client.
       policy_uri:
         type: string
-        description: |
+        description: >-
           URL string that points to a human-readable privacy policy document
           that describes how the deployment organization collects, uses,
-          retains, and discloses personal data.  The authorization server
-          SHOULD display this URL to the end-user if it is provided.  The
-          value of this field MUST point to a valid web page.  The value of
-          this field MAY be internationalized, as described in Section 2.2.
-        example: http://localhost:3000/en/policy?magic.toolbox~a332-hf45
-
+          retains, and discloses personal data.
       jwks_uri:
         type: string
-        description: |
-          URL string referencing the client's JSON Web Key (JWK) Set
-          [RFC7517] document, which contains the client's public keys.  The
-          value of this field MUST point to a valid JWK Set document.  These
-          keys can be used by higher-level protocols that use signing or
-          encryption.  For instance, these keys might be used by some
-          applications for validating signed requests made to the token
-          endpoint when using JWTs for client authentication [RFC7523].  Use
-          of this parameter is preferred over the "jwks" parameter, as it
-          allows for easier key rotation.  The "jwks_uri" and "jwks"
-          parameters MUST NOT both be present in the same request or
-          response.
-
+        description: >-
+          URL string referencing the client's JSON Web Key (JWK) Set [RFC7517]
+          document, which contains the client's public keys.
       jwks:
-        type: string
-        description: |
-          Client's JSON Web Key Set [RFC7517] document value, which contains
-          the client's public keys.  The value of this field MUST be a JSON
-          object containing a valid JWK Set.  These keys can be used by
-          higher-level protocols that use signing or encryption.  This
-          parameter is intended to be used by clients that cannot use the
-          "jwks_uri" parameter, such as native clients that cannot host
-          public URLs.  The "jwks_uri" and "jwks" parameters MUST NOT both
-          be present in the same request or response.
-
+        type: array
+        items: {}
+        description: >-
+          Client's JSON Web Key Set [RFC7517] document value, which contains the
+          client's public keys.  The value of this field MUST be a JSON object
+          containing a valid JWK Set.
       software_id:
         type: string
-        description: |
+        description: >-
           A unique identifier string (e.g., a Universally Unique Identifier
-          (UUID)) assigned by the client developer or software publisher
-          used by registration endpoints to identify the client software to
-          be dynamically registered.  Unlike "client_id", which is issued by
-          the authorization server and SHOULD vary between instances, the
-          "software_id" SHOULD remain the same for all instances of the
-          client software.  The "software_id" SHOULD remain the same across
-          multiple updates or versions of the same piece of software.  The
-          value of this field is not intended to be human readable and is
-          usually opaque to the client and authorization server.
-        example: igG6Jgx7mfzPdjhBvHvqRQ
-
+          (UUID)) assigned by the client developer or software publisher used by
+          registration endpoints to identify the client software to be
+          dynamically registered.
       software_version:
         type: string
-        description: |
+        description: >-
           A version identifier string for the client software identified by
-          "software_id".  The value of the "software_version" SHOULD change
-          on any update to the client software identified by the same
-          "software_id".  The value of this field is intended to be compared
-          using string equality matching and no other comparison semantics
-          are defined by this specification.  The value of this field is
-          outside the scope of this specification, but it is not intended to
-          be human readable and is usually opaque to the client and
-          authorization server.  The definition of what constitutes an
-          update to client software that would trigger a change to this
-          value is specific to the software itself and is outside the scope
-          of this specification.
-        example: 5.5.3
-
+          software_id.
+      '@id':
+        type: string
+        description: URL of the Client's JSON representation.
       logo_email:
         type: string
-        description: |
-          Email address for gravatar logo customization.
-        example: magic.toolbox.OUUWE4A@mailinator.com
+        description: An email address used to generate a gravatar.com logo_uri.
+  Team:
+    type: object
+    required:
+      - sub
+    properties:
+      sub:
+        type: string
+        description: >-
+          The name or email address of a given team. The team properties and
+          team members are generated from this name. If you provide an email
+          address, you can customize the team logo by the use of the gravatar
+          associated with the email address.
+      name:
+        type: string
+        description: The displayed team name.
+      logo:
+        type: string
+        description: >-
+          The URL of the team logo, which can be customized by the gravatar
+          associated with the email address in the `logo_email` property.
+      logo_email:
+        type: string
+        description: >-
+          The email address of the team, either generated or provided in the
+          `sub` property. The team logo can be customized by the use of the
+          gravater associated with this email address.
+      '@id':
+        type: string
+        description: URL of the Teams's JSON representation.
+      profile:
+        type: string
+        description: The URL of the Team profile.
+      members:
+        type: array
+        items: {}
+        description: The user objects that generate a team member.
+  Fleet:
+    type: object
+    required:
+      - sub
+    properties:
+      sub:
+        type: string
+        description: >-
+          The name or email address of a given fleet. The fleet properties and
+          fleet members are generated from this name. If provide an email
+          address, you can customize the fleet logo by the use of the gravatar
+          associated with the email address.
+      name:
+        type: string
+        description: The displayed fleet name.
+      logo:
+        type: string
+        description: >-
+          The URL of the fleet logo, which can be customized by the gravatar
+          associated with the email address in the `logo_email` property.
+      logo_email:
+        type: string
+        description: >-
+          The email address of the fleet, either generated or provided in the
+          `sub` property. The fleet logo can be customized by the use of the
+          gravater associated with this email address.
+      '@id':
+        type: string
+        description: URL of the Fleet's JSON representation.
+      profile:
+        type: string
+        description: The URL of the Fleet profile.
+      members:
+        type: array
+        items: {}
+        description: The client objects included in a fleet.
+  Tenant:
+    type: object
+    required:
+      - sub
+      - issuer
+    properties:
+      sub:
+        type: string
+        description: >-
+          The fully qualified DNS domain name of the tenant. In the case of
+          official and shared tenants (phantauth.net and phantauth.cf DNS
+          domain), the DNS domain can be omitted (e.g. *default* or *faker*).
+      issuer:
+        type: string
+        description: >-
+          The URL of the tenant OpenID Connect issuer. This value allows you to
+          get, for example, the [OpenID Provider
+          Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).
+
+          As a webpage, it contains information on the use if the given tenant.
+      website:
+        type: string
+        description: >-
+          The website address associated with the tenant. If a tenant doesn't
+          have a website, its value is identical with that of the `issuer`
+          property.
+      template:
+        type: string
+        description: >-
+          It defines the place of the templates of the HTML pages of the tenant
+          in [RFC 6570 - URI temaplate](https://tools.ietf.org/html/rfc6570)
+          format.
+
+          The URI template receives the page name in a `resource` parameter. By
+          default, it takes the following value:
+          `https://default.phantauth.net{/resource}`.
+      factory:
+        type: string
+        description: >-
+          The address of the custom random resource generator (user, team) in
+          [RFC 6570 - URI temaplate](https://tools.ietf.org/html/rfc6570)
+          format.
+
+          The URI template receives the type of the object to be generated
+          (user, team) in the `kind` parameter, and the identifier of the object
+          to be generated in the `name` parameter.
+      factories:
+        type: array
+        items: {}
+        description: >-
+          A list of resource types supported by the external generator set in
+          `factory`.
+      depot:
+        type: string
+        description: >-
+          It defines the place of the CSV file containing the resource data in
+          [RFC 6570 - URI temaplate](https://tools.ietf.org/html/rfc6570)
+          format.
+
+          The URI template receives the type of the object to be generated
+          (user, team) in the `kind` parameter.
+
+
+          The first line of the CSV file contains the resource property names,
+          the following lines, on the other hand, contain the relevant data.
+
+          In the case of nested properties, a '.' character separates the
+          elements of the property name (e.g. address.formatted).
+      depots:
+        type: array
+        items: {}
+        description: A list of resource types supported by the external CSV set in `depot`.
+      userinfo:
+        type: string
+      '@id':
+        type: string
+        description: The URL of the tenant's JSON representation.
+      name:
+        type: string
+        description: >-
+          The displayed tenant name. In lack of such name, the DNS name of the
+          tenant is displayed in the address bar of the tenant's webpages.
+      logo:
+        type: string
+        description: >-
+          The URL of the tenant logo. The image from this address appears in the
+          address bar of the tenant's webpages and the pages that contain the
+          list of available tenants.
+      favicon:
+        type: string
+        description: >-
+          The URL of the tenant favicon. The image from this address appears as
+          a shortcut icon in the browser when a user visits the tenant's
+          webpages.
+      theme:
+        type: string
+        description: >-
+          The URL of the CSS style sheet used for the tenant's webpages.
+
+          The default webpage templates were created by the use of the Bootstrap
+          library, therefore, the Bootstrap CSS URL has to be provided when such
+          a webpage is used.
+      script:
+        type: string
+        description: >-
+          The URL of a custom JavaScript file can be automatically inserted in
+          the login.html, consent.html, és test.html pages.
+      sheet:
+        type: string
+        description: >-
+          It is used to give the identifyer of a public Google Sheet document.
+          The first line of the table contains the user property names, the
+          following lines, on the other hand, contain the relevant data.
+
+          In the case of nested properties, a '.' character separates the
+          elements of the property name (e.g. address.formatted).
+      summary:
+        type: string
+        description: >-
+          A one-line description, the watchword of the tenant. It appears on the
+          tenant's startup page and the pages that contain the list of available
+          tenants. It takes the valua of an unformatted text.
+      attribution:
+        type: string
+        description: >-
+          The attribution of the external data source or random user generator.
+          Its value can have markdown formatting, that is, the external source
+          can contain highlights and links.
+      about:
+        type: string
+        description: >-
+          A detailed description of the tenant. If it takes the value of an URL,
+          the description is downloaded from the given URL, otherwise the value
+          it takes is the description itself. Markdown formatting can be used in
+          the description.
+      domain:
+        type: boolean
+        description: >-
+          True in the case of a domain tenant collecting several tenants,
+          otherwise false.
+      subtenant:
+        type: boolean
+        description: >-
+          True in the case of a tenant referred to in a domain tenant, otherwise
+          false.
+  Domain:
+    type: object
+    properties:
+      sub:
+        type: string
+        description: The fully qualified DNS name of the domain (e.g. phantauth.net).
+      name:
+        type: string
+        description: The displayed domain name.
+      logo:
+        type: string
+        description: >-
+          The URL of the domain logo. The image from this address is displayed
+          on the webpage of the domain.
+      '@id':
+        type: string
+        description: The URL of the domain's JSON representation.
+      profile:
+        type: string
+        description: The URL of the domain's webpage.
+      members:
+        type: array
+        items: {}
+        description: The tenants included in a domain.
+  Address:
+    type: object
+    properties:
+      formatted:
+        type: string
+        description: >-
+          Full mailing address, formatted for display or use on a mailing label.
+          This field MAY contain multiple lines, separated by newlines. Newlines
+          can be represented either as a carriage return/line feed pair or as a
+          single line feed character.
+      street_address:
+        type: string
+        description: >-
+          Full street address component, which MAY include house number, street
+          name, post office box, and multi-line extended street address
+          information. This field MAY contain multiple lines, separated by
+          newlines. Newlines can be represented either as a carriage return/line
+          feed pair or as a single line feed character.
+      locality:
+        type: string
+        description: City or locality component.
+      region:
+        type: string
+        description: 'State, province, prefecture, or region component.'
+      postal_code:
+        type: string
+        description: Zip code or postal code component.
+      country:
+        type: string
+        description: Country name component.
+securityDefinitions: {}
+tags:
+  - name: User
+    description: >-
+      The *user* resource contains the [Standard
+      Claims](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims)
+      defined in the [OpenID Connect
+      Core](https://openid.net/specs/openid-connect-core-1_0.html)
+      specifications. It also includes some PhantAuth-specific property.
+
+
+      To use PhantAuth as an OpenID Connect provider, you don't need to carry
+      out the user-related operations described here.
+
+      You don't need to generate users in advance. If PhantAuth requires a piece
+      of data that belongs to a specific user, it will be generated in runtime.
+
+      The deterministic nature of the generators guarantee that the same user
+      object will be generated to the same user name.
+
+      The only exception is selfie token generation, when the provided user data
+      are used to create a so-called selfie token, which can later be used as a
+      login name.
+  - name: Client
+    description: >-
+      The client object contains standard OAuth2/OpenID Connect client
+      properties. To use an OpenID Connect flow, you need a client_id. Certain
+      flows also require a client_secret. The client object contains the
+      client_id and client_secret values, as well as some properties to be
+      displayed to the user (e.g. logo, client name, version).
+  - name: Team
+    description: >-
+      Team is a group of users under a given name. For the purposes of
+      identification and visualisation, the team object has its own properties
+      (e.g. logo), the most important of which is the `members`, which contains
+      the user objects of the team.
+  - name: Fleet
+    description: >-
+      Fleet is a group of clients under a given a name. For the purposes of
+      identification and visualisation, the Fleet object has its own properties
+      (e.g. logo), the most important of which is the `members`, which contains
+      the user objects of the fleet.
+  - name: Tenant
+    description: >-
+      To customize the application, you need to use one or more so-called
+      tenants. A tenant can be consiered as an independent PhantAuth service. A
+      tenant has its own random user generator endpoints and OpenID Connect
+      endpoints.
+
+
+      The tenants can be organised into so-called domains. Practically, a domain
+      is a DNS zone, which contains the settings of the given tenant(s). The
+      tenants as well as the domain can be configured by the use of DNS TXT
+      records.
+
+
+      The URL of the tenant issuer is in `https://phantauth.net/_{tenant}`
+      format, where `tenant` is the fully qualified DNS name associated with the
+      tenant. When using a PhantAuth official tenant, you can omit
+      `phantauth.net` from the end of the name. When using a community-created,
+      shared tenant, `phantauth.cf` can be omitted from the end of the name.
+
+      When using a default tenant (default.phantauth.net), the issuer URL is
+      identical with the PhantAuth base URL, that is,
+      [https://phantauth.net](https://phantauth.net).
+
+
+      The resource URL is relative to the URL of the tenant issuer URL, that is,
+      the endpoint address of the random user generator for the tenant named
+      `faker` is:
+      [https://phantauth.net/_faker/user](https://phantauth.net/_faker/user).
+  - name: Domain
+    description: >-
+      A domain object contains several tenants; it can be considered a group of
+      tenants. The PhantAuth official tenants are collected in a domain
+      identified by `phantauth.net`.
+
+      In the `phantauth.cf` domain, you can share and register your own tenants
+      as well.
+
+
+      A domain can also be used as a tenant, that is, it has an issuer endpoint
+      and some resource endpoints. The issuer URL of the domain is in
+      `https://phantauth.net/_{domain}` format, where `domain` is the fully
+      qualified DNS name associated with the domain, that is, for example
+      [https://phantauth.net/_phantauth.net](https://phantauth.net/_phantauth.net)
+      or
+
+      [https://phantauth.net/_phantauth.cf](https://phantauth.net/_phantauth.cf).
+      When using a default domain (phantauth.net), the domain name, that is, the
+      URL of the default domain issuer,
+      [https://phantauth.net/_](https://phantauth.net/_) can be omitted.
