@@ -16,7 +16,14 @@ permalink: "test/azure.html"
 <div class="container before-login mt-3" style="display: none;">
   <p><a href="https://azure.microsoft.com/en-us/services/active-directory-b2c/">Azure AD B2C</a> integration test page.
    You can try how authentication works with Azure AD B2C integration.
-   After successfull authentication you will see returned OIDC claims in a user profile form.
+   As the first step of the login process, you need to select the source of authentication. You have two options:
+   <ul>
+     <li>LOG IN WITH PHANTAUTH: Use the PhantAuth default tenant to log in.</li>
+     <li>LOG IN WITH DOMAIN: Using the domain tenant containing the PhantAuth tenants to log in. In this case, you need to select the tenant you want to use from the available ones (6–8) on a new page.</li>
+   </ul>
+  After a successful login, the profile page opens. You can log out by clicking on the logout button try to log in again.
+  </p>
+  <p>
    This page uses<a href="https://github.com/AzureAD/microsoft-authentication-library-for-js">Microsoft Authentication Library for Javascript</a> for authentication.
   </p>
 </div>
