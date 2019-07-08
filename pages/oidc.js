@@ -31,6 +31,7 @@ $(function () {
         }).catch(function (err) {
             console.log(err);
         });
+        return false;
     }
 
     function process() {

@@ -40,6 +40,7 @@ $(function () {
     function login() {
         beforeLogin();
         msal.loginRedirect(config.scopes);
+        return false;
     }
 
     function getTenant() {
