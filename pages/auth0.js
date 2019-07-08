@@ -31,6 +31,7 @@ $(function () {
                 webAuth.authorize();
             }
         });
+        return false;
     }
 
     function logout() {
