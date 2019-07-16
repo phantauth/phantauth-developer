@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `PhantAuth Developer`,
+    title: `PhantAuth - Random User Generator + OpenID Connect Provider`,
     description: `Random User Generator + OpenID Connect Provider. Like Lorem Ipsum, but for user accounts and authentication.`,
     author: `Iván Szkiba`,
     domain: process.env.PHANTAUTH_DOMAIN,
@@ -15,7 +15,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `PhantAuth Developer`,
+        name: `PhantAuth - Random User Generator + OpenID Connect Provider`,
         short_name: `PhantAuth`,
         start_url: `/`,
         background_color: `#864a05`,
