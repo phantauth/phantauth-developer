@@ -27,3 +27,18 @@
   width: 3rem;
   height: 3rem;
 }
+
+.sidebar li p {
+  margin-block-end: 0px;
+  display: none;
+}
+
+main.sticky .sidebar {
+  position: fixed;
+  top: 60px;
+  z-index: 0;
+}
+
+.markdown-section blockquote {
+  border-color: #864a05!important;
+}
