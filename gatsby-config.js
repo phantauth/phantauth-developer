@@ -21,11 +21,38 @@ module.exports = {
         background_color: `#864a05`,
         theme_color: `#864a05`,
         display: `fullscreen`,
-        icon: `static/logo/phantauth-logo.png`, // This path is relative to the root of the site.
+        icon: `static/logo/phantauth-logo.png`,
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.app/offline
-    // 'gatsby-plugin-offline',
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `markdown-pages`,
+        path: `${__dirname}/src/docs/`,
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 800,
+            },
+          },
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+            },
+          },
+          `gatsby-remark-autolink-headers`,
+        ],
+        tableOfContents: {
+          heading: null,
+          maxDepth: 6,
+        },
+      },
+    },
   ],
 }
