@@ -43,7 +43,10 @@ class Header extends React.Component {
         <NavbarBrand href="/"><img src="/logo/phantauth-logo-white.svg" className="logo"/>&nbsp;{this.props.siteTitle}</NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
+            <form className="ml-auto mr-1">
+              <input id="search" className="form-control search" type="search" placeholder="Search" aria-label="Search"/>
+            </form>
+            <Nav navbar>
               <NavItem>
                 <NavLink href="/doc">Doc</NavLink>
               </NavItem>
