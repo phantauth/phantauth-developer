@@ -9,6 +9,7 @@
   <title>PhantAuth Developer</title>
   <link rel="stylesheet" href="/bootstrap-phantauth.min.css" crossorigin="anonymous">
   <link rel="stylesheet" href="/phantauth.css" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"/> 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/rivets/0.9.6/rivets.bundled.min.js"></script>
@@ -27,7 +28,10 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="menu">
-      <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+      <form class="ml-auto mr-1">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+      </form>
+      <ul class="navbar-nav mt-2 mt-lg-0">
         <li class="nav-item">
           <a class="nav-link" href="/doc">Doc</a>
         </li>
@@ -46,7 +50,7 @@
       </ul>
     </div>    
   </nav>
-  <nav class="navbar navbar-light bg-light sticky-top">
+  <nav class="navbar navbar-light bg-light sticky-top" style="z-index: 50;">
     <form class="form-inline">
         <button id="logout" href="#" class="btn btn-danger btn-sm after-login" style="display: none;">Logout</button>
         <button id="login" href="#" class="btn btn-success btn-sm before-login" style="display: none;">Login</button>
@@ -224,6 +228,7 @@
 {% block script %}
 {% endblock %}
   </script>
-  <script src="https://embed.small.chat/THA6J1QSJGH31C4J9F.js" async></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script> 
+  <script type="text/javascript" src="/docsearch.js"/>
 </body>
 </html>

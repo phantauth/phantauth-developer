@@ -1,5 +1,5 @@
 ---
-path: "/doc"
+path: "/doc/"
 title: "Introduction"
 index: 0
 ---
