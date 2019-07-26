@@ -25,7 +25,8 @@ const Layout = ({ children }) => (
         <Container fluid>
           {children}
         </Container>
-        <script src="https://embed.small.chat/THA6J1QSJGH31C4J9F.js" async></script>
+        <script src="/docsearch.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script> 
       </>
     )}
   />

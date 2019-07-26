@@ -1,4 +1,5 @@
 import React from 'react'
+import Helmet from 'react-helmet'
 
 import '../../static/bootstrap-phantauth.min.css';
 import {meta} from './meta';
@@ -39,6 +40,9 @@ class Header extends React.Component {
         <div className="small">You are viewing the PhantAuth <b>Sandbox</b>!</div>
         </div>)
       }
+      <Helmet>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"/> 
+      </Helmet>
       <Navbar color="primary" expand="lg" dark sticky="top">
         <NavbarBrand href="/"><img src="/logo/phantauth-logo-white.svg" className="logo"/>&nbsp;{this.props.siteTitle}</NavbarBrand>
         <NavbarToggler onClick={this.toggle} />

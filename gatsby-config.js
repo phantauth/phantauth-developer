@@ -54,14 +54,5 @@ module.exports = {
         },
       },
     },
-    {
-      resolve: `gatsby-plugin-algolia-docsearch`,
-      options: {
-        apiKey: "f5000379dc5e53c4b1f5c66dfd5c1b85",
-        indexName: "phantauth",
-        inputSelector: "#search",
-        debug: false
-      }
-    }    
   ],
 }
