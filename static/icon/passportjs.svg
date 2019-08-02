@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg">
+<g transform="matrix(.48828 0 0 .48828 .8607 .17379)">
+<rect x="-1.7627" y="-.35593" width="512" height="512" opacity=".95"/>
+<g transform="matrix(.9 0 0 .9 76 31)" fill="none" fill-rule="evenodd">
+<g transform="translate(-400,-350)">
+<g transform="translate(400,350)">
+<path d="m200 0c-110.5 0-200 89.5-200 200h100c0-55.2 44.8-100 100-100z" fill="#d6ff00"/>
+<path d="m400 200c0-110.5-89.5-200-200-200v100c55.2 0 100 44.8 100 100z" fill="#34e27a"/>
+<path d="m200 400c110.5 0 200-89.5 200-200h-100c0 55.2-44.8 100-100 100z" fill="#00b9f1"/>
+<path d="m100 400v-200h-100v300h200v-100z" fill="#fff"/>
+</g>
+</g>
+</g>
+</g>
+</svg>
