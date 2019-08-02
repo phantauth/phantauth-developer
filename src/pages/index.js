@@ -66,6 +66,10 @@ const IndexPage = () => (
         </p>
         Examples:
         <Integration/>
+        <p>
+          Every library/framework with OpenID Connect support will also support PhantAuth with some configuration parameters (e.g. authorization URL, token URL). Some of them directly support PhantAuth, without the above mentioned parameters.
+          To check frameworks directly support PhantAuth, please go to chapter <a href="/doc/integration#framework-support">Framework Support</a>.
+        </p>
       </Feature>
       <Feature icon="/icon/random-profile.svg" title="Random User Generator">
         <p>

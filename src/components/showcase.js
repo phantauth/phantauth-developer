@@ -162,6 +162,11 @@ class Sample extends React.Component {
               <span class="small">Sample OpenID Connect login.</span>
           </SampleButton>&nbsp;
           </Col>
+          <Col>
+          <SampleButton href="https://phantauth-sample-passport.now.sh/" icon="/icon/passportjs.svg" title="Passport Example">
+              <span class="small">Sample Passport login.</span>
+          </SampleButton>&nbsp;
+          </Col>
         </Row>
       </div>
     );

@@ -270,3 +270,11 @@ The page was developed by the use of the *Microsoft Authentication Library for J
 ## Other Integrations
 
 The above exmples are for demonstration purposes only, PhantAuth as a standard OpenID Connect provider can be integrated in any environment that supports the OpenID Connect standard.
+
+## Framework Support
+
+Every library/framework with OpenID Connect support will also support PhantAuth with some configuration parameters (e.g. authorization URL, token URL). Some of them directly support PhantAuth, without the above mentioned parameters.
+
+  - Parse Server: [PhantAuth authData](https://docs.parseplatform.org/parse-server/guide/#phantauth-authdata) section in manual
+  - Passport JS: [passport-phantauth](https://www.npmjs.com/package/passport-phantauth) strategy for authenticating with PhantAuth
+
