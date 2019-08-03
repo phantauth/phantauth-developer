@@ -130,6 +130,15 @@ class Integration extends React.Component {
           </AuthButton>&nbsp;
           </Col>
         </Row>
+        <Row>
+          <Col>
+            <AuthButton href="/test/okta" icon="/icon/okta.svg" title="Okta">
+              <span class="small">Okta&nbsp;OpenID&nbsp;Connect demo</span>
+            </AuthButton>&nbsp;
+          </Col>
+          <Col>&nbsp;</Col>
+          <Col>&nbsp;</Col>
+        </Row>
       </div>
     );
   }
