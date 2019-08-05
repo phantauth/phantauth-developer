@@ -1,0 +1,24 @@
+---
+permalink: "test/okta.html"
+---
+{% extends "_test.njk" %}
+
+{% block subtitle %}Okta Test Page{% endblock %}
+{% block icon %}/icon/okta.svg{% endblock %}
+{% block head %}
+{{ super() }}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/oidc-client/1.6.1/oidc-client.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container before-login mt-3" style="display: none;">
+  <p><a href="https://www.okta.com/">Okta</a> integration test page. You can try how authentication works with Okta OpenID Connect Idp integration.
+   After successfull authentication you will see returned OIDC claims in a user profile form.
+   This page uses <a href="https://github.com/IdentityModel/oidc-client-js/">oidc-client</a> library for authentication.
+  </p>
+</div>
+{% endblock %}
+
+{% block script %}
+{% include "okta.js" %}
+{% endblock %}
