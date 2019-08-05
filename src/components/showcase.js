@@ -129,6 +129,11 @@ class Integration extends React.Component {
               <span class="small">Azure&nbsp;Active&nbsp;Directoy&nbsp;B2C demo</span>
           </AuthButton>&nbsp;
           </Col>
+          <Col>
+            <AuthButton href="/test/okta" icon="/icon/okta.svg" title="Okta">
+              <span class="small">Okta&nbsp;OpenID&nbsp;Connect demo</span>
+            </AuthButton>&nbsp;
+          </Col>
         </Row>
       </div>
     );
