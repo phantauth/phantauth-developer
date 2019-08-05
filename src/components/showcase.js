@@ -124,6 +124,8 @@ class Integration extends React.Component {
               <span class="small">Auth0&nbsp;Social&nbsp;Connections demo</span>
           </AuthButton>&nbsp;
           </Col>
+        </Row>
+        <Row>
           <Col>
           <AuthButton href="/test/azure" icon="/icon/azure-ad.svg" title="Azure AD B2C">
               <span class="small">Azure&nbsp;Active&nbsp;Directoy&nbsp;B2C demo</span>
@@ -167,9 +169,16 @@ class Sample extends React.Component {
               <span class="small">Sample OpenID Connect login.</span>
           </SampleButton>&nbsp;
           </Col>
+        </Row>
+        <Row>
           <Col>
           <SampleButton href="https://phantauth-sample-passport.now.sh/" icon="/icon/passportjs.svg" title="Passport Example">
               <span class="small">Sample Passport login.</span>
+          </SampleButton>&nbsp;
+          </Col>
+          <Col>
+          <SampleButton href="https://phantauth-sample.back4app.io/" icon="/icon/parse.svg" title="Parse Server Example">
+              <span class="small">Sample Parse Server login.</span>
           </SampleButton>&nbsp;
           </Col>
         </Row>
