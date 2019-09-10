@@ -249,6 +249,13 @@ class Donate extends React.Component {
               <span class="small">Donate PhantAuth on Liberapay</span>
             </DonateButton>&nbsp;
           </Col>
+        </Row>
+        <Row>
+          <Col>
+            <DonateButton href="https://opencollective.com/phantauth/" icon="/icon/opencollective.svg" title="Open Collective">
+              <span class="small">Donate PhantAuth on Open Collective</span>
+            </DonateButton>&nbsp;
+          </Col>
           <Col>
             <DonateButton href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VXLCJ3EZRAE7G&source=url" icon="/icon/paypal.svg" title="PayPal">
               <span class="small">Donate PhantAuth on PayPal</span>
